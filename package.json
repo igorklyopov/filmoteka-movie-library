@@ -1,0 +1,28 @@
+{
+  "name": "filmoteka-movie-library",
+  "version": "1.1.0",
+  "description": "",
+  "main": "index.js",
+  "homepage": "https://igorklyopov.github.io/filmoteka-movie-library",
+  "scripts": {
+    "dev": "parcel src/*.html",
+    "build": "parcel build src/*.html --public-url /filmoteka-movie-library/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/igorklyopov/filmoteka-movie-library.git"
+  },
+  "keywords": ["Filmoteka", "movie library", "film catalog", "new films", "movie rating", "information about films", "GoIT", "team-project"],
+  "author": "Igor Klyopov <shoot8202@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/igorklyopov/filmoteka-movie-library/issues"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.12.5",
+    "parcel-plugin-handlebars-precompile": "^1.0.2",
+    "parcel-plugin-nuke-dist": "^1.0.1",
+    "posthtml-include": "^1.6.2",
+    "sass": "^1.32.8"
+  }
+}

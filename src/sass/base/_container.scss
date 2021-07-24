@@ -1,0 +1,18 @@
+.container {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+
+  @include adaptive-for-phone {
+    // width: $phone;
+  }
+
+  @include adaptive-for-tablet {
+    width: $tablet;
+    padding: 0 15px;
+  }
+
+  @include adaptive-for-desktop {
+    width: $desktop;
+  }
+}
