@@ -1,4 +1,4 @@
-<section class="footer">
+<footer class="footer">
     <div class="container">
         <div class="footer-container">
             <div class="footer-line1">
@@ -9,8 +9,40 @@
                 <svg class="footer-icon" width="24" height="24">
                     <use href="./images/sprite.svg#icon-heart"></use>
                 </svg>
-                <p>by <span class="footer-active-text">GoIT Students</span></p>
+                <p>by <span class="footer-active-text" data-action="open-modal">GoIT Students</span></p>
             </div>
         </div>
     </div>
-</section>
+</footer>
+
+<!-- this should be in modal.html but it does not work there -->
+	<div class="backdrop js-backdrop">
+		<div class="modal">
+			<button type="button" class="close-modal-button" data-action="close-modal">Close</button>
+			<h2>Team members</h2>
+            <ul class="team-members-list">
+                <li>Name Surname</li>
+                <li>Name Surname</li>
+                <li>Name Surname</li>
+                <li>Name Surname</li>
+                <li>Name Surname</li>
+                <li>Name Surname</li>
+                <li>Name Surname</li>
+                <li>Name Surname</li>
+                <li>Name Surname</li>
+                <li>Name Surname</li>
+                <li>Name Surname</li>
+                <li>Name Surname</li>
+                <li>Name Surname</li>
+                <li>Name Surname</li>
+                <li>Name Surname</li>
+                <li>Name Surname</li>
+                <li>Name Surname</li>
+                <li>Name Surname</li>
+                <li>Name Surname</li>
+            </ul>
+		</div>
+	</div>
+
+<!-- this should be included in index.html -->
+<script src="./js/modal.js"></script>
