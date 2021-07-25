@@ -23,8 +23,16 @@ screen and (min-resolution: 2dppx) and (min-width: 320px) {
     @include d-f;
     margin: 40px 0;
 }
-// .logo-icon {
-// }
+.logo-icon {
+    margin-right: 10px;
+    stroke: #818181;
+    transition: stroke var(--hover-focus-transition);
+    &:hover, 
+    &:focus {
+        stroke: var(--primary-accent-color);
+    }
+
+}
 .logo-text {
     font-family: Roboto, sans-serif;
     font-weight: var(--medium-font-weight);
@@ -32,11 +40,19 @@ screen and (min-resolution: 2dppx) and (min-width: 320px) {
     line-height: 1.167;
     color: var(--secondary-text-color);
     display: none;
+    transition: color var(--hover-focus-transition);
+
+    &:hover, 
+    &:focus {
+        color: var(--primary-accent-color);
+    }
+
     @media screen and (min-width: 480px) {
         & {
             display: inline;
         }
     }
+
 }
 // .navigation {
 // }
@@ -61,6 +77,11 @@ screen and (min-resolution: 2dppx) and (min-width: 320px) {
     line-height: 1.167;
     text-transform: uppercase;
     color: var(--secondary-text-color);
+    transition: color var(--hover-focus-transition);
+    &:hover,
+    &:focus {
+        color: var(--primary-accent-color);
+    }
 }
 
 .home {
@@ -78,6 +99,7 @@ screen and (min-resolution: 2dppx) and (min-width: 320px) {
         background-color: var(--primary-accent-color);
 
     }
+
 }
 
 .search-movie-form {
@@ -88,6 +110,7 @@ screen and (min-resolution: 2dppx) and (min-width: 320px) {
 }
 .search-movie-input {
     width: 280px;
+    height: 20px;
     background-color: transparent;
     border: none;
     border-bottom: 0.5px solid var(--secondary-text-color);
@@ -97,6 +120,12 @@ screen and (min-resolution: 2dppx) and (min-width: 320px) {
     font-size: 14px;
     line-height: 1.14;
     color: var(--secondary-text-color);
+    transition: border-bottom var(--hover-focus-transition);
+
+    &:hover,
+    &:focus {
+        border-bottom: 0.5px solid var(--primary-accent-color);
+    }
 
     &::placeholder {
         font-family: Roboto, sans-serif;
@@ -115,6 +144,21 @@ screen and (min-resolution: 2dppx) and (min-width: 320px) {
     background-color: transparent;
     border: none;
     outline: none;
+    transition: var(--basic-transform-animation);
+    cursor: pointer;
+    &:hover,
+    &:focus {
+        transform: scale(1.5);
+    }
+}
+
+.search-icon {
+    stroke: #ffffff;
+    transition: stroke var(--hover-focus-transition);
+    &:hover, 
+    &:focus {
+        stroke: var(--primary-accent-color);
+    }
 }
 
 @include adaptive-for-tablet {
