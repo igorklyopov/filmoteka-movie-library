@@ -126,6 +126,9 @@
       color="#337284"
     /> -->
   <title>Filmoteka</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.0.0/modern-normalize.min.css"
     integrity="sha512-ISS7cAi1PEhQ8jnbJpJZMd29NlhNj4AWYyLOSp2CE/CsHxTCu+r+t0D2yoJudVrd0/8fTVPUVDzY5Tvli75u/g==" crossorigin="anonymous" />
 </head>
@@ -135,7 +138,22 @@
   <main>
     <div class="container">
       <h1>Movie library</h1>
-      <ul class="gallery-library"></ul>
+      <ul class="gallery-library">
+
+        <li class="card-library">
+          <img class="img-card-library" src="./images/demo.jpg" alt="" data-src="" />
+          <div class="movie-information">
+            <h2 class="movie-name">Movie name</h2>
+            <div class="generes-rating">
+              <p class="genres">Genres | 2021</p>
+              <div class="rating-container">
+                <span class="rating">10.2</span>
+              </div>
+            </div>
+          </div>
+
+      </ul>
+      </li>
     </div>
   </main>
   <include src="./partials/footer.html"></include>

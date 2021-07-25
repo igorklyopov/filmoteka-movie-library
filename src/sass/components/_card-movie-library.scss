@@ -1,0 +1,58 @@
+.card-library {
+  margin: auto;
+  width: 274px;
+  height: 440px;
+  border: solid red 1px;
+  list-style-type: none;
+}
+.img-card-library {
+  width: 274px;
+  height: 398px;
+  border-radius: 5px;
+}
+.movie-information {
+  max-width: 274px;
+  height: 32px;
+  border: solid rgb(0, 81, 255) 1px;
+}
+.movie-name {
+  margin: 0;
+
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  text-transform: uppercase;
+}
+.generes-rating {
+  display: flex;
+}
+.genres {
+  margin: 0;
+
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  color: #ff6b01;
+}
+.rating-container {
+  margin-left: 10px;
+  width: 36px;
+  height: 16px;
+  background: #ff6b01;
+  border-radius: 5px;
+}
+.rating {
+  display: flex;
+  justify-content: center;
+  color: white;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  text-align: center;
+}
