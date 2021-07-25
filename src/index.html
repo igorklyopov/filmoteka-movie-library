@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -136,12 +136,16 @@
       crossorigin="anonymous"
     />
   </head>
+
   <body>
     <include src="./partials/header.html"></include>
     <main>
-      <div class="container">
-        <h1>Movie library</h1>
-      </div>
+      <section>
+        <div class="container">
+          <h1 class="visually-hidden">Movie library</h1>
+          <ul class="gallery-library"></ul>
+        </div>
+      </section>
     </main>
     <include src="./partials/footer.html"></include>
     <include src="./partials/modal.html"></include>
