@@ -18,7 +18,7 @@
   margin: 0;
   font-family: Roboto;
   font-style: normal;
-  font-weight: 500;
+  font-weight: var(--medium-font-weight);
   font-size: 12px;
   text-transform: uppercase;
 }
@@ -30,25 +30,25 @@
 
   font-family: Roboto;
   font-style: normal;
-  font-weight: 500;
+  font-weight: var(--medium-font-weight);
   font-size: 12px;
-  color: #ff6b01;
+  color: var(--primary-accent-color);
 }
 .rating-container {
   margin-left: 10px;
   width: 36px;
   height: 16px;
-  background: #ff6b01;
+  background: var(--primary-accent-color);
   border-radius: 5px;
 }
 .rating {
   display: flex;
   justify-content: center;
-  color: white;
+  color: var(--secondary-text-color);
   font-family: Roboto;
   font-style: normal;
-  font-weight: 500;
+  font-weight: var(--medium-font-weight);
   font-size: 12px;
-  line-height: 16px;
+  line-height: 17px;
   text-align: center;
 }
