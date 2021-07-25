@@ -1,8 +1,6 @@
 .card-library {
-  margin: auto;
   width: 274px;
   height: 440px;
-  border: solid red 1px;
   list-style-type: none;
 }
 .img-card-library {
@@ -11,18 +9,17 @@
   border-radius: 5px;
 }
 .movie-information {
+  margin-top: 10px;
   max-width: 274px;
   height: 32px;
-  border: solid rgb(0, 81, 255) 1px;
+  line-height: 16px;
 }
 .movie-name {
   margin: 0;
-
   font-family: Roboto;
   font-style: normal;
   font-weight: 500;
   font-size: 12px;
-  line-height: 16px;
   text-transform: uppercase;
 }
 .generes-rating {
@@ -35,7 +32,6 @@
   font-style: normal;
   font-weight: 500;
   font-size: 12px;
-  line-height: 16px;
   color: #ff6b01;
 }
 .rating-container {
