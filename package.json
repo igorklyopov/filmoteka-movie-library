@@ -12,7 +12,16 @@
     "type": "git",
     "url": "git+https://github.com/igorklyopov/filmoteka-movie-library.git"
   },
-  "keywords": ["Filmoteka", "movie library", "film catalog", "new films", "movie rating", "information about films", "GoIT", "team-project"],
+  "keywords": [
+    "Filmoteka",
+    "movie library",
+    "film catalog",
+    "new films",
+    "movie rating",
+    "information about films",
+    "GoIT",
+    "team-project"
+  ],
   "author": "Igor Klyopov <shoot8202@gmail.com>",
   "license": "ISC",
   "bugs": {
@@ -24,5 +33,8 @@
     "parcel-plugin-nuke-dist": "^1.0.1",
     "posthtml-include": "^1.6.2",
     "sass": "^1.32.8"
+  },
+  "dependencies": {
+    "refs": "^0.9.7"
   }
 }
