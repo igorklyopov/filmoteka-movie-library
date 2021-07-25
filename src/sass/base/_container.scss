@@ -2,8 +2,12 @@
   max-width: 100%;
   margin: 0 auto;
 
-  @include adaptive-for-phone {
-    width: 280px;
+  @include adaptive-before-tablet {
+    width: 440px;
+  }
+
+  @media screen and (min-width: $phone) and (max-width: 479px){
+    width: 100%;
   }
 
   @include adaptive-for-tablet {
