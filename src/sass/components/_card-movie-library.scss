@@ -1,7 +1,6 @@
 .card-library {
   width: 274px;
   height: 440px;
-  list-style-type: none;
 }
 .img-card-library {
   width: 274px;
@@ -16,10 +15,8 @@
 }
 .movie-name {
   margin: 0;
-  font-family: Roboto;
   font-style: normal;
   font-weight: var(--medium-font-weight);
-  font-size: 12px;
   text-transform: uppercase;
 }
 .generes-rating {
@@ -27,11 +24,8 @@
 }
 .genres {
   margin: 0;
-
-  font-family: Roboto;
   font-style: normal;
   font-weight: var(--medium-font-weight);
-  font-size: 12px;
   color: var(--primary-accent-color);
 }
 .rating-container {
@@ -45,10 +39,7 @@
   display: flex;
   justify-content: center;
   color: var(--secondary-text-color);
-  font-family: Roboto;
   font-style: normal;
   font-weight: var(--medium-font-weight);
-  font-size: 12px;
-  line-height: 17px;
-  text-align: center;
+  align-items: center;
 }
