@@ -1,18 +1,31 @@
 .movies-list {
-    display: grid;
-    grid-template-columns: 280px;
-    grid-template-rows: 440px;
-    grid-gap: 20px;
-    justify-content: center;
+  display: grid;
+  grid-template-columns: 280px;
+  grid-template-rows: 440px;
+  grid-gap: 20px;
+  justify-content: center;
 
-    @include adaptive-for-tablet {
-        grid-template-columns: repeat(2, 293px);
-        grid-gap: 30px;
-    }
+  @include adaptive-for-tablet {
+    grid-template-columns: repeat(2, 293px);
+    grid-gap: 30px;
+  }
 
+  @include adaptive-for-desktop {
+    grid-template-columns: repeat(3, 274px);
+  }
+}
 
-    @include adaptive-for-desktop {
-        grid-template-columns: repeat(3, 274px);
-    }
+.movies-section-container {
+  margin-bottom: 40px;
+  margin-top: 20px;
 
+  @include adaptive-for-tablet {
+    margin-top: 60px;
+    margin-bottom: 50px;
+  }
+
+  @include adaptive-for-desktop {
+    margin-top: 60px;
+    margin-bottom: 50px;
+  }
 }
