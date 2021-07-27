@@ -15,6 +15,21 @@
   }
 }
 
+.movies-section-container {
+  margin-bottom: 40px;
+  margin-top: 20px;
+
+  @include adaptive-for-tablet {
+    margin-top: 60px;
+    margin-bottom: 50px;
+  }
+
+  @include adaptive-for-desktop {
+    margin-top: 60px;
+    margin-bottom: 50px;
+  }
+}
+
 // .gallery-library.is-hidden {
 //   display: none;
 // }
