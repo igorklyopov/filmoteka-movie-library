@@ -1,13 +1,4 @@
-<h2 class="popular-movies-title">Popular movies</h2>
-<ul class="list popular-btns-list">
-    <li class="popular-btns-item">
-        <button type="button" class="popular-btn day">Day</button>
-    </li>
-    <li>
-        <button type="button" class="popular-btn week">Week</button>
-    </li class="popular-btns-item">
-</ul>
-<ul class="list movies-list">
+{{!-- <ul class="list movies-list"> --}}
     {{#each this.results}}
     <li class="card-library">
         <img class="img-card-library" src="https://image.tmdb.org/t/p/original{{poster_path}}" alt="" data-src=""/>
@@ -21,4 +12,4 @@
         </div>
     </li>
     {{/each}}
-</ul>
+{{!-- </ul> --}}
