@@ -26,10 +26,3 @@ export class MoviesApiService {
   }
 }
 
-// export function fetchMoviesBySearch(searchQuery) {
-//   return fetch(
-//     `${BASE_URL}/${SEARCH_MOVIE}?api_key=${API_KEY}&language=en-US&page=1&include_adult=false&query=${searchQuery}`,
-//   ).then(response => {
-//     return response.json();
-//   });
-// }
