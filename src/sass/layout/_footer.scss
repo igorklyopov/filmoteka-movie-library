@@ -1,99 +1,97 @@
 .footer {
-    margin-top: 40px;
-    padding-top: 30px;
-    padding-bottom: 28px;
-    background-color: var(--footer-bg-color);
+  margin-top: 40px;
+  padding-top: 30px;
+  padding-bottom: 28px;
+  background-color: var(--footer-bg-color);
 }
 
 .footer-container {
-    display: block; /*for phone, 2 lines*/
-    font-family: var(--font-family);
-    //font-style: normal;
-    font-weight: var(--regular-font-weight);
-    font-size: 14px;
-    line-height: 16px;
-    @include adaptive-for-tablet {
-        display: flex; /*for tablet and higher, 1 line*/
-        font-size: 16px;
-        line-height: 19px;
-    }
-    justify-content: center;  /*centers horizontally*/
-    color: var(--footer-text-color);
+  display: block; /*for phone, 2 lines*/
+  font-family: var(--font-family);
+  //font-style: normal;
+  font-weight: var(--regular-font-weight);
+  font-size: 14px;
+  line-height: 16px;
+  @include adaptive-for-tablet {
+    display: flex; /*for tablet and higher, 1 line*/
+    font-size: 16px;
+    line-height: 19px;
+  }
+  justify-content: center; /*centers horizontally*/
+  color: var(--footer-text-color);
 }
 
 .footer-line1 {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .footer-line2 {
-    display: flex;
-    justify-content: center;
-    margin-left: 5px;
+  display: flex;
+  justify-content: center;
+  margin-left: 5px;
 }
 
 .footer-icon {
-    margin-left: 10px;
-    margin-right: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .footer-active-text {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
-/* Modal */@at-root
-
-body.show-modal .backdrop {
-	opacity: 1;
-	visibility: visible;
-	pointer-events: initial;
+/* Modal */
+@at-root body.show-modal .backdrop {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: initial;
 }
 
 body.show-modal .modal {
-	transform: scale(1);
+  transform: scale(1);
 }
 
 .backdrop {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100vw;
-	height: 100vh;
-	background-color: rgba(0,0,0,0.3);
-	z-index: 999;
-	
-	pointer-events: none;
-	opacity: 0;
-	visibility: hidden;
-	transition: opacity 200ms ease-in-out, visibility 200ms ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 999;
+
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 200ms ease-in-out, visibility 200ms ease-in-out;
 }
 
 .modal {
-	position: relative;
-	padding: 24px;
-	border-radius: 4px;
-	max-width: 640px;
-	width: 100%;
-	min-height: 320px;
-	background-color: #fff;
-	box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.2),
-		0px 1px 1px 0px rgba(0,0,0,0.14),
-		0px 2px 1px -1px rgba(0,0,0,0.12);
-	transform: scale(1.1);
-	transition: transform 200ms ease-in-out;
+  position: relative;
+  padding: 24px;
+  border-radius: 4px;
+  max-width: 640px;
+  width: 100%;
+  min-height: 320px;
+  background-color: #fff;
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14),
+    0px 2px 1px -1px rgba(0, 0, 0, 0.12);
+  transform: scale(1.1);
+  transition: transform 200ms ease-in-out;
 }
 
 .close-modal-button {
-	position: absolute;
-	top: 10px;
-	right: 10px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
 }
 
 .team-members-list {
-	overflow: auto;  /*adds scrollers if needed*/
-	height: 200px;
-	background-color: yellow;
+  overflow: auto; /*adds scrollers if needed*/
+  height: 200px;
+  background-color: yellow;
 }
