@@ -1,0 +1,15 @@
+{{!-- <ul class="list movies-list"> --}}
+    {{#each this.results}}
+    <li class="card-library">
+        <img class="img-card-library" src="https://image.tmdb.org/t/p/original{{poster_path}}" alt="" data-src=""/>
+        <div class="movie-information">
+            <h3 class="movie-name">{{title}}</h3>
+            <div class="generes-rating">
+                <p class="genres">{{genre_ids}}</p>
+                <p class="release-data">{{release_date}}</p>
+                <p class="votes">{{vote_average}}</p>
+             </div>
+        </div>
+    </li>
+    {{/each}}
+{{!-- </ul> --}}
