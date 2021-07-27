@@ -1,4 +1,4 @@
-// console.log("modal.js start");
+console.log('modal.js start');
 
 const ref5 = {
   openModalBtn: document.querySelector('[data-action="open-modal"]'),

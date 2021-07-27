@@ -21,16 +21,15 @@ const searchQuery = 'transformers'; //для примера, тестов
 export class MoviesApiService {
   constructor() {
     this.searchQuery = '';
-    this.page = 1;
+    // this.page = 1;
   }
   fetchMoviesBySearch() {
-    console.log(this);
     return fetch(
       `${BASE_URL}/${SEARCH_MOVIE}?api_key=${API_KEY}&language=en-US&page=${this.page}&include_adult=false&query=${this.searchQuery}`,
     ).then(response => {
       return response.json().then(data => {
         // this.page += 1;
-        console.log(this);
+        return data.results;
       });
     });
   }
