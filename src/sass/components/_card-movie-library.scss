@@ -1,11 +1,23 @@
 .card-library {
-  width: 274px;
+  width: 280px;
   height: 440px;
+  @include adaptive-for-tablet {
+    width: 293px;
+  }
+  @include adaptive-for-desktop {
+    width: 274px;
+  }
 }
 .img-card-library {
-  width: 274px;
   height: 398px;
+  width: 280px;
   border-radius: 5px;
+  @include adaptive-for-tablet {
+    width: 293px;
+  }
+  @include adaptive-for-desktop {
+    width: 274px;
+  }
 }
 .movie-information {
   margin-top: 10px;
