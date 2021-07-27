@@ -22,3 +22,5 @@ const searchQuery = 'transformers'//для примера, тестов
 
 
 fetchImages()//тест
+
+export default fetchImages;
