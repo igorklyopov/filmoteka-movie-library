@@ -46,32 +46,65 @@ function renderPopularMoviesNav(navTpl) {
     refs.sectionContainer.insertAdjacentHTML('afterbegin', navTpl);
 }
 
+
+
 async function onHomePageLoad() {
-    // refs.sectionContainer.innerHTML = '';
   await renderPopularMoviesNav(popularMoviesNavTpl())
-  const weekBtn = document.querySelector('.week')
-  const dayBtn = document.querySelector('.day')
+  const weekBtn = document.querySelector('.week');
+  const dayBtn = document.querySelector('.day');
   weekBtn.addEventListener('click', onWeekBtnClick);
   dayBtn.addEventListener('click', onDayBtnClick);
   onDayBtnClick()
 }
 
 function renderPopularMoviesCards(movies) {
-    const movieList = popularFilmsTpl(movies);
-    // refs.sectionContainer.innerHTML= movieList;
+  const movieList = popularFilmsTpl(movies);
   refs.moviesList.insertAdjacentHTML('beforeend', movieList);
 }
 
 function onWeekBtnClick() {
-    refs.moviesList.innerHTML = '';
-    fetchPopularWeekMovies()
-    .then(movie => renderPopularMoviesCards(movie))
-    .catch(console.log);
+  refs.moviesList.innerHTML = '';
+
+  const weekBtn = document.querySelector('.week');
+  const dayBtn = document.querySelector('.day');
+  dayBtn.removeAttribute('disabled');
+  weekBtn.setAttribute('disabled', "disabled");
+
+  try {
+    if(localStorage.getItem('weekMovies') === null) {
+      fetchPopularWeekMovies()
+      .then((movie) => {
+        renderPopularMoviesCards(movie);
+        localStorage.setItem('weekMovies', JSON.stringify(movie))
+      });
+    }
+      const popularWeekMovies = JSON.parse(localStorage.getItem('weekMovies'));
+      renderPopularMoviesCards(popularWeekMovies);
+
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 function onDayBtnClick() {
-    refs.moviesList.innerHTML = '';
-    fetchPopularDayMovies()
-    .then(movie => renderPopularMoviesCards(movie))
-    .catch(console.log);
-    }
+  refs.moviesList.innerHTML = '';
+  const weekBtn = document.querySelector('.week');
+  const dayBtn = document.querySelector('.day');
+  weekBtn.removeAttribute('disabled');
+  dayBtn.setAttribute('disabled', "disabled");
+
+  try {
+    if(localStorage.getItem('dayMovies') === null) {
+      fetchPopularDayMovies()
+      .then((movie) => {
+        renderPopularMoviesCards(movie);
+        localStorage.setItem('dayMovies', JSON.stringify(movie));
+      });
+    } 
+      const popularDayMovies = JSON.parse(localStorage.getItem('dayMovies'));
+      renderPopularMoviesCards(popularDayMovies);
+
+  } catch (error) {
+    console.log(error);
+  }
+}
