@@ -1,3 +1,8 @@
+import '@pnotify/core/dist/PNotify.css';
+import '@pnotify/core/dist/BrightTheme.css';
+import { info } from '@pnotify/core';
+import * as Confirm from '@pnotify/confirm';
+import '@pnotify/confirm/dist/PNotifyConfirm.css';
 import './sass/main.scss';
 import { MoviesApiService } from './js/apiService';
 import cardLibraryTpl from './templates/library-card-movie';
@@ -15,7 +20,15 @@ function onSearch(e) {
   refs.sectionContainer.innerHTML = '';
   moviesApiService.query = e.currentTarget.elements.query.value;
   //   moviesApiService.resetPage();
-  moviesApiService.fetchMoviesBySearch().then(renderResaultsMarkup);
+
+  moviesApiService
+    .fetchMoviesBySearch()
+    .then(results => {
+      if (moviesApiService.query !== ''.trim() && results.length === 0) {
+        onSearchError();
+      }
+    })
+    .finally(renderResaultsMarkup);
 }
 
 function renderResaultsMarkup(results) {
@@ -72,4 +85,28 @@ function onDayBtnClick() {
   fetchPopularDayMovies()
     .then(movie => renderPopularMoviesCards(movie))
     .catch(console.log);
+}
+
+function onSearchError() {
+  info({
+    title: '❌ Error',
+    text: 'Movie was not found 🕵. Please, try again.',
+    modules: new Map([
+      [
+        Confirm,
+        {
+          confirm: true,
+          buttons: [
+            {
+              text: 'Ok',
+              primary: true,
+              click: notice => {
+                notice.close();
+              },
+            },
+          ],
+        },
+      ],
+    ]),
+  });
 }
