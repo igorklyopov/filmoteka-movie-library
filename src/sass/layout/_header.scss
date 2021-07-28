@@ -2,8 +2,8 @@
   padding: 0 20px;
   height: 230px;
   background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
-                    url(../images/home/home-header-bg-mobile-1x.jpg);
-    background-color: var(--primary-text-color);
+    url(../images/home/home-header-bg-mobile-1x.jpg);
+  background-color: var(--primary-text-color);
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -12,7 +12,7 @@
   screen and (min-resolution: 2dppx) and (min-width: 320px) {
   .header {
     background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
-                      url(../images/home/home-header-bg-mobile-2x.jpg);
+      url(../images/home/home-header-bg-mobile-2x.jpg);
   }
 }
 
@@ -137,15 +137,19 @@
   margin-top: 37px;
 }
 
-.search-movie-label {
+.search-movie-input-wrap {
   position: relative;
-  display: flex;
-  width: 336px;
-  margin: auto;
+  margin: 0 auto;
+  width: 280px;
+}
+
+.search-movie-label {
+  display: block;
+  margin: 0 auto;
 }
 
 .search-movie-input {
-  width: 280px;
+  width: 100%;
   height: 20px;
   background-color: transparent;
   border: none;
@@ -200,17 +204,17 @@
   .header {
     padding: 0 70px;
     background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
-                      url(../images/home/home-header-bg-tablet-1x.jpg);
+      url(../images/home/home-header-bg-tablet-1x.jpg);
   }
   @media screen and (min-device-pixel-ratio: 2) and (min-width: 768px),
     screen and (min-resolution: 192dpi) and (min-width: 768px),
     screen and (min-resolution: 2dppx) and (min-width: 768px) {
     .header {
       background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
-                        url(../images/home/home-header-bg-tablet-2x.jpg);
+        url(../images/home/home-header-bg-tablet-2x.jpg);
     }
   }
-  .search-movie-input {
+  .search-movie-input-wrap {
     width: 336px;
   }
 }
@@ -218,14 +222,14 @@
 @include adaptive-for-desktop {
   .header {
     background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
-                      url(../images/home/home-header-bg-desktop-1x.jpg);
+      url(../images/home/home-header-bg-desktop-1x.jpg);
   }
   @media screen and (min-device-pixel-ratio: 2) and (min-width: 1024px),
     screen and (min-resolution: 192dpi) and (min-width: 1024px),
     screen and (min-resolution: 2dppx) and (min-width: 1024px) {
     .header {
       background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
-                        url(../images/home/home-header-bg-desktop-2x.jpg);
+        url(../images/home/home-header-bg-desktop-2x.jpg);
     }
   }
 }
