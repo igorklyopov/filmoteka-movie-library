@@ -21,14 +21,7 @@ function onSearch(e) {
   moviesApiService.query = e.currentTarget.elements.query.value;
   //   moviesApiService.resetPage();
 
-  moviesApiService
-    .fetchMoviesBySearch()
-    .then(results => {
-      if (moviesApiService.query !== ''.trim() && results.length === 0) {
-        onSearchError();
-      }
-    })
-    .finally(renderResaultsMarkup);
+  moviesApiService.fetchMoviesBySearch().then(renderResaultsMarkup);
 }
 
 function renderResaultsMarkup(results) {
@@ -85,28 +78,4 @@ function onDayBtnClick() {
   fetchPopularDayMovies()
     .then(movie => renderPopularMoviesCards(movie))
     .catch(console.log);
-}
-
-function onSearchError() {
-  info({
-    title: '❌ Error',
-    text: 'Movie was not found 🕵. Please, try again.',
-    modules: new Map([
-      [
-        Confirm,
-        {
-          confirm: true,
-          buttons: [
-            {
-              text: 'Ok',
-              primary: true,
-              click: notice => {
-                notice.close();
-              },
-            },
-          ],
-        },
-      ],
-    ]),
-  });
 }
