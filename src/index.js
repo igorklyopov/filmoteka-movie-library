@@ -4,44 +4,38 @@ import cardLibraryTpl from './templates/library-card-movie';
 import popularFilmsTpl from './templates/popular-films.hbs';
 import searchFilmsTpl from './templates/home-card-movie';
 import { refs } from './js/refs';
-import './js/onSearch'
-import './js/modalCloseAction'
-
+import './js/onSearch';
+import './js/modalCloseAction';
 
 //===loadTrandingMovies===//
 import { BASE_URL, API_KEY, SEARCH_MOVIE, TRANDING_DAY, TRANDING_WEEK } from './js/fetchConst';
 import popularMoviesNavTpl from './templates/home-popular-movies-nav.hbs';
 
-onHomePageLoad()
+onHomePageLoad();
 
 function fetchPopularDayMovies() {
-    return fetch(`${BASE_URL}/${TRANDING_DAY}?api_key=${API_KEY}`)
-      .then(response => {
-      return response.json();
-    });
+  return fetch(`${BASE_URL}/${TRANDING_DAY}?api_key=${API_KEY}`).then(response => {
+    return response.json();
+  });
 }
 
-
-  function fetchPopularWeekMovies() {
-    return fetch(`${BASE_URL}/${TRANDING_WEEK}?api_key=${API_KEY}`)
-    .then(response => {
-      return response.json();
-    });
+function fetchPopularWeekMovies() {
+  return fetch(`${BASE_URL}/${TRANDING_WEEK}?api_key=${API_KEY}`).then(response => {
+    return response.json();
+  });
 }
 
 function renderPopularMoviesNav(navTpl) {
-    refs.sectionContainer.insertAdjacentHTML('afterbegin', navTpl);
+  refs.sectionContainer.insertAdjacentHTML('afterbegin', navTpl);
 }
 
-
-
 async function onHomePageLoad() {
-  await renderPopularMoviesNav(popularMoviesNavTpl())
+  await renderPopularMoviesNav(popularMoviesNavTpl());
   const weekBtn = document.querySelector('.week');
   const dayBtn = document.querySelector('.day');
   weekBtn.addEventListener('click', onWeekBtnClick);
   dayBtn.addEventListener('click', onDayBtnClick);
-  onDayBtnClick()
+  onDayBtnClick();
 }
 
 function renderPopularMoviesCards(movies) {
@@ -55,19 +49,17 @@ function onWeekBtnClick() {
   const weekBtn = document.querySelector('.week');
   const dayBtn = document.querySelector('.day');
   dayBtn.removeAttribute('disabled');
-  weekBtn.setAttribute('disabled', "disabled");
+  weekBtn.setAttribute('disabled', 'disabled');
 
   try {
-    if(localStorage.getItem('weekMovies') === null) {
-      fetchPopularWeekMovies()
-      .then((movie) => {
+    if (localStorage.getItem('weekMovies') === null) {
+      fetchPopularWeekMovies().then(movie => {
         renderPopularMoviesCards(movie);
-        localStorage.setItem('weekMovies', JSON.stringify(movie))
+        localStorage.setItem('weekMovies', JSON.stringify(movie));
       });
     }
-      const popularWeekMovies = JSON.parse(localStorage.getItem('weekMovies'));
-      renderPopularMoviesCards(popularWeekMovies);
-
+    const popularWeekMovies = JSON.parse(localStorage.getItem('weekMovies'));
+    renderPopularMoviesCards(popularWeekMovies);
   } catch (error) {
     console.log(error);
   }
@@ -78,20 +70,34 @@ function onDayBtnClick() {
   const weekBtn = document.querySelector('.week');
   const dayBtn = document.querySelector('.day');
   weekBtn.removeAttribute('disabled');
-  dayBtn.setAttribute('disabled', "disabled");
+  dayBtn.setAttribute('disabled', 'disabled');
 
   try {
-    if(localStorage.getItem('dayMovies') === null) {
-      fetchPopularDayMovies()
-      .then((movie) => {
+    if (localStorage.getItem('dayMovies') === null) {
+      fetchPopularDayMovies().then(movie => {
         renderPopularMoviesCards(movie);
         localStorage.setItem('dayMovies', JSON.stringify(movie));
       });
-    } 
-      const popularDayMovies = JSON.parse(localStorage.getItem('dayMovies'));
-      renderPopularMoviesCards(popularDayMovies);
-
+    }
+    const popularDayMovies = JSON.parse(localStorage.getItem('dayMovies'));
+    renderPopularMoviesCards(popularDayMovies);
   } catch (error) {
     console.log(error);
   }
 }
+
+//Current URL locaton
+
+var currentLocation = window.location.href; //отслеживание текущего URL
+console.log(currentLocation);
+
+const navigationLinks = document.getElementsByClassName('navigation-link'); //получение классов
+
+[...navigationLinks].forEach(navigationLink => {
+  navigationLink.addEventListener('click', function (e) {
+    e.preventDefault(); //остановить обработку ссылки
+    const newPath = navigationLink.pathname + navigationLink.hash; // получить страницу по линку
+    // history.pushState({ page: navigationLink.hash }, 'null', '/newPath');
+    window.location = newPath;
+  });
+});
