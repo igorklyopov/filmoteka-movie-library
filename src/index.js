@@ -10,7 +10,7 @@ import './js/modalCloseAction'
 
 //===loadTrandingMovies===//
 import { BASE_URL, API_KEY, SEARCH_MOVIE, TRANDING_DAY, TRANDING_WEEK } from './js/fetchConst';
-import popularMoviesNavTpl from './templates/home-hopular-movies-nav.hbs';
+import popularMoviesNavTpl from './templates/home-popular-movies-nav.hbs';
 
 onHomePageLoad()
 
