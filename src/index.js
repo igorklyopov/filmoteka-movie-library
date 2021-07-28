@@ -8,6 +8,7 @@ import { refs } from './js/refs';
 import './js/onSearch'
 import './js/modalCloseAction'
 import './js/toTopButton'
+import genres from './js/genres_ids.json'
 
 
 //===loadTrandingMovies===//
@@ -47,7 +48,21 @@ async function onHomePageLoad() {
 }
 
 function renderPopularMoviesCards(movies) {
-  const movieList = popularFilmsTpl(movies);
+  const moviesArray = [...movies.results];
+  moviesArray.forEach(element => {
+    const genresArray = [...element.genre_ids]
+    genresArray.forEach((id, index, array) => {
+      genres.forEach(genre => {
+        if (genre.id === id) {
+          id = ' ' + genre.name;
+        }
+      })
+      array[index] = id;
+    })
+    element.genre_ids = genresArray;
+  });
+
+  const movieList = popularFilmsTpl(moviesArray);
   refs.moviesList.insertAdjacentHTML('beforeend', movieList);
   const cardClickHandler = function (evt) {
     let pathNumber;
