@@ -24,17 +24,16 @@
 }
 
 .movie-modal {
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-top: 48px;
-  padding-bottom: 41px;
+  padding: 48px 20px 41px 20px;
+  @media screen and (min-width: 768px) {
+    padding: 42px 30px 40px 28px;
+  }
+
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 
-  // max-width: 618px;
-  // height: 581px;
   background: var(--secondary-text-color);
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 2px 1px rgba(0, 0, 0, 0.2);
@@ -43,33 +42,57 @@
   transition: transform var(--transition-timing-function);
   /* transform: translate(-50%, -50%) scaіle(1); */
   transform: translate(-50%, -50%) rotate(1turn);
+  height: 90%;
 
-  @media screen and (max-width: 1500px) {
-    height: 90%;
-    max-height: 609px;
-    overflow: scroll;
-    width: 90%;
-    max-width: 450px;
+  width: 90%;
+  overflow: scroll;
+
+  @media screen and (min-width: 768px) {
+    // margin-top: 209px;
+    max-width: 618px;
+    max-height: 562px;
   }
+  @media screen and (min-width: 1024px) {
+    max-height: 568px;
+    max-width: 882px;
+  }
+  // @media screen and (max-width: 767px) {
+  //   overflow: scroll;
+  // }
 }
 
 .movie-content {
   display: flex;
-  flex-wrap: wrap;
-  // margin-bottom: 20px;
+  flex-direction: column;
+
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+    align-items: flex-start;
+  }
 }
+
 .movie-image {
   border-radius: 5px;
   margin-bottom: 30px;
+
+  @media screen and (min-width: 768px) {
+    width: 264px;
+    height: 373.55px;
+  }
+  @media screen and (min-width: 1024px) {
+    width: 396px;
+    height: 477.8px;
+  }
 }
 
 .movie-name {
   font-size: 20px;
   line-height: 115%;
   margin-bottom: 20px;
-  @media screen and (mix-width: 768px) {
-  }
-  @media screen and (mix-width: 1024px) {
+
+  @media screen and (min-width: 1024px) {
+    font-size: 30px;
+    line-height: 116%;
   }
 }
 
@@ -77,6 +100,12 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
+}
+
+.movie-info {
+  @media screen and (min-width: 768px) {
+    margin-left: 32px;
+  }
 }
 
 .movie-info-titles,
@@ -105,7 +134,10 @@
 .movie-info-values {
   list-style: none;
   padding-left: 0px;
-  margin-left: 40px;
+  margin-left: 39px;
+  @media screen and (min-width: 1024px) {
+    margin-left: 83px;
+  }
 }
 
 .movie-info-titles li {
@@ -136,6 +168,9 @@
   display: flex;
   // align-items: center;
   justify-content: space-between;
+  @media screen and (min-width: 1024px) {
+    justify-content: flex-start;
+  }
 }
 
 //  Є В COMPONRNTS_BUTTON кусок
@@ -150,9 +185,17 @@
 }
 .button-add-to-watched,
 .button-add-to-queue {
+  height: 44px;
+
   @media screen and (max-width: 319px) {
     font-size: 10px;
     // width: 112px;
+  }
+  @media screen and (min-width: 768px) {
+    width: 125px;
+  }
+  @media screen and (min-width: 1024px) {
+    width: 136px;
   }
 }
 .button-add-to-queue {
@@ -161,14 +204,7 @@
   // border-style: solid 1px var(--primary-text-color);
   outline-style: solid;
   border-color: var(--primary-text-color);
-  margin-left: 14px;
-  height: 44px;
-  @media screen and (min-width: 320px) {
-    width: 112px;
-  }
-  @media screen and (min-width: 768px) {
-    width: 125px;
-  }
+  margin-left: 15px;
 }
 
 .btn-modal-close {
@@ -203,12 +239,10 @@
 }
 
 /* =======================MODAL CONTENT======================= */
-.movie-content {
-  display: flex;
-  flex-direction: column;
-}
+
 .movie-description {
   line-height: 166%;
+  margin-bottom: 20px;
 }
 
 .modal-vote {
