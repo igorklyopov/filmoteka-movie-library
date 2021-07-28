@@ -1,9 +1,13 @@
-<li class="card-library">
-    <img class="img-card-library" src="" alt="" data-src="" />
+<ul class="list movies-list">
+{{#each this}}
+<li class="card-library" data-title="{{title}}" data-img="{{poster_path}}" data-vote="{{vote_average}}" data-votes="{{vote_count}}" data-popularity="{{popularity}}" data-original="{{original_title}}" data-genres="{{genre_ids}}" data-description="{{overview}}">
+    <img class="img-card-library" src="https://image.tmdb.org/t/p/original{{poster_path}}" alt="" data-src="" />
     <div class="movie-information">
-        <h2 class="movie-name">Movie name</h2>
+        <h2 class="movie-name">{{title}}</h2>
         <div class="generes-rating">
-            <p class="genres">Genres | 2021</p>
+            <p class="genres">{{genre_ids}} | {{release_date}}</p>
         </div>
     </div>
 </li>
+{{/each}}
+</ul>

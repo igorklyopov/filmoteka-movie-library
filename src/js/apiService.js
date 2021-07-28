@@ -1,24 +1,28 @@
-const BASE_URL = 'https://api.themoviedb.org/3';
-const API_KEY = '0425708b766634a264f7b84cc81ebcd7';
-const SEARCH_MOVIE = 'search/movie'//получение фильма по названию
-const TRANDING_DAY = 'trending/movie/day';//получение самых популярных фильмов за день
-const TRANDING_WEEK = 'trending/movie/week';//получение самых популярных фильмов за неделю
+import { BASE_URL, API_KEY, SEARCH_MOVIE, TRANDING_DAY, TRANDING_WEEK } from './fetchConst'
 
-const movieId = 335988;//для примера, тестов
-const searchQuery = 'transformers'//для примера, тестов
-
-
-// `${BASE_URL}/${TRANDING_DAY}?api_key=${API_KEY}`;//запрос для получения самых популярных фильмов
-//`${BASE_URL}/${SEARCH_MOVIE}?api_key=${API_KEY}&language=en-US&page=1&include_adult=false&query=${searchQuery}`;//запрос для получения фильма по названию
-
- function fetchImages() {
+export class MoviesApiService {
+  constructor() {
+    this.searchQuery = '';
+    // this.page = 1;
+  }
+  fetchMoviesBySearch() {
     return fetch(
-      `${BASE_URL}/movie/${movieId}?api_key=${API_KEY}&language=en-US`//запрос для получения полной информации об одном фильме
+      `${BASE_URL}/${SEARCH_MOVIE}?api_key=${API_KEY}&language=en-US&page=${this.page}&include_adult=false&query=${this.searchQuery}`,
     ).then(response => {
-      console.log(response.json());//тест
-      // return response.json();
+      return response.json().then(data => {
+        // this.page += 1;
+        return data.results;
+      });
     });
   }
+  resetPage() {
+    this.page = 1;
+  }
+  get query() {
+    return this.searchQuery;
+  }
+  set query(newQuery) {
+    this.searchQuery = newQuery;
+  }
+}
 
-
-fetchImages()//тест
