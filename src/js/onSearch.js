@@ -7,8 +7,6 @@ refs.searchMovieForm.addEventListener('submit', onSearch);
 
 const moviesApiService = new MoviesApiService();
 let moviesList;
-const modal = document.querySelector('.modal-movie-card')
-const modalInfo = document.querySelector('.modal-movie-content')
 
 function onSearch(e) {
   e.preventDefault();
@@ -40,9 +38,9 @@ function renderResaultsMarkup(results) {
         
     const data = Object.assign({}, evt.path[pathNumber].dataset);
     const markUp = modalMovieInfo(data);
-    modalInfo.insertAdjacentHTML('beforeend', markUp)
+    refs.modalInfo.insertAdjacentHTML('beforeend', markUp)
 
-    modal.classList.add('modal-movie-card-visible')
+    refs.modal.classList.add('modal-movie-card-visible')
   }
 
     moviesList.addEventListener('click', cardClickHandler);

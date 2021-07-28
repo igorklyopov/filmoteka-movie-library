@@ -3,9 +3,11 @@ import { MoviesApiService } from './js/apiService';
 import cardLibraryTpl from './templates/library-card-movie';
 import popularFilmsTpl from './templates/popular-films.hbs';
 import searchFilmsTpl from './templates/home-card-movie';
+import modalMovieInfo from './templates/modal-movie-content';
 import { refs } from './js/refs';
 import './js/onSearch'
 import './js/modalCloseAction'
+import './js/toTopButton'
 
 
 //===loadTrandingMovies===//
@@ -47,6 +49,33 @@ async function onHomePageLoad() {
 function renderPopularMoviesCards(movies) {
   const movieList = popularFilmsTpl(movies);
   refs.moviesList.insertAdjacentHTML('beforeend', movieList);
+  const cardClickHandler = function (evt) {
+    let pathNumber;
+
+    if (evt.path.length === 10) {
+      pathNumber = 1;
+    }
+    if (evt.path.length === 11) {
+      pathNumber = 2;
+    }
+    if (evt.path.length === 12) {
+      pathNumber = 3;
+    }
+    if (evt.path.length < 10) {
+      return;
+    }
+    if (refs.modalInfo.innerHTML !== '') {
+      return;
+    }
+        
+    const data = Object.assign({}, evt.path[pathNumber].dataset);
+    const markUp = modalMovieInfo(data);
+    refs.modalInfo.insertAdjacentHTML('beforeend', markUp)
+
+    refs.modal.classList.add('modal-movie-card-visible')
+  }
+
+    refs.moviesList.addEventListener('click', cardClickHandler);
 }
 
 function onWeekBtnClick() {
