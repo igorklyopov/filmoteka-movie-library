@@ -37,7 +37,6 @@ function renderPopularMoviesNav(navTpl) {
 }
 
 
-
 async function onHomePageLoad() {
   await renderPopularMoviesNav(popularMoviesNavTpl())
   const weekBtn = document.querySelector('.week');
@@ -101,13 +100,18 @@ function onWeekBtnClick() {
   dayBtn.removeAttribute('disabled');
   weekBtn.setAttribute('disabled', "disabled");
 
-  try {
-    if(localStorage.getItem('weekMovies') === null) {
+  const date = Date.now();
+  const dateArray = [];
+  const day = Math.floor(date / 1000 / 60 / 60 /24);
+  dateArray.push(day);
+  try{
+    if(day != dateArray[0]) {
+      dateArray.splice(0, 1, day);
       fetchPopularWeekMovies()
-      .then((movie) => {
-        renderPopularMoviesCards(movie);
-        localStorage.setItem('weekMovies', JSON.stringify(movie))
-      });
+        .then((movie) => {
+          renderPopularMoviesCards(movie);
+          localStorage.setItem('weekMovies', JSON.stringify(movie));
+        });
     }
       const popularWeekMovies = JSON.parse(localStorage.getItem('weekMovies'));
       renderPopularMoviesCards(popularWeekMovies);
@@ -124,17 +128,21 @@ function onDayBtnClick() {
   weekBtn.removeAttribute('disabled');
   dayBtn.setAttribute('disabled', "disabled");
 
-  try {
-    if(localStorage.getItem('dayMovies') === null) {
+  const date = Date.now();
+  const dateArray = [];
+  const day = Math.floor(date / 1000 / 60 / 60 /24);
+  dateArray.push(day);
+  try{
+    if(day != dateArray[0]) {
+      dateArray.splice(0, 1, day);
       fetchPopularDayMovies()
-      .then((movie) => {
-        renderPopularMoviesCards(movie);
-        localStorage.setItem('dayMovies', JSON.stringify(movie));
-      });
-    } 
+        .then((movie) => {
+          renderPopularMoviesCards(movie);
+          localStorage.setItem('dayMovies', JSON.stringify(movie));
+        });
+    }
       const popularDayMovies = JSON.parse(localStorage.getItem('dayMovies'));
       renderPopularMoviesCards(popularDayMovies);
-
   } catch (error) {
     console.log(error);
   }

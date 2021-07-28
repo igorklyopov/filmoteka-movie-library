@@ -8,4 +8,4 @@ const clickHandlerClose = function () {
     modalInfo.innerHTML = '';
 }
 
-clsBtn.addEventListener('click', clickHandlerClose);
+// clsBtn.addEventListener('click', clickHandlerClose);
