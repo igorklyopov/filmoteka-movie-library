@@ -9,6 +9,7 @@ import './js/onSearch'
 import './js/modalCloseAction'
 import './js/toTopButton'
 import genres from './js/genres_ids.json'
+import './js/loader'
 
 
 //===loadTrandingMovies===//
