@@ -3,11 +3,16 @@ import { BASE_URL, API_KEY, SEARCH_MOVIE, TRANDING_DAY, TRANDING_WEEK } from './
 export class MoviesApiService {
   constructor() {
     this.searchQuery = '';
-    // this.page = 1;
+    this.pageNumber = 1;
   }
-  fetchMoviesBySearch() {
+
+  basicQuery(searchParameter) {
+    return `${BASE_URL}/${searchParameter}?api_key=${API_KEY}&page=${this.pageNumber}&language=en-US`
+  }
+  
+    getmoviesBySearch() {
     return fetch(
-      `${BASE_URL}/${SEARCH_MOVIE}?api_key=${API_KEY}&language=en-US&page=${this.page}&include_adult=false&query=${this.searchQuery}`,
+      `${this.basicQuery(SEARCH_MOVIE)}&include_adult=false&query=${this.searchQuery}`,
     ).then(response => {
       return response.json().then(data => {
         // this.page += 1;
@@ -15,12 +20,35 @@ export class MoviesApiService {
       });
     });
   }
-  resetPage() {
-    this.page = 1;
+
+  getPopularDayMovies() {
+    return fetch(`${this.basicQuery(TRANDING_DAY)}`)
+      .then(response => {
+        // this.page += 1;
+      return response.json();
+    });
   }
+
+  getPopularWeekMovies() {
+    return fetch(`${this.basicQuery(TRANDING_WEEK)}`)
+      .then(response => {
+        // this.page += 1;
+      return response.json();
+    });
+  }
+
+  incrementPage() {
+    this.pageNumber += 1;
+  }
+
+  resetPage() {
+    this.pageNumber = 1;
+  }
+
   get query() {
     return this.searchQuery;
   }
+
   set query(newQuery) {
     this.searchQuery = newQuery;
   }

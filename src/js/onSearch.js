@@ -13,8 +13,8 @@ function onSearch(e) {
   e.preventDefault();
   refs.sectionContainer.innerHTML = '';
   moviesApiService.query = e.currentTarget.elements.query.value;
-  //   moviesApiService.resetPage();
-  moviesApiService.fetchMoviesBySearch().then(renderResaultsMarkup);
+  // moviesApiService.resetPage();
+  moviesApiService.getmoviesBySearch().then(renderResaultsMarkup);
 }
 
 
