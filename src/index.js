@@ -9,11 +9,12 @@ import './js/onSearch'
 // import './js/modalCloseAction'
 import './js/toTopButton'
 import genres from './js/genres_ids.json'
-
+import themeSwitcher from './js/theme-switcher';
 
 //===loadTrandingMovies===//
 
 const moviesApiService = new MoviesApiService();
+
 onHomePageLoad()
 
 function onHomePageLoad() {
