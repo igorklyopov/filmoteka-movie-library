@@ -7,4 +7,6 @@ export const refs = {
   dayBtn: document.querySelector('.day'),
   libraryButtons: document.querySelector('.library-nav-list'),
   formContainer: document.querySelector('.search-movie-form-container'),
+  modalInfo: document.querySelector('.modal-movie-content'),
+  modal: document.querySelector('.modal-movie-card'),
 };
