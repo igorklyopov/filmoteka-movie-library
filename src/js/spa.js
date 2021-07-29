@@ -1,7 +1,6 @@
 //Current URL locaton
 
-var currentLocation = window.location.href; //отслеживание текущего URL
-console.log(currentLocation);
+import { refs } from './refs';
 
 const navigationLinks = document.getElementsByClassName('navigation-link'); //получение классов (массив)
 
@@ -15,3 +14,16 @@ const navigationLinks = document.getElementsByClassName('navigation-link'); //п
     window.location = newPath;
   });
 });
+
+// function realisePageSwiching() {
+//   var currentLocation = window.location.href; //отслеживание текущего URL
+//   console.log(currentLocation);
+//   const libraryPage = 'http://localhost:1234/#library';
+//   if (libraryPage === currentLocation) {
+//     refs.searchMovieForm.classList.remove('search-movie-form');
+//     refs.libraryButtons.classList.add('navigation-link');
+//   } else {
+//     refs.searchMovieForm.classList.add('search-movie-form');
+//     refs.libraryButtons.classList.remove('navigation-link');
+//   }
+// }
