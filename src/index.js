@@ -6,6 +6,7 @@ import searchFilmsTpl from './templates/home-card-movie';
 import { refs } from './js/refs';
 import './js/onSearch';
 import './js/modalCloseAction';
+import './js/spa';
 
 //===loadTrandingMovies===//
 import { BASE_URL, API_KEY, SEARCH_MOVIE, TRANDING_DAY, TRANDING_WEEK } from './js/fetchConst';
@@ -85,19 +86,3 @@ function onDayBtnClick() {
     console.log(error);
   }
 }
-
-//Current URL locaton
-
-var currentLocation = window.location.href; //отслеживание текущего URL
-console.log(currentLocation);
-
-const navigationLinks = document.getElementsByClassName('navigation-link'); //получение классов
-
-[...navigationLinks].forEach(navigationLink => {
-  navigationLink.addEventListener('click', function (e) {
-    e.preventDefault(); //остановить обработку ссылки
-    const newPath = navigationLink.pathname + navigationLink.hash; // получить страницу по линку
-    // history.pushState({ page: navigationLink.hash }, 'null', '/newPath');
-    window.location = newPath;
-  });
-});
