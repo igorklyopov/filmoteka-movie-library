@@ -6,4 +6,5 @@ export const refs = {
   weekBtn: document.querySelector('.week'),
   dayBtn: document.querySelector('.day'),
   libraryButtons: document.querySelector('.library-nav-list'),
+  formContainer: document.querySelector('.search-movie-form-container'),
 };
