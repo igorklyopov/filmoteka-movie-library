@@ -23,6 +23,9 @@ function onHomePageLoad() {
   moviesApiService.getPopularDayMovies().then((movie) => {
         return renderPopularMoviesCards(movie)
       });
+
+  refs.dayBtn.setAttribute('disabled', "disabled");
+  refs.dayBtn.classList.add('is-active');
 }
 
 refs.weekBtn.addEventListener('click', onWeekBtnClick);
@@ -78,6 +81,8 @@ function onWeekBtnClick() {
   refs.moviesList.innerHTML = '';
   refs.dayBtn.removeAttribute('disabled');
   refs.weekBtn.setAttribute('disabled', "disabled");
+  refs.weekBtn.classList.add('is-active');
+  refs.dayBtn.classList.remove('is-active');
 
   moviesApiService.resetPage()
 
@@ -92,6 +97,8 @@ function onDayBtnClick() {
 
   refs.weekBtn.removeAttribute('disabled');
   refs.dayBtn.setAttribute('disabled', "disabled");
+  refs.dayBtn.classList.add('is-active');
+  refs.weekBtn.classList.remove('is-active');
 
   moviesApiService.resetPage()
 
