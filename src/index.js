@@ -11,7 +11,7 @@ import './js/toTopButton'
 import genres from './js/genres_ids.json'
 import './js/loader'
 import themeSwitcher from './js/theme-switcher';
-
+import './js/spa';
 
 //===loadTrandingMovies===//
 
@@ -84,10 +84,12 @@ function onWeekBtnClick() {
   moviesApiService.getPopularWeekMovies().then((movie) => {
         return renderPopularMoviesCards(movie)
       });
+
 }
 
 function onDayBtnClick() {
   refs.moviesList.innerHTML = '';
+
   refs.weekBtn.removeAttribute('disabled');
   refs.dayBtn.setAttribute('disabled', "disabled");
 

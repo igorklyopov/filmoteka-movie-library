@@ -4,12 +4,10 @@ import searchFilmsTpl from '../templates/home-card-movie';
 import modalMovieInfo from '../templates/modal-movie-content';
 import genres from './genres_ids.json'
 
-refs.searchMovieForm.addEventListener('submit', onSearch);
-
 const moviesApiService = new MoviesApiService();
 let moviesList;
 
-function onSearch(e) {
+export function onSearch(e) {
   e.preventDefault();
   refs.sectionContainer.innerHTML = '';
   moviesApiService.query = e.currentTarget.elements.query.value;
@@ -17,9 +15,9 @@ function onSearch(e) {
   moviesApiService.getmoviesBySearch().then(renderResaultsMarkup);
 }
 
-
 function renderResaultsMarkup(results) {
   const moviesArray = [...results];
+
   moviesArray.forEach(element => {
     const genresArray = [...element.genre_ids]
     genresArray.forEach((id, index, array) => {
@@ -35,6 +33,7 @@ function renderResaultsMarkup(results) {
 
     refs.sectionContainer.insertAdjacentHTML('beforeend', searchFilmsTpl(moviesArray));
     moviesList = document.querySelector('.movies-list');
+
   const cardClickHandler = function (evt) {
     let pathNumber;
 
@@ -50,18 +49,14 @@ function renderResaultsMarkup(results) {
     if (evt.path.length < 10) {
       return;
     }
-        
+
     const data = Object.assign({}, evt.path[pathNumber].dataset);
     const markUp = modalMovieInfo(data);
+
     refs.modalInfo.insertAdjacentHTML('beforeend', markUp)
 
     refs.modal.classList.add('modal-movie-card-visible')
   }
 
-    moviesList.addEventListener('click', cardClickHandler);
+  moviesList.addEventListener('click', cardClickHandler);
 }
-
-    
-
-
-
