@@ -1,4 +1,4 @@
-console.log("modal.js start");
+console.log('modal.js start');
 
 const ref5 = {
 	openModalBtn: document.querySelector('[data-action="open-modal"]'),
@@ -9,15 +9,15 @@ const ref5 = {
 	teamDataSrc: document.querySelectorAll(".team-members-data img"),
 };
 
-ref5.openModalBtn.addEventListener('click',onOpenModal);
-ref5.closeModalBtn.addEventListener('click',onCloseModal);
+ref5.openModalBtn.addEventListener('click', onOpenModal);
+ref5.closeModalBtn.addEventListener('click', onCloseModal);
 
 function onOpenModal(event) {
-	document.body.classList.add('show-modal');
+  document.body.classList.add('show-modal');
 }
 
 function onCloseModal(event) {
-	document.body.classList.remove('show-modal');
+  document.body.classList.remove('show-modal');
 }
 
 let htmlText = "";

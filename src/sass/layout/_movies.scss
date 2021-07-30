@@ -1,0 +1,71 @@
+.movies-list {
+  display: grid;
+  grid-template-columns: 280px;
+  grid-template-rows: 440px;
+  grid-gap: 20px;
+  justify-content: center;
+
+  @include adaptive-for-tablet {
+    grid-template-columns: repeat(2, 293px);
+    grid-gap: 30px;
+  }
+
+  @include adaptive-for-desktop {
+    grid-template-columns: repeat(3, 274px);
+  }
+}
+
+.movies {
+  padding-bottom: 40px;
+  padding-top: 20px;
+
+  @include adaptive-for-tablet {
+    padding-top: 30px;
+    padding-bottom: 50px;
+  }
+}
+
+// .gallery-library.is-hidden {
+//   display: none;
+// }
+
+.popular-movies-title {
+  text-align: center;
+  font-size: 30px;
+  line-height: 1.167;
+  margin-bottom: 10px;
+}
+
+.popular-btns-list {
+  @include d-f;
+  justify-content: center;
+  border-bottom: 2px solid var(--primary-accent-color);
+}
+
+.popular-btn {
+  width: 50px;
+  height: 30px;
+  border-radius: 10px 10px 0 0;
+  outline: none;
+  border-color: transparent;
+  background-color: #ececec;
+  text-transform: uppercase;
+  transition: background-color var(--hover-focus-transition),
+              color var(--hover-focus-transition),
+              height var(--hover-focus-transition);
+  
+  &:hover,
+  &:focus {
+    background-color: var(--primary-accent-color);
+  }
+}
+
+.day {
+  margin-right: 10px;
+}
+
+.is-active {
+  background-color: var(--primary-accent-color);
+  color: var(--secondary-text-color);
+  height: 50px;
+}

@@ -1,18 +1,9 @@
-<h2 class="popular-movies-title">Popular movies</h2>
-<ul class="list popular-btns-list">
-    <li class="popular-btns-item">
-        <button type="button" class="popular-btn day">Day</button>
-    </li>
-    <li>
-        <button type="button" class="popular-btn week">Week</button>
-    </li class="popular-btns-item">
-</ul>
-<ul class="list popular-movies-list">
-    {{#each this.results}}
-    <li class="card-library">
-        <img class="img-card-library" src="https://image.tmdb.org/t/p/original{{poster_path}}" alt="" data-src="" width="274" height="398"/>
+{{!-- <ul class="list movies-list"> --}}
+    {{#each this}}
+    <li class="card-library" data-title="{{title}}" data-img="{{poster_path}}" data-vote="{{vote_average}}" data-votes="{{vote_count}}" data-popularity="{{popularity}}" data-original="{{original_title}}" data-genres="{{genre_ids}}" data-description="{{overview}}">
+        <img class="img-card-library" src="https://image.tmdb.org/t/p/original{{poster_path}}" alt="" data-src=""/>
         <div class="movie-information">
-            <h3 class="movie-name">{{title}}</h3>
+            <h2 class="movie-name">{{title}}</h2>
             <div class="generes-rating">
                 <p class="genres">{{genre_ids}}</p>
                 <p class="release-data">{{release_date}}</p>
@@ -21,4 +12,4 @@
         </div>
     </li>
     {{/each}}
-</ul>
+{{!-- </ul> --}}

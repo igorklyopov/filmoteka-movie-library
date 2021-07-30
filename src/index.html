@@ -112,17 +112,19 @@
     />
   </head>
   <body>
+    <include src="./partials/preloader.html"></include>
+    <include src="./partials/theme-switch.html"></include>
     <include src="./partials/header.html"></include>
     <main>
-      <section>
-        <div class="container main-section-container">
-          <h1 class="visually-hidden">Movie library</h1>
-          <ul class="gallery-library"></ul>
-        </div>
-      </section>
+      <a class="back_to_top" title="Наверх"></a>
+      <include src="./partials/movies.html"></include>
+      <!-- тест работы подгрузки фильмов с увеличением номера страницы НАЧАЛО -->
+      <button class="js-load-more">load more</button>
+      <!-- тест работы подгрузки фильмов с увеличением номера страницы КОНЕЦ -->
     </main>
     <include src="./partials/footer.html"></include>
     <include src="./partials/modal.html"></include>
+
     <script src="./index.js"></script>
   </body>
 </html>

@@ -1,29 +1,40 @@
 import './sass/main.scss';
-import { fetchPopularDayMovies, fetchPopularWeekMovies } from './js/apiService';
-import cardLibraryTpl from './templates/library-card-movie';
-import popularFilmsTpl from './templates/popular-films.hbs';
+import { MoviesApiService } from './js/apiService';
+// import cardLibraryTpl from './templates/library-card-movie';
+// import popularFilmsTpl from './templates/popular-films.hbs';
+// import searchFilmsTpl from './templates/home-card-movie';
+// import modalMovieInfo from './templates/modal-movie-content';
 import { refs } from './js/refs';
+import './js/onSearch'
+// import './js/modalCloseAction'
+import './js/toTopButton'
+// import genres from './js/genres_ids.json'
+import './js/loader'
+import themeSwitcher from './js/theme-switcher';
+import './js/spa';
+import { onHomePageLoad, renderPopularMoviesCards, onWeekBtnClick, onDayBtnClick } from './js/popMoviesloadFunctions';
 
-document.addEventListener('DOMContentLoaded', onHomePageLoad);
+
+const moviesApiService = new MoviesApiService();
+
+onHomePageLoad()
+
 refs.weekBtn.addEventListener('click', onWeekBtnClick);
+refs.dayBtn.addEventListener('click', onDayBtnClick);
 
-function onHomePageLoad() {
-    refs.sectionContainer.innerHTML = '';
-    fetchPopularDayMovies()
-    .then(movie => renderPopularMoviesCards(movie))
-    .catch(console.log);
+
+
+//===тест работы подгрузки фильмов с увеличением номера страницы НАЧАЛО===//
+
+const loadMoreBtnRef = document.querySelector('.js-load-more')
+loadMoreBtnRef.addEventListener('click', onLoadMoreBtnClick)
+
+function onLoadMoreBtnClick() {
+  moviesApiService.incrementPage()
+  
+  moviesApiService.getPopularDayMovies().then((movie) => {
+    return renderPopularMoviesCards(movie)
+  });
+  
 }
-
-function onWeekBtnClick() {
-    refs.sectionContainer.innerHTML = '';
-    fetchPopularWeekMovies()
-    .then(movie => renderPopularMoviesCards(movie))
-    .catch(console.log);
-}
-
-function renderPopularMoviesCards(movies) {
-    const movieList = popularFilmsTpl(movies);
-    refs.sectionContainer.insertAdjacentHTML('afterbegin', movieList);
-}
-
-
+//===тест работы подгрузки фильмов с увеличением номера страницы КОНЕЦ====//
