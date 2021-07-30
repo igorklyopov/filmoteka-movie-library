@@ -38,7 +38,14 @@
 }
 
 .footer-active-text {
-  text-decoration: underline;
+    text-decoration: underline;
+	cursor: pointer;
+	transition: color var(--hover-focus-transition);
+
+	&:hover,
+	&:focus {
+		color: #0000FF;
+	}
 }
 
 /* Modal */
@@ -71,17 +78,15 @@ body.show-modal .modal {
 }
 
 .modal {
-  position: relative;
-  padding: 24px;
-  border-radius: 4px;
-  max-width: 640px;
-  width: 100%;
-  min-height: 320px;
-  background-color: #fff;
-  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14),
-    0px 2px 1px -1px rgba(0, 0, 0, 0.12);
-  transform: scale(1.1);
-  transition: transform 200ms ease-in-out;
+	position: relative;
+	padding: 24px;
+	border-radius: 4px;
+	background-color: #fff;
+	box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.2),
+		0px 1px 1px 0px rgba(0,0,0,0.14),
+		0px 2px 1px -1px rgba(0,0,0,0.12);
+	transform: scale(1.1);
+	transition: transform 200ms ease-in-out;
 }
 
 .close-modal-button {
@@ -90,8 +95,59 @@ body.show-modal .modal {
   right: 10px;
 }
 
+.team-members-title,
+.team-member-name,
+.team-member-git {
+	text-align: center;
+}
+
+.team-members-data {
+	display: none;
+}
+
 .team-members-list {
-  overflow: auto; /*adds scrollers if needed*/
-  height: 200px;
-  background-color: yellow;
+	overflow: auto;  /*adds scrollers if needed*/
+	height: 300px;
+	width: 280px;  //2*100(images) + 3*20(margins) + 20(scroller)
+	@include adaptive-for-tablet {
+		overflow: hidden;
+		height: auto;
+		width: 620px;
+	}
+	@include adaptive-for-desktop {
+		overflow: hidden;
+		height: auto;	
+		width: 870px;
+	}
+	margin-bottom: 0px;
+	padding: 0px;
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+	background-color: var(--footer-bg-color);
+	border-radius: 15px;
+}
+
+.team-member-card {
+	margin-top: 20px;
+	margin-left: 20px;
+	padding: 0px;
+}
+
+.team-member-img {
+	width: 100px;
+	height: 100px;
+	@include adaptive-for-tablet {
+		width: 100px;
+		height: 100px;
+	}
+	@include adaptive-for-desktop {
+		width: 150px;
+		height: 150px;
+	}
+	border-radius: 15px;
+	&:hover {
+		width: 200px;
+		height: 200px;
+	}
 }
