@@ -13,11 +13,11 @@ ref5.openModalBtn.addEventListener('click', onOpenModal);
 ref5.closeModalBtn.addEventListener('click', onCloseModal);
 
 function onOpenModal(event) {
-  document.body.classList.add('show-modal');
+  document.body.classList.add('footer-show-modal');
 }
 
 function onCloseModal(event) {
-  document.body.classList.remove('show-modal');
+  document.body.classList.remove('footer-show-modal');
 }
 
 let htmlText = "";
@@ -27,7 +27,7 @@ for (let i = 0; i < ref5.teamDataSrc.length; ++i) {
 		`<li class="team-member-card">
 		<img class="team-member-img" src="${dataSrc.getAttribute("src")}" alt="alt" data-src="" />
 		<p class="team-member-name">${dataSrc.getAttribute("alt")}</p>
-		<p class="team-member-git">${dataSrc.getAttribute("git")}</p>
+		<p class="team-member-mail">${dataSrc.getAttribute("git")}</p>
 		</li>`;
 	htmlText += li;
 	//console.log(li);
