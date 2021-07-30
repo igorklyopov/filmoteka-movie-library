@@ -29,12 +29,28 @@ refs.dayBtn.addEventListener('click', onDayBtnClick);
 const loadMoreBtnRef = document.querySelector('.js-load-more')
 loadMoreBtnRef.addEventListener('click', onLoadMoreBtnClick)
 
-function onLoadMoreBtnClick() {
+async function onLoadMoreBtnClick() {
+  refs.dots.classList.remove('is-hidden');
   moviesApiService.incrementPage()
+ try {
+    await moviesApiService.getPopularDayMovies().then((movie) => {
   
-  moviesApiService.getPopularDayMovies().then((movie) => {
     return renderPopularMoviesCards(movie)
   });
-  
+ } catch (error) {
+   console.log(error);
+ }
+
+  refs.dots.classList.add('is-hidden');
 }
 //===тест работы подгрузки фильмов с увеличением номера страницы КОНЕЦ====//
+const ioCallback = ([entrie]) => {
+    if (!entrie.isIntersecting) {
+      return;
+    }
+    onLoadMoreBtnClick();
+};
+
+const observer = new IntersectionObserver(ioCallback, { threshold: 0 });
+
+observer.observe(refs.anchor);

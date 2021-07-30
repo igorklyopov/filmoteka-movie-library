@@ -8,4 +8,6 @@ export const refs = {
   libraryButtons: document.querySelector('.library-nav-list'),
   modalInfo: document.querySelector('.modal-movie-content'),
   modal: document.querySelector('.modal-movie-card'),
+  dots: document.querySelector('.loading-dot-stage'),
+  anchor: document.querySelector('.anchor-js'),
 };
