@@ -22,17 +22,14 @@ export class MoviesApiService {
       return response.json().then(data => {
         data.results.forEach(function (item) {
           const shortDate = item.release_date.slice(0, 4);
-
           if (item.genre_ids.length > 2) {
             let shortGenres = item.genre_ids.slice(0, 2);
             shortGenres.push(' Other');
             item.genre_ids = shortGenres;
           }
-
           item.release_date = shortDate;
           return;
         });
-
         // this.page += 1;
         return data.results;
       });
@@ -63,8 +60,24 @@ export class MoviesApiService {
 
   getPopularWeekMovies() {
     return fetch(`${this.basicQuery(TRANDING_WEEK)}`).then(response => {
-      // this.page += 1;
-      return response.json();
+      return response.json().then(res => {
+        res.results.forEach(function (i) {
+          const shortDate = i.release_date;
+          if (shortDate !== undefined) {
+            const shortDatePop = i.release_date.slice(0, 4);
+            i.release_date = shortDatePop;
+          } else {
+            i.release_date = 'Soon';
+          }
+          if (i.genre_ids.length > 2) {
+            let shortGenres = i.genre_ids.slice(0, 2);
+            shortGenres.push(' Other');
+            i.genre_ids = shortGenres;
+          }
+          return;
+        });
+        return res;
+      });
     });
   }
 
