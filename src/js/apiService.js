@@ -22,6 +22,13 @@ export class MoviesApiService {
       return response.json().then(data => {
         data.results.forEach(function (item) {
           const shortDate = item.release_date.slice(0, 4);
+
+          if (item.genre_ids.length > 2) {
+            let shortGenres = item.genre_ids.slice(0, 2);
+            shortGenres.push(' Other');
+            item.genre_ids = shortGenres;
+          }
+
           item.release_date = shortDate;
           return;
         });
@@ -31,9 +38,9 @@ export class MoviesApiService {
       });
     });
   }
-
   getPopularDayMovies() {
     return fetch(`${this.basicQuery(TRANDING_DAY)}`).then(response => {
+      // this.page += 1;
       return response.json();
     });
   }
