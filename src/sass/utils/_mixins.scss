@@ -1,13 +1,3 @@
-//Adds the required number of cards per line;
-//works inside 'card-set-container':  display: flex; flex-wrap: wrap; justify-content: center; align-items: center; (card-set-card-margin * -1)
-@mixin card-number-in-line($card-number, $top-bottom-card-margin, $left-right-card-margin) {
-  flex-basis: calc((100% - 2 * #{$card-number} * #{$left-right-card-margin}) / #{$card-number});
-  margin-top: $top-bottom-card-margin;
-  margin-right: $left-right-card-margin;
-  margin-bottom: $top-bottom-card-margin;
-  margin-left: $left-right-card-margin;
-}
-
 //Adds media rules for responsive layout
 @mixin adaptive-for-phone {
   @media screen and (min-width: $phone) {
@@ -37,17 +27,6 @@
   @media screen and (max-width: $desktop - 1px) {
     @content;
   }
-}
-
-//Makes the font responsive
-//values are transmitted without units
-@function responsive-font-size($min-font-size, $max-font-size, $min-width, $max-width) {
-  $coef: ($max-font-size - $min-font-size) / ($max-width - $min-width);
-  $font-size: $min-font-size - $coef * $min-width;
-
-  $font-size: $font-size * 1px;
-
-  @return calc(#{$coef} * 100vw + #{$font-size});
 }
 
 @mixin d-f {
