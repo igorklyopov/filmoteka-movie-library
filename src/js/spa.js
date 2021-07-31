@@ -19,9 +19,13 @@ function realisePageSwiching(path) {
   if (path === '/library') {
     refs.searchMovieForm.classList.add('visually-hidden');
     refs.libraryButtons.classList.remove('visually-hidden');
+    refs.myLibraryIsActive.classList.add('active-navigation');
+    refs.myHomeIsActive.classList.remove('active-navigation');
   } else {
     refs.searchMovieForm.classList.remove('visually-hidden');
     refs.libraryButtons.classList.add('visually-hidden');
+    refs.myLibraryIsActive.classList.remove('active-navigation');
+    refs.myHomeIsActive.classList.add('active-navigation');
   }
 }
 

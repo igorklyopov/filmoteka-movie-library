@@ -8,6 +8,8 @@ export const refs = {
   libraryButtons: document.querySelector('.library-nav-list'),
   modalInfo: document.querySelector('.modal-movie-content'),
   modal: document.querySelector('.modal-movie-card'),
-  dots: document.querySelector('.loading-dot-stage'),
-  anchor: document.querySelector('.anchor-js'),
+  loadingDots: document.querySelector('.loading-dot-stage'),
+  infiniteScrollingAnchor: document.querySelector('.js-infinite-scrolling-anchor'),
+  myLibraryIsActive: document.querySelector('.my-library'),
+  myHomeIsActive: document.querySelector('.home'),
 };

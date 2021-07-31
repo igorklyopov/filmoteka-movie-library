@@ -115,9 +115,8 @@
   }
 }
 
-.home {
+.active-navigation {
   position: relative;
-  margin-right: 40px;
 
   &::before {
     content: '';
@@ -125,10 +124,13 @@
     position: absolute;
     left: 0;
     bottom: -3px;
-    width: 36px;
+    width: 100%;
     height: 3px;
     background-color: var(--primary-accent-color);
   }
+}
+.home {
+  margin-right: 40px;
 }
 
 .search-movie-form {
