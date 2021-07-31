@@ -107,6 +107,11 @@ body.footer-show-modal .footer-modal {
 	font-size: 16px;
 }
 
+.team-member-name {
+	font-size: 16px;
+	margin: 0px;
+}
+
 .team-member-mail {
 	font-size: 8px;
 }
@@ -142,6 +147,7 @@ body.footer-show-modal .footer-modal {
 	margin-top: 20px;
 	margin-left: 20px;
 	padding: 0px;
+	justify-content: center;
 }
 
 .team-member-img {
@@ -162,5 +168,31 @@ body.footer-show-modal .footer-modal {
 		height: 200px;
 	}
 	*/
+}
+
+.team-member-links {
+	//background-color: yellow;
+	//width: 100px;
+	display: flex;
+	justify-content: center;
+	margin-top: 4px;
+}
+
+.team-member-link {
+	//width: 44px;
+	//height: 44px;
+}
+
+.team-member-icon {
+	width: 24px;
+	height: 24px;
+	margin-left: 10px;
+	margin-right: 10px;
+	fill: var(--footer-text-color);
+	transition: fill var(--hover-focus-transition);
+	&:hover,
+	&:focus {
+		fill: #0000FF;
+	}
 }
 
