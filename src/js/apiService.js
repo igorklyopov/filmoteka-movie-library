@@ -1,4 +1,9 @@
 import { BASE_URL, API_KEY, SEARCH_MOVIE, TRANDING_DAY, TRANDING_WEEK } from './fetchConst';
+import { refs } from '../js/refs';
+// console.log(refs.imgCard);
+
+// const imgurl = document.querySelector('.img-card-library');
+// console.log(imgurl);
 
 export class MoviesApiService {
   constructor() {
@@ -17,11 +22,13 @@ export class MoviesApiService {
       return response.json().then(data => {
         data.results.forEach(function (item) {
           const shortDate = item.release_date.slice(0, 4);
+
           if (item.genre_ids.length > 2) {
             let shortGenres = item.genre_ids.slice(0, 2);
             shortGenres.push(' Other');
             item.genre_ids = shortGenres;
           }
+
           item.release_date = shortDate;
           return;
         });
