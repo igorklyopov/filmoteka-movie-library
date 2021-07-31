@@ -9,7 +9,6 @@ import './js/onSearch'
 // import './js/modalCloseAction'
 import './js/toTopButton'
 // import genres from './js/genres_ids.json'
-import './js/loader'
 import themeSwitcher from './js/theme-switcher';
 import './js/spa';
 import { onHomePageLoad, renderPopularMoviesCards, onWeekBtnClick, onDayBtnClick, loadMorePopMovies} from './js/popMoviesLoadFunctions';
