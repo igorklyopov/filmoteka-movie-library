@@ -2,12 +2,14 @@ import { MoviesApiService } from './apiService';
 import { refs } from './refs';
 import genres from './genres_ids.json';
 import popularFilmsTpl from '../templates/popular-films.hbs';
+import buttonSwitcher from './buttonSwitcher';
+import switchLoadingDots from './switchLoadingDots';
 
-const moviesApiService = new MoviesApiService();
+const popMoviesApiService = new MoviesApiService();
 
 function onHomePageLoad() {
   try {
-      moviesApiService.getPopularDayMovies().then((movie) => {
+      popMoviesApiService.getPopularDayMovies().then((movie) => {
       return renderPopularMoviesCards(movie);
     });
     
@@ -70,16 +72,15 @@ function onWeekBtnClick() {
   
     buttonSwitcher(refs.weekBtn, refs.dayBtn);
   
-    moviesApiService.resetPage()
+    popMoviesApiService.resetPage()
   
-    moviesApiService.getPopularWeekMovies().then((movie) => {
+    popMoviesApiService.getPopularWeekMovies().then((movie) => {
       return renderPopularMoviesCards(movie)
     });
   } catch (error) {
     console.log(error);
   }
 
-  
 }
   
 function onDayBtnClick() {
@@ -88,9 +89,9 @@ function onDayBtnClick() {
   
     buttonSwitcher(refs.dayBtn, refs.weekBtn);
   
-    moviesApiService.resetPage()
+    popMoviesApiService.resetPage()
   
-    moviesApiService.getPopularDayMovies().then((movie) => {
+    popMoviesApiService.getPopularDayMovies().then((movie) => {
       return renderPopularMoviesCards(movie)
     });
   } catch (error) {
@@ -99,13 +100,21 @@ function onDayBtnClick() {
 
 }
 
-function buttonSwitcher(ActiveBtn, InActiveBtn) {
-    ActiveBtn.setAttribute('disabled', "disabled");
-    InActiveBtn.removeAttribute('disabled');
+async function loadMorePopMovies() {
+  switchLoadingDots('on');
+
+  popMoviesApiService.incrementPage()
+
+  try {
+    await popMoviesApiService.getPopularDayMovies().then((movie) => {
   
-    ActiveBtn.classList.add('is-active');
-    InActiveBtn.classList.remove('is-active');
+      return renderPopularMoviesCards(movie)
+    });
+  } catch (error) {
+    console.log(error);
+  }
+
+  switchLoadingDots('off');
 }
 
-
-export { onHomePageLoad, renderPopularMoviesCards, onWeekBtnClick, onDayBtnClick };
+export { onHomePageLoad, renderPopularMoviesCards, onWeekBtnClick, onDayBtnClick, loadMorePopMovies};
