@@ -95,20 +95,12 @@ body.footer-show-modal .footer-modal {
 	position: absolute;
 	top: 10px;
 	right: 10px;
-}
-
-.team-members-title,
-.team-member-name,
-.team-member-mail {
-	text-align: center;
+	cursor: pointer;
 }
 
 .team-members-title {
 	font-size: 16px;
-}
-
-.team-member-mail {
-	font-size: 8px;
+	text-align: center;
 }
 
 .team-members-data {
@@ -142,12 +134,14 @@ body.footer-show-modal .footer-modal {
 	margin-top: 20px;
 	margin-left: 20px;
 	padding: 0px;
+	justify-content: center;
 }
 
 .team-member-img {
 	border-radius: 15px;
 	width: 200px;
 	height: 200px;
+	//margin-bottom: 10px;
 	@include adaptive-for-tablet {
 		width: 100px;
 		height: 100px;
@@ -162,5 +156,45 @@ body.footer-show-modal .footer-modal {
 		height: 200px;
 	}
 	*/
+}
+
+.team-member-name {
+	text-align: center;
+	font-size: 18px;
+	margin-top: 10px;
+	margin-bottom: 0px;
+}
+
+.team-member-surname {
+	text-align: center;
+	font-size: 18px;
+	margin-top: 5px;
+	margin-bottom: 0px;
+}
+
+.team-member-links {
+	//background-color: yellow;
+	//width: 100px;
+	display: flex;
+	justify-content: center;
+	margin-top: 15px;
+}
+
+.team-member-link {
+	//width: 44px;
+	//height: 44px;
+}
+
+.team-member-icon {
+	width: 24px;
+	height: 24px;
+	margin-left: 10px;
+	margin-right: 10px;
+	fill: var(--footer-text-color);
+	transition: fill var(--hover-focus-transition);
+	&:hover,
+	&:focus {
+		fill: #0000FF;
+	}
 }
 
