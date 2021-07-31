@@ -23,13 +23,9 @@
   margin-top: 10px;
   max-width: 274px;
   height: 32px;
-  line-height: 16px;
 }
 .movie-name {
   margin: 0;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: var(--medium-font-weight);
   text-transform: uppercase;
 }
 .generes-rating {
@@ -37,10 +33,10 @@
 }
 .genres {
   margin: 0;
-  font-style: normal;
-  font-weight: var(--medium-font-weight);
   color: var(--primary-accent-color);
+
 }
+
 .rating-container {
   margin-left: 10px;
   width: 36px;

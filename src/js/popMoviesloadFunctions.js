@@ -1,7 +1,8 @@
 import { MoviesApiService } from './apiService';
 import { refs } from './refs';
 import genres from './genres_ids.json';
-import popularFilmsTpl from '../templates/popular-films.hbs';
+// import popularFilmsTpl from '../templates/popular-films.hbs';
+import homeCardMovie from '../templates/home-card-movie';
 import buttonSwitcher from './buttonSwitcher';
 import switchLoadingDots from './switchLoadingDots';
 
@@ -22,20 +23,40 @@ function onHomePageLoad() {
 
 function renderPopularMoviesCards(movies) {
     const moviesArray = [...movies.results];
+
     moviesArray.forEach(element => {
       const genresArray = [...element.genre_ids]
       genresArray.forEach((id, index, array) => {
+
         genres.forEach(genre => {
           if (genre.id === id) {
             id = ' ' + genre.name;
           }
         })
         array[index] = id;
+       
       })
       element.genre_ids = genresArray;
+      if(genresArray.length >= 3) {
+        const other = ' Other';
+          genresArray.splice(2, (genresArray.length - 2));
+          genresArray.push(other);
+        }
+        console.log(genresArray)
+
+      let releaseDate = element.release_date;
+      console.log(releaseDate)
+
+      const date = new Date(releaseDate);
+      let year = date.getFullYear();
+      
+      if(!element.release_date) {
+        return;
+      }
+      element.release_date = year;
     });
   
-    const movieList = popularFilmsTpl(moviesArray);
+    const movieList = homeCardMovie(moviesArray);
     refs.moviesList.insertAdjacentHTML('beforeend', movieList);
     const cardClickHandler = function (evt) {
       let pathNumber;
