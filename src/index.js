@@ -5,15 +5,15 @@ import './sass/main.scss';
 // import modalMovieInfo from './templates/modal-movie-content';
 import MoviesApiService from './js/apiService';
 import { refs } from './js/refs';
-import './js/onSearch'
+import './js/onSearch';
 // import './js/modalCloseAction'
-import './js/toTopButton'
+import './js/toTopButton';
 // import genres from './js/genres_ids.json'
 // import themeSwitcher from './js/theme-switcher';
 import './js/spa';
 import { onHomePageLoad, onWeekBtnClick, onDayBtnClick, loadMorePopMovies} from './js/popMoviesLoadFunctions';
 
-onHomePageLoad()
+onHomePageLoad();
 
 refs.weekBtn.addEventListener('click', onWeekBtnClick);
 refs.dayBtn.addEventListener('click', onDayBtnClick);
