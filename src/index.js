@@ -28,4 +28,3 @@ const moviesLoadObserver = new IntersectionObserver(makeInfiniteScrolling, { thr
    };
    
    moviesLoadObserver.observe(refs.infiniteScrollingAnchor);
-   
