@@ -43,7 +43,6 @@ export class MoviesApiService {
       return response.json().then(res => {
         res.results.forEach(function (i) {
           const shortDate = i.release_date;
-          console.log(shortDate);
           if (shortDate !== undefined) {
             const shortDatePop = i.release_date.slice(0, 4);
             i.release_date = shortDatePop;
