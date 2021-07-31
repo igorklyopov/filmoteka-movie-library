@@ -40,8 +40,25 @@ export class MoviesApiService {
   }
   getPopularDayMovies() {
     return fetch(`${this.basicQuery(TRANDING_DAY)}`).then(response => {
-      // this.page += 1;
-      return response.json();
+      return response.json().then(res => {
+        res.results.forEach(function (i) {
+          const shortDate = i.release_date;
+          console.log(shortDate);
+          if (shortDate !== undefined) {
+            const shortDatePop = i.release_date.slice(0, 4);
+            i.release_date = shortDatePop;
+          } else {
+            i.release_date = 'Soon';
+          }
+          if (i.genre_ids.length > 2) {
+            let shortGenres = i.genre_ids.slice(0, 2);
+            shortGenres.push(' Other');
+            i.genre_ids = shortGenres;
+          }
+          return;
+        });
+        return res;
+      });
     });
   }
 
