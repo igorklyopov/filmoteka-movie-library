@@ -10,4 +10,6 @@ export const refs = {
   modal: document.querySelector('.modal-movie-card'),
   loadingDots: document.querySelector('.loading-dot-stage'),
   infiniteScrollingAnchor: document.querySelector('.js-infinite-scrolling-anchor'),
+  myLibraryIsActive: document.querySelector('.my-library'),
+  myHomeIsActive: document.querySelector('.home'),
 };
