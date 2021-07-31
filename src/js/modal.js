@@ -29,7 +29,7 @@ for (let i = 0; i < ref5.teamDataSrc.length; ++i) {
 		`<li class="team-member-card">
 		<img class="team-member-img" src="${dataSrc.getAttribute("src")}" alt="alt" data-src="" />
 		<p class="team-member-name">${dataSrc.getAttribute("name")}</p>
-		<p class="team-member-name">${dataSrc.getAttribute("surname")}</p>
+		<p class="team-member-surname">${dataSrc.getAttribute("surname")}</p>
         <div class="team-member-links">
         <a href="mailto:${dataSrc.getAttribute("email")}" class="team-member-link">
         	<svg class="team-member-icon">
