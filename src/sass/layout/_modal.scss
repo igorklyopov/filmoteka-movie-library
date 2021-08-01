@@ -221,11 +221,6 @@
 
   width: 30px;
   height: 30px;
-
-  @include adaptive-for-tablet {
-    top: 225px;
-    right: 80px;
-  }
 }
 
 .close-icon {
