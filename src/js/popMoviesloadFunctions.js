@@ -9,6 +9,7 @@ import switchLoadingDots from './switchLoadingDots';
 const popMoviesApiService = new MoviesApiService();
 
 function onHomePageLoad() {
+  
   try {
       popMoviesApiService.getPopularDayMovies().then((movie) => {
       return renderPopularMoviesCards(movie);
