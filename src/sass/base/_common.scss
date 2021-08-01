@@ -3,6 +3,7 @@ body {
     'Open Sans', 'Helvetica Neue', sans-serif;
   color: var(--primary-text-color);
   font-family: var(--font-family);
+  font-style: normal;
   font-weight: var(--medium-font-weight);
   font-size: 12px;
   line-height: 133%;
@@ -41,10 +42,4 @@ img {
 .img-wrap {
   position: relative;
   overflow: hidden;
-}
-
-.title {
-}
-
-.section-title {
 }

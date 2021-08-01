@@ -1,7 +1,6 @@
 @import './utils/variables';
 @import './utils/mixins';
 @import './utils/visually-hidden';
-@import './utils/animations';
 @import './base/fonts';
 @import './base/common';
 @import './base/container';
@@ -9,10 +8,10 @@
 @import './components/menu-burger-button';
 @import './components/card-movie-library';
 @import './components/modal';
+@import './components/loading-dots';
 @import './layout/header';
 @import './layout/footer';
 @import './layout/movies';
 @import './components/to-top-button';
 @import './layout/modal';
-@import './components/mask-preloader';
 @import './layout/theme-switch';
