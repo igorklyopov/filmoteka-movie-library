@@ -1,7 +1,6 @@
 .back_to_top {
   width: 67px;
   height: 67px;
-  background-image: url('/images/arrow.svg');
   position: fixed;
   bottom: 80px;
   right: 40px;
@@ -9,12 +8,21 @@
   cursor: pointer;
   display: none;
   transition: var(--hover-focus-transition);
+  stroke: var(--primary-accent-color);
+  fill: none;
+  border: none;
 }
 
 .back_to_top:hover {
-  background-image: url('/images/arrow-hover.svg');
+  fill: var(--primary-accent-color);
+  stroke: var(--primary-bg-color);
 }
 
 .back_to_top-show {
   display: block;
+}
+
+.arrow-icon {
+  stroke: inherit;
+  fill: inherit;
 }
