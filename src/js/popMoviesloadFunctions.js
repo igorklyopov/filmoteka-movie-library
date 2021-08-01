@@ -45,10 +45,8 @@ function renderPopularMoviesCards(movies) {
           genresArray.splice(2, (genresArray.length - 2));
           genresArray.push(other);
         }
-        console.log(genresArray)
-
+        
       let releaseDate = element.release_date;
-      console.log(releaseDate)
 
       const date = new Date(releaseDate);
       let year = date.getFullYear();
