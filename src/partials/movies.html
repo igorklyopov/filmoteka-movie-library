@@ -1,8 +1,12 @@
 <section class="movies">
   <div class="container movies-section-container">
+
     <h1 class="visually-hidden">Movie library</h1>
+
     <div class="popular-moveis-nav">
-      <h2 class="popular-movies-title">Popular movies</h2>
+
+      <h2 class="popular-movies-title visually-hidden">Popular movies</h2>
+
       <ul class="list popular-btns-list">
         <li class="popular-btns-item">
           <button type="button" class="popular-btn day">Day</button>
@@ -12,7 +16,14 @@
         </li class="popular-btns-item">
       </ul>
     </div>
+
     <ul class="list gallery-library movies-list js-movies-list"></ul>
-    <!-- строка 4 скорее всего - будет не нужно в будущем-->
+    
+    <div class="loading-dot-stage is-hidden">
+      <div class="loading-dot-pulse"></div>
+    </div>
+
+    <div class="js-infinite-scrolling-anchor"></div>
+
   </div>
 </section>

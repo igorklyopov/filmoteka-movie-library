@@ -18,3 +18,8 @@
     width: 882px;
   }
 }
+.movies .container {
+  @media screen and (min-width: $phone) and (max-width: 479px){
+    padding: 0 20px;
+  }
+}

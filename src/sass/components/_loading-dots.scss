@@ -1,0 +1,132 @@
+// ==============================================
+// Variables
+// ==============================================
+
+$dot-width: 10px;
+$dot-height: 10px;
+$dot-radius: $dot-width/2;
+
+$dot-color: var(--primary-accent-color);
+$dot-bg-color: $dot-color;
+$dot-before-color: $dot-color;
+$dot-after-color: $dot-color;
+
+$dot-spacing: $dot-width + $dot-width/2;
+
+// ==============================================
+// Mixins
+// ==============================================
+
+@mixin dot(
+  $width: $dot-width,
+  $height: $dot-height,
+  $radius: $dot-radius,
+  $bg-color: $dot-bg-color,
+  $color: $dot-color
+) {
+  width: $width;
+  height: $height;
+  border-radius: $radius;
+  background-color: $bg-color;
+  color: $color;
+}
+
+/**
+ * ==============================================
+ * Dot Pulse
+ * ==============================================
+ */
+
+$left-pos: -9999px;
+$x1: -$left-pos - $dot-spacing;
+$x2: -$left-pos;
+$x3: -$left-pos + $dot-spacing;
+
+.loading-dot-pulse {
+  position: relative;
+  left: $left-pos;
+
+  @include dot;
+
+  box-shadow: $x2 0 0 -5px;
+  animation: dot-pulse 1.5s infinite linear;
+  animation-delay: 0.25s;
+
+  &::before,
+  &::after {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    top: 0;
+
+    @include dot;
+  }
+
+  &::before {
+    box-shadow: $x1 0 0 -5px;
+    animation: dot-pulse-before 1.5s infinite linear;
+    animation-delay: 0s;
+  }
+
+  &::after {
+    box-shadow: $x3 0 0 -5px;
+    animation: dot-pulse-after 1.5s infinite linear;
+    animation-delay: 0.5s;
+  }
+}
+
+@keyframes dot-pulse-before {
+  0% {
+    box-shadow: $x1 0 0 -5px;
+  }
+
+  30% {
+    box-shadow: $x1 0 0 2px;
+  }
+
+  60%,
+  100% {
+    box-shadow: $x1 0 0 -5px;
+  }
+}
+
+@keyframes dot-pulse {
+  0% {
+    box-shadow: $x2 0 0 -5px;
+  }
+
+  30% {
+    box-shadow: $x2 0 0 2px;
+  }
+
+  60%,
+  100% {
+    box-shadow: $x2 0 0 -5px;
+  }
+}
+
+@keyframes dot-pulse-after {
+  0% {
+    box-shadow: $x3 0 0 -5px;
+  }
+
+  30% {
+    box-shadow: $x3 0 0 2px;
+  }
+
+  60%,
+  100% {
+    box-shadow: $x3 0 0 -5px;
+  }
+}
+
+.loading-dot-stage {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.loading-dot-stage.is-hidden {
+  display: none;
+}

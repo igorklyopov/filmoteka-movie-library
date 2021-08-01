@@ -16,30 +16,26 @@
 </footer>
 
 <!-- this should be in modal.html but it does not work there -->
-	<div class="backdrop js-backdrop">
-		<div class="modal">
+	<div class="footer-backdrop">
+		<div class="footer-modal">
 			<button type="button" class="close-modal-button" data-action="close-modal">Close</button>
-			<h2>Team members</h2>
-            <ul class="team-members-list">
-                <li>Name Surname</li>
-                <li>Name Surname</li>
-                <li>Name Surname</li>
-                <li>Name Surname</li>
-                <li>Name Surname</li>
-                <li>Name Surname</li>
-                <li>Name Surname</li>
-                <li>Name Surname</li>
-                <li>Name Surname</li>
-                <li>Name Surname</li>
-                <li>Name Surname</li>
-                <li>Name Surname</li>
-                <li>Name Surname</li>
-                <li>Name Surname</li>
-                <li>Name Surname</li>
-                <li>Name Surname</li>
-                <li>Name Surname</li>
-                <li>Name Surname</li>
-                <li>Name Surname</li>
+			<p class="team-members-title"><b>TEAM TRANSFORMERS</b></p>
+            <div class="team-members-data">  <!--this is made invisible in css-->
+                <img src="./images/team/igor-klyopov_photo.jpg" name="Igor" surname="Klyopov" git="https://github.com/igorklyopov" email="e-mail">
+                <img src="./images/team/julia-faltina.jpg" name="Julija" surname="Faltina" git="https://github.com/Julija100" email="Dashinicha@gmail.com">
+                <img src="./images/team/IgorKlyopovMini.png" name="Misha" surname="Safaridze" git="https://github.com/portofranko1234" email="Portofranko36@gmail.com">
+                <img src="./images/team/svitlana-varenyk.png" name="Svitlana" surname="Varenyk" git="https://github.com/Lightlawn" email="Lightlawn@gmail.com">
+                <img src="./images/team/ivan-sinabdeev.jpg" name="Ivan" surname="Sinabdeev" git="https://github.com/ivansinabdeev" email="ivansinabdeev@gmail.com">
+                <img src="./images/team/IgorKlyopovMini.png" name="Mariia" surname="Ros" git="https://github.com/Ros715/Ros715.github.io" email="rosm0099@gmail.com">
+                <img src="./images/team/yevhenii-yadroch.jpg" name="Yevhenii" surname="Yadroch" git="https://github.com/YevheniiYadroch" email="Evheniiyadroch@gmail.com">
+                <img src="./images/team/misha-krasnonos.jpg" name="Misha" surname="Krasnonos" git="https://github.com/Mishka31" email="e-mail">
+                <img src="./images/team/IgorKlyopovMini.png" name="Yevhen" surname="Tsilenko" git="https://github.com/YevhenTsilenko" email="e-mail">
+                <img src="./images/team/IgorKlyopovMini.png" name="Natalia" surname="Yurchenko" git="https://github.com/NataliYurchenko" emailname-mail">
+
+                <svg><use href="/images/sprite.svg#email" class="team-member-email-svg"></use></svg>
+                <svg><use href="/images/sprite.svg#github" class="team-member-github-svg"></use></svg>
+            </div>
+            <ul class="team-members-list"> <!--will be constructed in .js-->
             </ul>
 		</div>
 	</div>

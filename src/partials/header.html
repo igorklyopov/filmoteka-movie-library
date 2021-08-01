@@ -10,15 +10,15 @@
       <nav class="navigation">
         <ul class="list navigation-list">
           <li class="navigation-item">
-            <a class="link navigation-link home" href="index.html">Home</a>
+            <a class="link navigation-link home" href="/">Home</a>
           </li>
           <li class="navigation-item">
-            <a class="link navigation-link my-library" href="index.html">My library</a>
+            <a class="link navigation-link my-library" href="/library">My library</a>
           </li>
         </ul>
       </nav>
     </div>
-    <form class="search-movie-form">
+    <form class="search-movie-form visually-hidden">
       <div class="search-movie-input-wrap">
         <label class="search-movie-label">
           <span class="visually-hidden">Movie search</span>
@@ -31,8 +31,7 @@
         </button>
       </div>
     </form>
-
-    <ul class="list library-nav-list">
+    <ul class="list library-nav-list visually-hidden">
       <li class="library-nav-item">
         <a class="link library-nav-button">Watched</a>
       </li>
@@ -43,5 +42,6 @@
         <include src="./partials/theme-switch.html"></include>
       </li>
     </ul>
+
   </div>
 </header>

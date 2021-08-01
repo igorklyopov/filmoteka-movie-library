@@ -9,6 +9,8 @@
   }
 }
 .img-card-library {
+  background: url('https://cdn.pixabay.com/photo/2016/09/14/08/18/film-1668918_960_720.jpg');
+  text-indent: -10000px;
   height: 398px;
   width: 280px;
   border-radius: 5px;
@@ -23,13 +25,9 @@
   margin-top: 10px;
   max-width: 274px;
   height: 32px;
-  line-height: 16px;
 }
 .movie-name {
   margin: 0;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: var(--medium-font-weight);
   text-transform: uppercase;
 }
 .generes-rating {
@@ -37,10 +35,10 @@
 }
 .genres {
   margin: 0;
-  font-style: normal;
-  font-weight: var(--medium-font-weight);
   color: var(--primary-accent-color);
+
 }
+
 .rating-container {
   margin-left: 10px;
   width: 36px;
