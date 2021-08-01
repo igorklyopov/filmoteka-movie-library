@@ -112,10 +112,13 @@
     />
   </head>
   <body>
-    <include src="./partials/theme-switch.html"></include>
     <include src="./partials/header.html"></include>
-    <main>
-      <a class="back_to_top" title="Наверх"></a>
+    <main class="page-wrap">
+      <a class="back_to_top" title="Наверх">
+        <svg class="arrow-icon" width="67" height="67">
+          <use href="./images/sprite.svg#icon-arrow"></use>
+        </svg>
+      </a>
       <include src="./partials/movies.html"></include>
     </main>
     <include src="./partials/footer.html"></include>

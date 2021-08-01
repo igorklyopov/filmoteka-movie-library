@@ -2,16 +2,16 @@ import './sass/main.scss';
 // import cardLibraryTpl from './templates/library-card-movie';
 // import popularFilmsTpl from './templates/popular-films.hbs';
 // import searchFilmsTpl from './templates/home-card-movie';
-// import modalMovieInfo from './templates/modal-movie-content';
-import MoviesApiService from './js/apiService';
+
 import { refs } from './js/refs';
-import './js/onSearch';
-// import './js/modalCloseAction'
-import './js/toTopButton';
+import './js/onSearch'
+import './js/modalCloseAction'
+import './js/toTopButton'
+
 // import genres from './js/genres_ids.json'
 // import themeSwitcher from './js/theme-switcher';
 import './js/spa';
-import { onHomePageLoad, onWeekBtnClick, onDayBtnClick, loadMorePopMovies} from './js/popMoviesLoadFunctions';
+import { onHomePageLoad, onWeekBtnClick, onDayBtnClick, loadMorePopMovies} from './js/popMoviesloadFunctions';
 
 onHomePageLoad();
 

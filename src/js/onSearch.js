@@ -7,9 +7,11 @@ import genres from './genres_ids.json';
 const moviesApiService = new MoviesApiService();
 let moviesList;
 
+
 export function onSearch(e) {
   e.preventDefault();
   refs.sectionContainer.innerHTML = '';
+  refs.popularMoveisNav.classList.add('visually-hidden');
   moviesApiService.query = e.currentTarget.elements.query.value;
   // moviesApiService.resetPage();
   moviesApiService.getmoviesBySearch().then(renderResaultsMarkup);
@@ -47,6 +49,9 @@ function renderResaultsMarkup(results) {
     if (evt.path.length < 10) {
       return;
     }
+    if (refs.modalInfo.innerHTML !== '') {
+        return;
+      }
 
     const data = Object.assign({}, evt.path[pathNumber].dataset);
     const markUp = modalMovieInfo(data);

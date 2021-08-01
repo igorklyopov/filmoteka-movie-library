@@ -1,7 +1,9 @@
 import { MoviesApiService } from './apiService';
 import { refs } from './refs';
 import genres from './genres_ids.json';
-// import popularFilmsTpl from '../templates/popular-films.hbs';
+import popularFilmsTpl from '../templates/popular-films.hbs';
+import modalMovieInfo from '../templates/modal-movie-content';
+
 import homeCardMovie from '../templates/home-card-movie';
 import buttonSwitcher from './buttonSwitcher';
 import switchLoadingDots from './switchLoadingDots';
@@ -9,6 +11,10 @@ import switchLoadingDots from './switchLoadingDots';
 const popMoviesApiService = new MoviesApiService();
 
 function onHomePageLoad() {
+  // if (refs.sectionContainer.classList.contains('visually-hidden')) {
+  //   return
+  // }
+  
   try {
       popMoviesApiService.getPopularDayMovies().then((movie) => {
       return renderPopularMoviesCards(movie);
@@ -18,10 +24,15 @@ function onHomePageLoad() {
     console.log(error);
   }
   refs.dayBtn.setAttribute('disabled', "disabled");
-  refs.dayBtn.classList.add('is-active');
+    refs.dayBtn.classList.add('is-active');
+    
 }
 
 function renderPopularMoviesCards(movies) {
+  if (refs.sectionContainer.classList.contains('visually-hidden')) {
+    return
+  }
+
     const moviesArray = [...movies.results];
 
     moviesArray.forEach(element => {
@@ -42,10 +53,8 @@ function renderPopularMoviesCards(movies) {
           genresArray.splice(2, (genresArray.length - 2));
           genresArray.push(other);
         }
-        console.log(genresArray)
-
+        
       let releaseDate = element.release_date;
-      console.log(releaseDate)
 
       const date = new Date(releaseDate);
       let year = date.getFullYear();
@@ -60,7 +69,7 @@ function renderPopularMoviesCards(movies) {
     refs.moviesList.insertAdjacentHTML('beforeend', movieList);
     const cardClickHandler = function (evt) {
       let pathNumber;
-  
+
       if (evt.path.length === 10) {
         pathNumber = 1;
       }
@@ -85,6 +94,7 @@ function renderPopularMoviesCards(movies) {
     }
   
     refs.moviesList.addEventListener('click', cardClickHandler);
+    
 }
 
 function onWeekBtnClick() {

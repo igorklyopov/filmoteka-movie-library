@@ -1,9 +1,6 @@
 import { BASE_URL, API_KEY, SEARCH_MOVIE, TRANDING_DAY, TRANDING_WEEK } from './fetchConst';
 import { refs } from '../js/refs';
-// console.log(refs.imgCard);
 
-// const imgurl = document.querySelector('.img-card-library');
-// console.log(imgurl);
 
 export class MoviesApiService {
   constructor() {
