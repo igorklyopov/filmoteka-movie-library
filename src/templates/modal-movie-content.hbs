@@ -1,20 +1,27 @@
-    <img class=" movie-image" src="https://image.tmdb.org/t/p/original{{img}}" alt="{{title}}" />
-    <h2 class="modal-movie-name">{{title}}/h2>
-    <div class="movie-info">
-        <ul class="movie-info-titles">
-            <li>Vote / Votes</li>
-            <li>Popularity</li>
-            <li>Original title</li>
-            <li>Genre</li>
-        </ul>
-        <ul class="movie-info-values">
-            <li class="movie-rating">{{vote}} {{votes}}</li>
-            <li class="movie-popularity">{{popularity}}</li>
-            <li class="movie-original-title">{{original}}</li>
-            <li class="movie-genre">{{genres}}</li>
-        </ul>
-        <h4 class="about-title">ABOUT</h4>
-        <p class="movie-description">{{description}}</p>
-        <button class="add-to-watched-btn">ADD TO WATCHED</button>
-        <button class="add-to-queue-btn">ADD TO QUEUE</button>
-    </div>
+<div class="movie-content">
+    <img class="movie-image" src="https://image.tmdb.org/t/p/original{{img}}" alt="{{title}}" />
+        <div class="movie-info">
+            <h2 class="modal-movie-name">{{title}}</h2>
+            <div class="movie-details-lists">
+                <ul class="movie-info-titles">
+                    <li>Vote / Votes</li>
+                    <li>Popularity</li>
+                    <li>Original title</li>
+                    <li>Genre</li>
+                </ul>
+                <ul class="movie-info-values">
+                    <li class="movie-rating"> <span class="modal-vote">{{vote}}</span> <span class="modal-votes">{{votes}}</span>  </li>
+                    <li class="movie-popularity">{{popularity}}</li>
+                    <li class="movie-original-title-value">{{original}}</li>
+                    <li class="movie-genre">{{genres}}</li>
+                </ul>
+            </div>
+            <h4 class="movie-about-title">ABOUT</h4>
+            <p class="movie-description">{{description}}</p>
+            <div class="movie-btn-container">
+                <button class="add-to-watched-btn basic-button">ADD TO WATCHED</button>
+                <button class="add-to-queue-btn basic-button">ADD TO QUEUE</button>
+            </div>
+        </div>
+</div>
+    

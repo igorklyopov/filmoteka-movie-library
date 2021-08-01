@@ -1,7 +1,9 @@
 import { MoviesApiService } from './apiService';
 import { refs } from './refs';
 import genres from './genres_ids.json';
-// import popularFilmsTpl from '../templates/popular-films.hbs';
+import popularFilmsTpl from '../templates/popular-films.hbs';
+import modalMovieInfo from '../templates/modal-movie-content';
+
 import homeCardMovie from '../templates/home-card-movie';
 import buttonSwitcher from './buttonSwitcher';
 import switchLoadingDots from './switchLoadingDots';
@@ -61,7 +63,7 @@ function renderPopularMoviesCards(movies) {
     refs.moviesList.insertAdjacentHTML('beforeend', movieList);
     const cardClickHandler = function (evt) {
       let pathNumber;
-  
+
       if (evt.path.length === 10) {
         pathNumber = 1;
       }
