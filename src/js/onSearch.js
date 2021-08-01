@@ -48,6 +48,9 @@ function renderResaultsMarkup(results) {
     if (evt.path.length < 10) {
       return;
     }
+    if (refs.modalInfo.innerHTML !== '') {
+        return;
+      }
 
     const data = Object.assign({}, evt.path[pathNumber].dataset);
     const markUp = modalMovieInfo(data);

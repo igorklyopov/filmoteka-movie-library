@@ -19,6 +19,11 @@
   visibility: visible;
 }
 
+.modal-overlay {
+  width: 100vw;
+  height: 100vw;
+}
+
 .movie-modal {
   padding: 48px 20px 41px 20px;
   @media screen and (min-width: 768px) {
@@ -199,6 +204,7 @@
   background: transparent;
   border: none;
   padding: 0;
+  cursor: pointer;
 
   width: 30px;
   height: 30px;
