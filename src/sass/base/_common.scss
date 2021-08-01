@@ -43,3 +43,9 @@ img {
   position: relative;
   overflow: hidden;
 }
+
+.page-wrap {
+  display: grid;
+  min-height: 100vh;
+  grid-template: minmax(100px, auto) 1fr minmax(70px, auto) / 1fr;
+}
