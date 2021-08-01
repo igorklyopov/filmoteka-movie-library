@@ -45,7 +45,6 @@ for (let i = 0; i < ref5.teamDataSrc.length; ++i) {
         </div>
 		</li>`;
 	htmlText += li;
-	//console.log(li);
 }
 ref5.teamList.insertAdjacentHTML("afterbegin", htmlText);
 
