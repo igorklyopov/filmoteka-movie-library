@@ -2,6 +2,8 @@ import { MoviesApiService } from './apiService';
 import { refs } from './refs';
 import genres from './genres_ids.json';
 import popularFilmsTpl from '../templates/popular-films.hbs';
+import modalMovieInfo from '../templates/modal-movie-content';
+
 
 const moviesApiService = new MoviesApiService();
 
@@ -33,7 +35,7 @@ function renderPopularMoviesCards(movies) {
     refs.moviesList.insertAdjacentHTML('beforeend', movieList);
     const cardClickHandler = function (evt) {
       let pathNumber;
-  
+
       if (evt.path.length === 10) {
         pathNumber = 1;
       }

@@ -3,10 +3,9 @@ import { MoviesApiService } from './js/apiService';
 // import cardLibraryTpl from './templates/library-card-movie';
 // import popularFilmsTpl from './templates/popular-films.hbs';
 // import searchFilmsTpl from './templates/home-card-movie';
-// import modalMovieInfo from './templates/modal-movie-content';
 import { refs } from './js/refs';
 import './js/onSearch'
-// import './js/modalCloseAction'
+import './js/modalCloseAction'
 import './js/toTopButton'
 // import genres from './js/genres_ids.json'
 import './js/loader'
