@@ -28,6 +28,7 @@
   position: absolute;
   top: 50%;
   left: 50%;
+  z-index: 10;
   transform: translate(-50%, -50%);
 
   background: var(--secondary-text-color);
@@ -146,6 +147,17 @@
   }
 }
 
+.modal-votes {
+  display: inline-block;
+  margin-left: 5px;
+  background: #f7f7f7;
+  border-radius: 5px;
+}
+
+.votes-separator {
+  color: var(--film-card-text-color);
+}
+
 .movie-btn-container {
   display: flex;
   justify-content: space-between;
@@ -193,8 +205,9 @@
   align-items: center;
   justify-content: center;
   position: absolute;
-  top: 40px;
-  right: 40px;
+  top: 25px;
+  right: 15px;
+  z-index: 20;
   outline: none;
   background: transparent;
   border: none;
@@ -202,6 +215,11 @@
 
   width: 30px;
   height: 30px;
+
+  @include adaptive-for-tablet {
+    top: 225px;
+    right: 80px;
+  }
 }
 
 .close-icon {
