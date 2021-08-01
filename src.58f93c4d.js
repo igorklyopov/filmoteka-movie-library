@@ -35,4 +35,4 @@ function t(){var t=window.pageYOffset,e=document.documentElement.clientHeight;t>
 },{"./refs":"VyiV","./onSearch":"MoSP","./popMoviesloadFunctions":"bF3f"}],"Focm":[function(require,module,exports) {
 "use strict";require("./sass/main.scss");var e=require("./js/refs");require("./js/onSearch"),require("./js/modalCloseAction"),require("./js/toTopButton"),require("./js/spa");var r=require("./js/popMoviesloadFunctions");(0,r.onHomePageLoad)(),e.refs.weekBtn.addEventListener("click",r.onWeekBtnClick),e.refs.dayBtn.addEventListener("click",r.onDayBtnClick);const s=new IntersectionObserver(n,{threshold:0});function n([e]){e.isIntersecting&&(0,r.loadMorePopMovies)()}s.observe(e.refs.infiniteScrollingAnchor);
 },{"./sass/main.scss":"clu1","./js/refs":"VyiV","./js/onSearch":"MoSP","./js/modalCloseAction":"dxHE","./js/toTopButton":"qigi","./js/spa":"IgT7","./js/popMoviesloadFunctions":"bF3f"}]},{},["Focm"], null)
-//# sourceMappingURL=/filmoteka-movie-library/src.de8f2ec4.js.map
+//# sourceMappingURL=/filmoteka-movie-library/src.58f93c4d.js.map
