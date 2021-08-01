@@ -10,6 +10,7 @@ let moviesList;
 export function onSearch(e) {
   e.preventDefault();
   refs.sectionContainer.innerHTML = '';
+  refs.popularMoveisNav.classList.add('visually-hidden');
   moviesApiService.query = e.currentTarget.elements.query.value;
   // moviesApiService.resetPage();
   moviesApiService.getmoviesBySearch().then(renderResaultsMarkup);
