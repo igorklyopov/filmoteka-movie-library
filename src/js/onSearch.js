@@ -1,5 +1,6 @@
 import { refs } from './refs';
 import { fetchPopularDayMovies, fetchPopularWeekMovies, MoviesApiService } from './apiService';
+import { onIncorrectInput } from './incorrectInput';
 import searchFilmsTpl from '../templates/home-card-movie';
 import modalMovieInfo from '../templates/modal-movie-content';
 import genres from './genres_ids.json';
@@ -15,9 +16,14 @@ export function onSearch(e) {
   moviesApiService.query = e.currentTarget.elements.query.value;
   // moviesApiService.resetPage();
   moviesApiService.getmoviesBySearch().then(renderResaultsMarkup);
+
 }
 
 function renderResaultsMarkup(results) {
+  console.log(results.length);
+  if(results.length === 0) {
+    onIncorrectInput();
+  }
   const moviesArray = [...results];
   moviesArray.forEach(element => {
     const genresArray = [...element.genre_ids];
