@@ -11,7 +11,7 @@ import './js/toTopButton';
 // import genres from './js/genres_ids.json'
 // import themeSwitcher from './js/theme-switcher';
 import './js/spa';
-import { onHomePageLoad, onWeekBtnClick, onDayBtnClick, loadMorePopMovies} from './js/popMoviesLoadFunctions';
+import { onHomePageLoad, onWeekBtnClick, onDayBtnClick, loadMorePopMovies} from './js/popMoviesloadFunctions';
 
 onHomePageLoad();
 
