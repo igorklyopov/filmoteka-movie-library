@@ -33,6 +33,20 @@ function renderPopularMoviesCards(movies) {
         array[index] = id;
       })
       element.genre_ids = genresArray;
+      if(genresArray.length > 3) {
+        const other = ' Other';
+        genresArray.splice(2, (genresArray.length - 2));
+        genresArray.push(other);
+      }
+
+      const releaseDate = element.release_date;
+      const date = new Date(releaseDate);
+      const year = date.getFullYear();
+      
+      if(!element.release_date) {
+        return;
+      }
+      element.release_date = year;
     });
   
     const movieList = popularFilmsTpl(moviesArray);
