@@ -1,4 +1,4 @@
-console.log('modal.js start');
+//console.log('modal.js start');
 
 const ref5 = {
 	openModalBtn: document.querySelector('[data-action="open-modal"]'),
@@ -48,4 +48,4 @@ for (let i = 0; i < ref5.teamDataSrc.length; ++i) {
 }
 ref5.teamList.insertAdjacentHTML("afterbegin", htmlText);
 
-console.log("modal.js end");
+//console.log("modal.js end");
