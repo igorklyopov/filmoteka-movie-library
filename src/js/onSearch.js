@@ -7,6 +7,7 @@ import genres from './genres_ids.json';
 const moviesApiService = new MoviesApiService();
 let moviesList;
 
+
 export function onSearch(e) {
   e.preventDefault();
   refs.sectionContainer.innerHTML = '';

@@ -11,6 +11,9 @@ import switchLoadingDots from './switchLoadingDots';
 const popMoviesApiService = new MoviesApiService();
 
 function onHomePageLoad() {
+  // if (refs.sectionContainer.classList.contains('visually-hidden')) {
+  //   return
+  // }
   
   try {
       popMoviesApiService.getPopularDayMovies().then((movie) => {
@@ -21,10 +24,15 @@ function onHomePageLoad() {
     console.log(error);
   }
   refs.dayBtn.setAttribute('disabled', "disabled");
-  refs.dayBtn.classList.add('is-active');
+    refs.dayBtn.classList.add('is-active');
+    
 }
 
 function renderPopularMoviesCards(movies) {
+  if (refs.sectionContainer.classList.contains('visually-hidden')) {
+    return
+  }
+
     const moviesArray = [...movies.results];
 
     moviesArray.forEach(element => {
@@ -86,6 +94,7 @@ function renderPopularMoviesCards(movies) {
     }
   
     refs.moviesList.addEventListener('click', cardClickHandler);
+    
 }
 
 function onWeekBtnClick() {
