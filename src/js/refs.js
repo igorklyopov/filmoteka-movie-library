@@ -19,5 +19,6 @@ export const refs = {
   searchMovieButton: document.querySelector('.search-movie-button'),
   addWatched: document.querySelector('.add-to-watched-btn'),
   addQueue: document.querySelector('.add-to-queue-btn'),
+  searchErrorMessage: document.querySelector('.search-error-message')
   // empty-library-massage
 };

@@ -202,7 +202,7 @@
   stroke: var(--secondary-text-color);
   transition: stroke var(--hover-focus-transition);
 }
-.error-message {
+.search-error-message {
   margin-top: 20px;
   font-weight: var(--regular-font-weight);
   font-size: 14px;
@@ -210,7 +210,6 @@
   text-align: center;
   color: var(--secondary-accent-color);
 }
-
 
 @include adaptive-for-tablet {
   .header {
