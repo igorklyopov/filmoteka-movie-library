@@ -22,7 +22,13 @@
       <div class="search-movie-input-wrap">
         <label class="search-movie-label">
           <span class="visually-hidden">Movie search</span>
-          <input type="text" name="query" class="search-movie-input" placeholder="Поиск фильмов" />
+          <input
+            type="text"
+            name="query"
+            class="search-movie-input"
+            placeholder="Поиск фильмов"
+            autocomplete="off"
+          />
         </label>
         <button type="submit" class="search-movie-button">
           <svg class="search-icon" width="12" height="12">
@@ -31,6 +37,7 @@
         </button>
       </div>
     </form>
+    <p class="search-error-message"></p>
     <ul class="list library-nav-list visually-hidden">
       <li class="library-nav-item">
         <a class="link library-nav-button watched">Watched</a>

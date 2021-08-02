@@ -21,5 +21,6 @@ export const refs = {
   addQueue: document.querySelector('.add-to-queue-btn'),
   watched: document.querySelector('.watched'),
   queue: document.querySelector('.queue'),
+  searchErrorMessage: document.querySelector('.search-error-message')
   // empty-library-massage
 };
