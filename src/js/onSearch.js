@@ -1,6 +1,6 @@
 import { refs } from './refs';
 import { fetchPopularDayMovies, fetchPopularWeekMovies, MoviesApiService } from './apiService';
-import { onIncorrectInput } from './incorrectInput';
+import { showErrorMessage } from './incorrectInput';
 import searchFilmsTpl from '../templates/home-card-movie';
 import modalMovieInfo from '../templates/modal-movie-content';
 import genres from './genres_ids.json';
@@ -12,16 +12,19 @@ export function onSearch(e) {
   e.preventDefault();
   refs.sectionContainer.innerHTML = '';
   refs.popularMoveisNav.classList.add('visually-hidden');
-  moviesApiService.query = e.currentTarget.elements.query.value;
-  // moviesApiService.resetPage();
-  moviesApiService.getmoviesBySearch().then(renderResaultsMarkup);
+  moviesApiService.query = e.currentTarget.elements.query.value.trim();
 
+  if (moviesApiService.query === '') {
+    showErrorMessage('Enter your search query, please!');
+    return
+  }
+  moviesApiService.getmoviesBySearch().then(renderResaultsMarkup);
 }
 
 function renderResaultsMarkup(results) {
-  console.log(results.length);
+  
   if(results.length === 0) {
-    onIncorrectInput();
+    showErrorMessage('Search result not successful. Enter the correct movie name and try again!');
   }
   const moviesArray = [...results];
   moviesArray.forEach(element => {
@@ -37,7 +40,7 @@ function renderResaultsMarkup(results) {
     element.genre_ids = genresArray;
   });
 
-  refs.sectionContainer.insertAdjacentHTML('afterbegin ', searchFilmsTpl(moviesArray));
+  refs.sectionContainer.insertAdjacentHTML('afterbegin', searchFilmsTpl(moviesArray));
   moviesList = document.querySelector('.movies-list');
   const cardClickHandler = function (evt) {
     let pathNumber;
