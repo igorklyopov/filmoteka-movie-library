@@ -4,14 +4,19 @@ import './sass/main.scss';
 // import searchFilmsTpl from './templates/home-card-movie';
 
 import { refs } from './js/refs';
-import './js/onSearch'
-import './js/modalCloseAction'
-import './js/toTopButton'
+import './js/onSearch';
+import './js/modalCloseAction';
+import './js/toTopButton';
 
 // import genres from './js/genres_ids.json'
-// import themeSwitcher from './js/theme-switcher';
+import './js/theme-switcher';
 import './js/spa';
-import { onHomePageLoad, onWeekBtnClick, onDayBtnClick, loadMorePopMovies} from './js/popMoviesloadFunctions';
+import {
+  onHomePageLoad,
+  onWeekBtnClick,
+  onDayBtnClick,
+  loadMorePopMovies,
+} from './js/popMoviesloadFunctions';
 
 onHomePageLoad();
 
@@ -19,12 +24,12 @@ refs.weekBtn.addEventListener('click', onWeekBtnClick);
 refs.dayBtn.addEventListener('click', onDayBtnClick);
 
 const moviesLoadObserver = new IntersectionObserver(makeInfiniteScrolling, { threshold: 0 });
- 
-  function makeInfiniteScrolling ([entrie]) {
-       if (!entrie.isIntersecting) {
-         return;
-       }
-       loadMorePopMovies();
-   };
-   
-   moviesLoadObserver.observe(refs.infiniteScrollingAnchor);
+
+function makeInfiniteScrolling([entrie]) {
+  if (!entrie.isIntersecting) {
+    return;
+  }
+  loadMorePopMovies();
+}
+
+moviesLoadObserver.observe(refs.infiniteScrollingAnchor);
