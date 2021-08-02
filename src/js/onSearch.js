@@ -7,7 +7,6 @@ import genres from './genres_ids.json';
 const moviesApiService = new MoviesApiService();
 let moviesList;
 
-
 export function onSearch(e) {
   e.preventDefault();
   refs.sectionContainer.innerHTML = '';
@@ -32,7 +31,7 @@ function renderResaultsMarkup(results) {
     element.genre_ids = genresArray;
   });
 
-  refs.sectionContainer.insertAdjacentHTML('beforeend', searchFilmsTpl(moviesArray));
+  refs.sectionContainer.insertAdjacentHTML('afterbegin ', searchFilmsTpl(moviesArray));
   moviesList = document.querySelector('.movies-list');
   const cardClickHandler = function (evt) {
     let pathNumber;
@@ -50,8 +49,8 @@ function renderResaultsMarkup(results) {
       return;
     }
     if (refs.modalInfo.innerHTML !== '') {
-        return;
-      }
+      return;
+    }
 
     const data = Object.assign({}, evt.path[pathNumber].dataset);
     const markUp = modalMovieInfo(data);

@@ -17,5 +17,7 @@ export const refs = {
   mylibraryBtn: document.querySelector('.js-btn-my-library'),
   library: document.querySelector('.js-gallery-library'),
   searchMovieButton: document.querySelector('.search-movie-button'),
+  addWatched: document.querySelector('.add-to-watched-btn'),
+  addQueue: document.querySelector('.add-to-queue-btn'),
   // empty-library-massage
 };
