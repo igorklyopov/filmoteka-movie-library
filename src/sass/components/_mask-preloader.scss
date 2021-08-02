@@ -17,9 +17,9 @@
   border: 10px solid rgba(84, 84, 84, 0.6);
   border-radius: 50%;
   border-left-color: var(--footer-text-color);
-  animation: loader 1.3s linear infinite;
+  animation: loader 0.7s linear infinite;
 
-  @keyframes Loader {
+  @keyframes loader {
     100% {
       transform: rotate(360deg);
     }
