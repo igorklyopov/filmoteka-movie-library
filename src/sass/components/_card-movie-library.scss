@@ -29,6 +29,7 @@
 .movie-name {
   margin: 0;
   text-transform: uppercase;
+  font-size: 12px;
 }
 .generes-rating {
   display: flex;
@@ -52,4 +53,12 @@
   font-style: normal;
   font-weight: var(--medium-font-weight);
   align-items: center;
+}
+.js-gallery-library {
+  display: flex;
+  flex-wrap: wrap;
+  grid-gap: 30px;
+}
+.movie-date {
+  opacity: 0;
 }
