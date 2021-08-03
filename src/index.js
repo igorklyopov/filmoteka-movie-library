@@ -9,17 +9,15 @@ import './js/modalCloseAction';
 import './js/toTopButton';
 import './js/addMovieToLibrary';
 
+
 // import genres from './js/genres_ids.json'
-// import themeSwitcher from './js/theme-switcher';
+import './js/theme-switcher';
 import './js/spa';
 import {
-  onHomePageLoad,
   onWeekBtnClick,
   onDayBtnClick,
   loadMorePopMovies,
 } from './js/popMoviesloadFunctions';
-
-onHomePageLoad();
 
 refs.weekBtn.addEventListener('click', onWeekBtnClick);
 refs.dayBtn.addEventListener('click', onDayBtnClick);

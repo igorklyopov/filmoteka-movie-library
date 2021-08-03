@@ -1,7 +1,7 @@
 <header class="header">
   <div class="container">
     <div class="header-content-wrap">
-      <a href="index.html" class="link logo">
+      <a href="/" class="link navigation-link logo">
         <svg class="logo-icon" width="24" height="24">
           <use href="./images/sprite.svg#icon-logo"></use>
         </svg>
@@ -10,10 +10,10 @@
       <nav class="navigation">
         <ul class="list navigation-list">
           <li class="navigation-item">
-            <a class="link navigation-link home js-btn-home active-navigation" href="#">Home</a>
+            <a class="link navigation-link home js-btn-home active-navigation" href="/">Home</a>
           </li>
           <li class="navigation-item">
-            <a class="link navigation-link my-library js-btn-my-library" href="#">My library</a>
+            <a class="link navigation-link my-library js-btn-my-library" href="/library">My library</a>
           </li>
         </ul>
       </nav>
@@ -22,13 +22,7 @@
       <div class="search-movie-input-wrap">
         <label class="search-movie-label">
           <span class="visually-hidden">Movie search</span>
-          <input
-            type="text"
-            name="query"
-            class="search-movie-input"
-            placeholder="Поиск фильмов"
-            autocomplete="off"
-          />
+          <input type="text" name="query" class="search-movie-input" placeholder="Поиск фильмов" autocomplete="off" />
         </label>
         <button type="submit" class="search-movie-button">
           <svg class="search-icon" width="12" height="12">
@@ -45,9 +39,10 @@
       <li class="library-nav-item">
         <a class="link library-nav-button queue">Queue</a>
       </li>
-      <li class="library-nav-item theme-switch-container">
-        <include src="./partials/theme-switch.html"></include>
-      </li>
     </ul>
+    <include src="./partials/theme-switch.html"></include>
+    <div class="library-nav-item theme-switch-container">
+        
+      
   </div>
 </header>

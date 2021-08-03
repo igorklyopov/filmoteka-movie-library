@@ -1,11 +1,11 @@
 import { refs } from './refs';
-import { fetchPopularDayMovies, fetchPopularWeekMovies, MoviesApiService } from './apiService';
+import moviesApiService from './apiService';
 import { showErrorMessage } from './incorrectInput';
 import searchFilmsTpl from '../templates/home-card-movie';
 import modalMovieInfo from '../templates/modal-movie-content';
 import genres from './genres_ids.json';
+import { initModalButtons } from './addMovieToLibrary';
 
-const moviesApiService = new MoviesApiService();
 let moviesList;
 
 export function onSearch(e) {
@@ -18,13 +18,17 @@ export function onSearch(e) {
     showErrorMessage('Enter your search query, please!');
     return
   }
+  moviesApiService.resetPage();
   moviesApiService.getmoviesBySearch().then(renderResaultsMarkup);
 }
 
-function renderResaultsMarkup(results) {
-  
+function renderResaultsMarkup(data) {
+  const { results } = data
   if(results.length === 0) {
     showErrorMessage('Search result not successful. Enter the correct movie name and try again!');
+    setTimeout(function(){
+      window.location.href = './index.html';
+    }, 5000);
   }
   const moviesArray = [...results];
   moviesArray.forEach(element => {
@@ -67,7 +71,25 @@ function renderResaultsMarkup(results) {
     refs.modalInfo.insertAdjacentHTML('beforeend', markUp);
 
     refs.modal.classList.add('modal-movie-card-visible');
+    initModalButtons();
   };
 
   moviesList.addEventListener('click', cardClickHandler);
+}
+
+export async function loadMoreSearchMovies() {
+  switchLoadingDots('on');
+
+  moviesApiService.incrementPage()
+
+  try {
+    await moviesApiService.getmoviesBySearch().then((movie) => {
+  
+      return renderResaultsMarkup(movie)
+    });
+  } catch (error) {
+    console.log(error);
+  }
+
+  switchLoadingDots('off');
 }

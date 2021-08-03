@@ -14,13 +14,16 @@
                     <li class="movie-popularity">{{popularity}}</li>
                     <li class="movie-original-title-value">{{original}}</li>
                     <li class="movie-genre">{{genres}}</li>
+                    <li class="movie-date">{{date}}</li>
                 </ul>
             </div>
             <h4 class="movie-about-title">ABOUT</h4>
             <p class="movie-description">{{description}}</p>
             <div class="movie-btn-container">
-                <button class="add-to-watched-btn basic-button">ADD TO WATCHED</button>
-                <button class="add-to-queue-btn basic-button">ADD TO QUEUE</button>
+                <button class="add-to-watched-btn basic-button visually-hidden">ADD TO WATCHED</button>
+                <button class="remove-from-watched-btn basic-button visually-hidden">REMOVE FROM WATCHED</button>
+                <button class="add-to-queue-btn basic-button visually-hidden">ADD TO QUEUE</button>
+                <button class="remove-from-queue-btn basic-button visually-hidden">REMOVE FROM QUEUE</button>
             </div>
         </div>
 </div>

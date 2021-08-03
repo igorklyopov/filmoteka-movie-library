@@ -1,19 +1,13 @@
-import { MoviesApiService } from './apiService';
+import popMoviesApiService from './apiService';
 import { refs } from './refs';
 import genres from './genres_ids.json';
-import popularFilmsTpl from '../templates/popular-films.hbs';
 import modalMovieInfo from '../templates/modal-movie-content';
-
+import { initModalButtons } from './addMovieToLibrary'
 import homeCardMovie from '../templates/home-card-movie';
 import buttonSwitcher from './buttonSwitcher';
 import switchLoadingDots from './switchLoadingDots';
 
-const popMoviesApiService = new MoviesApiService();
-
 function onHomePageLoad() {
-  // if (refs.sectionContainer.classList.contains('visually-hidden')) {
-  //   return
-  // }
   
   try {
       popMoviesApiService.getPopularDayMovies().then((movie) => {
@@ -27,9 +21,6 @@ function onHomePageLoad() {
     refs.dayBtn.classList.add('is-active');
     
 }
-
-const WATCHED = [];
-const QUEUE = [];
 
 function renderPopularMoviesCards(movies) {
   if (refs.sectionContainer.classList.contains('visually-hidden')) {
@@ -88,68 +79,13 @@ function renderPopularMoviesCards(movies) {
       if (refs.modalInfo.innerHTML !== '') {
         return;
       }
-          
+
       const data = Object.assign({}, evt.path[pathNumber].dataset);
       const markUp = modalMovieInfo(data);
       refs.modalInfo.insertAdjacentHTML('beforeend', markUp)
   
       refs.modal.classList.add('modal-movie-card-visible')
-
-      const addToWatchedBtn = document.querySelector('.add-to-watched-btn');
-      const addToQueueBtn = document.querySelector('.add-to-queue-btn');
-
-      checkWatchedStatus(data);
-      checkQueueStatus(data);
-
-      addToWatchedBtn.addEventListener('click', onAddToWatchedBtnClick);
-      addToQueueBtn.addEventListener('click', onAddToQueueBtnClick);
-
-
-      function checkWatchedStatus(data) {
-        const watchedStorage = JSON.parse(localStorage.getItem('WATCHED'));
-        if (watchedStorage.includes(data)) {
-          addToWatchedBtn.textContent = 'REMOVE FROM WATCHED';
-        }
-      }
-
-      function checkQueueStatus(data) {
-        const queueStorage = JSON.parse(localStorage.getItem('WATCHED'));
-        if (queueStorage.includes(data)) {
-          addToQueueBtn.textContent = 'REMOVE FROM QUEUE';
-        }
-      }
-
-      function onAddToWatchedBtnClick(event) {
-          event.preventDefault();
-          if (addToWatchedBtn.textContent === 'REMOVE FROM WATCHED') {
-              let movieIndex = WATCHED.indexOf(data);
-            WATCHED.splice(movieIndex, 1);
-            localStorage.setItem('WATCHED', JSON.stringify(WATCHED));
-            addToWatchedBtn.textContent = 'ADD TO WATCHED'
-              return;
-          }
-        WATCHED.push(data);
-        localStorage.setItem('WATCHED', JSON.stringify(WATCHED));
-        addToWatchedBtn.textContent = 'REMOVE FROM WATCHED';
-        
-      }
-
-      function onAddToQueueBtnClick(event) {
-        event.preventDefault();
-        checkQueueStatus(data);
-          
-          if (addToQueueBtn.textContent === 'REMOVE FROM QUEUE') {
-              let movieIndex = QUEUE.indexOf(data);
-            QUEUE.splice(movieIndex, 1);
-            localStorage.setItem('QUEUE', JSON.stringify(QUEUE));
-            addToQueueBtn.textContent = 'ADD TO QUEUE';
-              return;
-        }
-      
-        QUEUE.push(data);
-        localStorage.setItem('QUEUE', JSON.stringify(QUEUE));
-        addToQueueBtn.textContent = 'REMOVE FROM QUEUE';
-      }
+      initModalButtons()
     }
   
     refs.moviesList.addEventListener('click', cardClickHandler);
@@ -196,10 +132,14 @@ async function loadMorePopMovies() {
   popMoviesApiService.incrementPage()
 
   try {
-    await popMoviesApiService.getPopularDayMovies().then((movie) => {
-  
-      return renderPopularMoviesCards(movie)
-    });
+    let movies
+
+    if (popMoviesApiService.query) {
+      movies = await popMoviesApiService.getmoviesBySearch();
+    } else {
+      movies = await popMoviesApiService.getPopularDayMovies();
+    }
+    return renderPopularMoviesCards(movies);
   } catch (error) {
     console.log(error);
   }

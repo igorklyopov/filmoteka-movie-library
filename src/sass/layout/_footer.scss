@@ -1,98 +1,109 @@
 .footer {
-	position: fixed;
-	left: 0;
-	bottom: 0;
-	width: 100%;
-    margin-top: 40px;
-    padding-top: 30px;
-    padding-bottom: 28px;
-    background-color: var(--footer-bg-color);
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding-top: 20px;
+  padding-bottom: 16px;
+  background-color: var(--footer-bg-color);
+  transform: translateY(65px);
+  transition: var(--basic-transform-animation);
+}
+
+.show-footer {
+  transform: translateY(0);
+}
+
+.show-footer-in-library {
+  transform: none;
 }
 
 .footer-container {
-    display: block; /*for phone, 2 lines*/
-    font-family: var(--font-family);
-    //font-style: normal;
-    font-weight: var(--regular-font-weight);
-    font-size: 14px;
-    line-height: 16px;
-    @include adaptive-for-tablet {
-        display: flex; /*for tablet and higher, 1 line*/
-        font-size: 16px;
-        line-height: 19px;
-    }
-    justify-content: center;  /*centers horizontally*/
-    color: var(--footer-text-color);
+  display: block; /*for phone, 2 lines*/
+  font-family: var(--font-family);
+  //font-style: normal;
+  font-weight: var(--regular-font-weight);
+  font-size: 14px;
+  line-height: 16px;
+  @include adaptive-for-tablet {
+    display: flex; /*for tablet and higher, 1 line*/
+    font-size: 16px;
+    line-height: 19px;
+  }
+  justify-content: center; /*centers horizontally*/
+  color: var(--footer-text-color);
 }
 
 .footer-line1 {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .footer-line2 {
-    display: flex;
-    justify-content: center;
-    margin-left: 5px;
+  display: flex;
+  justify-content: center;
+  margin-left: 5px;
 }
 
 .footer-icon {
-    margin-left: 10px;
-    margin-right: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .footer-active-text {
-    text-decoration: underline;
-	cursor: pointer;
-	transition: color var(--hover-focus-transition);
+  text-decoration: underline;
+  cursor: pointer;
+  transition: color var(--hover-focus-transition);
 
-	&:hover,
-	&:focus {
-		color: #0000FF;
-	}
+  &:hover,
+  &:focus {
+    color: #0000ff;
+  }
 }
 
-/* Modal */@at-root
+.footer-text {
+  margin-bottom: 0;
+}
 
-body.footer-show-modal .footer-backdrop {
-	opacity: 1;
-	visibility: visible;
-	pointer-events: initial;
+/* Modal */
+@at-root body.footer-show-modal .footer-backdrop {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: initial;
 }
 
 body.footer-show-modal .footer-modal {
-	transform: scale(1);
+  transform: scale(1);
 }
 
 .footer-backdrop {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100vw;
-	height: 100vh;
-	background-color: rgba(0,0,0,0.3);
-	z-index: 999;
-	
-	pointer-events: none;
-	opacity: 0;
-	visibility: hidden;
-	transition: opacity 200ms ease-in-out, visibility 200ms ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 999;
+
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 200ms ease-in-out, visibility 200ms ease-in-out;
 }
 
 .footer-modal {
-	position: relative;
-	padding: 20px;
-	//min-height: 320px;
-	//width: 720px;
-	//height: 320px;
-	background-color: #fff;
-	box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.2),
-		0px 1px 1px 0px rgba(0,0,0,0.14);
-	transform: scale(1.1);
-	transition: transform 200ms ease-in-out;
+  position: relative;
+  padding: 20px;
+  //min-height: 320px;
+  //width: 720px;
+  //height: 320px;
+  background-color: #fff;
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14);
+  transform: scale(1.1);
+  transition: transform 200ms ease-in-out;
 }
 
 /*
@@ -102,75 +113,74 @@ body.footer-show-modal .footer-modal {
 	right: 10px;
 	cursor: pointer;
 }
-*/@at-root
-
-.footer-modal-close {
-	position: absolute;
-	top: 10px;
-	right: 10px;
-	width: 30px;
-	height: 30px;
-	fill: black;
-	transition: fill var(--hover-focus-transition);
-	&:hover,
-	&:focus {
-		fill: #0000FF;
-	}
+*/
+@at-root .footer-modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  fill: black;
+  transition: fill var(--hover-focus-transition);
+  &:hover,
+  &:focus {
+    fill: #0000ff;
+  }
 }
 
 .team-members-title {
-	font-size: 16px;
-	text-align: center;
+  font-size: 16px;
+  text-align: center;
 }
 
 .team-members-data {
-	display: none;
+  display: none;
 }
 
 .team-members-list {
-	margin: 0px;
-	padding: 0px;
-    display: flex;
-    flex-wrap: wrap;
-    list-style: none;
-	background-color: var(--footer-bg-color);
-	border-radius: 15px;
-	//justify-content: center;
+  margin: 0px;
+  padding: 0px;
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  background-color: var(--footer-bg-color);
+  border-radius: 15px;
+  //justify-content: center;
 
-	overflow: auto;  /*adds scrollers if needed*/
-	height: 380px;
-	width: 260px;
-    @include adaptive-for-tablet {
-		width: 620px;
-		height: auto;
-	}
-    @include adaptive-for-desktop {
-		width: 870px;
-		height: auto;
-	}
+  overflow: auto; /*adds scrollers if needed*/
+  height: 380px;
+  width: 260px;
+  @include adaptive-for-tablet {
+    width: 620px;
+    height: auto;
+  }
+  @include adaptive-for-desktop {
+    width: 870px;
+    height: auto;
+  }
 }
 
 .team-member-card {
-	margin-top: 20px;
-	margin-left: 20px;
-	padding: 0px;
-	justify-content: center;
+  margin-top: 20px;
+  margin-left: 20px;
+  padding: 0px;
+  justify-content: center;
 }
 
 .team-member-img {
-	border-radius: 15px;
-	width: 200px;
-	height: 200px;
-	//margin-bottom: 10px;
-	@include adaptive-for-tablet {
-		width: 100px;
-		height: 100px;
-	}
-	@include adaptive-for-desktop {
-		width: 150px;
-		height: 150px;
-	}
-	/*
+  border-radius: 15px;
+  width: 200px;
+  height: 200px;
+  //margin-bottom: 10px;
+  @include adaptive-for-tablet {
+    width: 100px;
+    height: 100px;
+  }
+  @include adaptive-for-desktop {
+    width: 150px;
+    height: 150px;
+  }
+  /*
 	&:hover {
 		width: 200px;
 		height: 200px;
@@ -179,42 +189,41 @@ body.footer-show-modal .footer-modal {
 }
 
 .team-member-name {
-	text-align: center;
-	font-size: 18px;
-	margin-top: 10px;
-	margin-bottom: 0px;
+  text-align: center;
+  font-size: 18px;
+  margin-top: 10px;
+  margin-bottom: 0px;
 }
 
 .team-member-surname {
-	text-align: center;
-	font-size: 18px;
-	margin-top: 5px;
-	margin-bottom: 0px;
+  text-align: center;
+  font-size: 18px;
+  margin-top: 5px;
+  margin-bottom: 0px;
 }
 
 .team-member-links {
-	//background-color: yellow;
-	//width: 100px;
-	display: flex;
-	justify-content: center;
-	margin-top: 15px;
+  //background-color: yellow;
+  //width: 100px;
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
 }
 
 .team-member-link {
-	//width: 44px;
-	//height: 44px;
+  //width: 44px;
+  //height: 44px;
 }
 
 .team-member-icon {
-	width: 24px;
-	height: 24px;
-	margin-left: 10px;
-	margin-right: 10px;
-	fill: var(--footer-text-color);
-	transition: fill var(--hover-focus-transition);
-	&:hover,
-	&:focus {
-		fill: #0000FF;
-	}
+  width: 24px;
+  height: 24px;
+  margin-left: 10px;
+  margin-right: 10px;
+  fill: var(--footer-text-color);
+  transition: fill var(--hover-focus-transition);
+  &:hover,
+  &:focus {
+    fill: #0000ff;
+  }
 }
-
