@@ -23,4 +23,5 @@ export const refs = {
   searchErrorMessage: document.querySelector('.search-error-message'),
   emptyMassage: document.querySelector('.empty-library-massage'),
   cardLibrary: document.querySelector('.card-library'),
+  input: document.querySelector('.search-movie-input'),
 };

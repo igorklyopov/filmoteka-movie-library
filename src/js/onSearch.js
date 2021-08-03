@@ -74,3 +74,20 @@ function renderResaultsMarkup(results) {
 
   moviesList.addEventListener('click', cardClickHandler);
 }
+
+export async function loadMoreSearchMovies() {
+  switchLoadingDots('on');
+
+  moviesApiService.incrementPage()
+
+  try {
+    await moviesApiService.getmoviesBySearch().then((movie) => {
+  
+      return renderResaultsMarkup(movie)
+    });
+  } catch (error) {
+    console.log(error);
+  }
+
+  switchLoadingDots('off');
+}
