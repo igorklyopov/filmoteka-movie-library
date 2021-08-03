@@ -203,7 +203,6 @@ function onLibraryQueueClick() {
     }
 
     const nameClose = e.target.parentNode.children[2].children[0].innerText;
-    console.log(nameClose);
 
     const localFromClose = JSON.parse(localStorage.getItem('Queue'));
     
@@ -212,7 +211,6 @@ function onLibraryQueueClick() {
     let updateQueueMovies = JSON.parse(localStorage.getItem('Queue'));
     refs.library.innerHTML = libraryTpl(updateQueueMovies);
     queueArray = objects;
-    console.log(queueArray);
   }
 }
 
