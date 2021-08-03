@@ -1,7 +1,6 @@
 import { BASE_URL, API_KEY, SEARCH_MOVIE, TRANDING_DAY, TRANDING_WEEK } from './fetchConst';
-import { refs } from './refs';
 
-export class MoviesApiService {
+class MoviesApiService {
   constructor() {
     this.searchQuery = '';
     this.pageNumber = 1;
@@ -30,7 +29,7 @@ export class MoviesApiService {
         });
 
         // this.page += 1;
-        return data.results;
+        return data;
       });
     });
   }
@@ -64,3 +63,5 @@ export class MoviesApiService {
     this.searchQuery = newQuery;
   }
 }
+
+export default new MoviesApiService()

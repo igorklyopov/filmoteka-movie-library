@@ -1,4 +1,4 @@
-import { MoviesApiService } from './apiService';
+import popMoviesApiService from './apiService';
 import { refs } from './refs';
 import genres from './genres_ids.json';
 import modalMovieInfo from '../templates/modal-movie-content';
@@ -6,8 +6,6 @@ import { initModalButtons } from './addMovieToLibrary'
 import homeCardMovie from '../templates/home-card-movie';
 import buttonSwitcher from './buttonSwitcher';
 import switchLoadingDots from './switchLoadingDots';
-
-const popMoviesApiService = new MoviesApiService();
 
 function onHomePageLoad() {
   
@@ -134,10 +132,14 @@ async function loadMorePopMovies() {
   popMoviesApiService.incrementPage()
 
   try {
-    await popMoviesApiService.getPopularDayMovies().then((movie) => {
-  
-      return renderPopularMoviesCards(movie)
-    });
+    let movies
+
+    if (popMoviesApiService.query) {
+      movies = await popMoviesApiService.getmoviesBySearch();
+    } else {
+      movies = await popMoviesApiService.getPopularDayMovies();
+    }
+    return renderPopularMoviesCards(movies);
   } catch (error) {
     console.log(error);
   }
