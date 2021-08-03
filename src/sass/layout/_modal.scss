@@ -44,14 +44,13 @@
   transition: transform var(--transition-timing-function);
   transform: translate(-50%, -50%) rotate(1turn);
   height: 90%;
-
   width: 90%;
   overflow: scroll;
 
   @media screen and (min-width: 768px) {
     max-width: 618px;
     max-height: 562px;
-    overflow: hidden;
+    // overflow: hidden;
   }
   @media screen and (min-width: 1024px) {
     max-height: 568px;
@@ -118,6 +117,32 @@
   padding: 0;
   margin-bottom: 10px;
   list-style: none;
+  @media screen and (max-width: 767px) {
+    font-size: 12px;
+  }
+  font-size: 10px;
+
+  @media screen and (min-width: 1024px) {
+    font-size: 12px;
+  }
+
+  // font-size: 10px;
+  // @media screen and (min-width: 1024px) {
+  //   font-size: 12px;
+  // }
+}
+
+.movie-info-titles li {
+  color: var(--film-card-text-color);
+}
+
+.movie-original-title-value {
+  max-width: 107px;
+  max-height: 15px;
+  overflow: scroll;
+  @media screen and (min-width: 768px) {
+    max-width: 190px;
+  }
 }
 
 .modal-movie-name,
@@ -130,26 +155,19 @@
   line-height: 117%;
 }
 
+.movie-rating {
+  height: 15px;
+}
+
 .movie-info-values {
   list-style: none;
-  padding-left: 0px;
-  margin-left: 39px;
+  margin-left: 20px;
+
+  @media screen and (min-width: 320px) {
+    margin-left: 32px;
+  }
   @media screen and (min-width: 1024px) {
     margin-left: 83px;
-  }
-}
-
-.movie-info-titles li {
-  color: var(--film-card-text-color);
-  @media screen and (max-width: 319px) {
-    font-size: 10px;
-  }
-}
-
-.movie-info-values li {
-  line-height: 116%;
-  @media screen and (max-width: 319px) {
-    font-size: 10px;
   }
 }
 
@@ -182,9 +200,11 @@
 .remove-from-watched-btn,
 .add-to-watched-btn,
 .add-to-queue-btn {
+  width: 112px;
   height: 44px;
   border: none;
   border-radius: 5px;
+  text-transform: uppercase;
 
   @media screen and (max-width: 319px) {
     font-size: 10px;
@@ -196,6 +216,16 @@
     width: 136px;
   }
 }
+
+.add-to-watched-btn {
+  color: var(--secondary-text-color);
+  background-color: var(--primary-accent-color);
+
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+
 .remove-from-queue-btn,
 .add-to-queue-btn {
   color: var(--primary-text-color);
