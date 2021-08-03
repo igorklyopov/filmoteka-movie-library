@@ -26,6 +26,9 @@ function renderResaultsMarkup(results) {
   
   if(results.length === 0) {
     showErrorMessage('Search result not successful. Enter the correct movie name and try again!');
+    setTimeout(function(){
+      window.location.href = './index.html';
+    }, 5000);
   }
   const moviesArray = [...results];
   moviesArray.forEach(element => {
@@ -72,4 +75,21 @@ function renderResaultsMarkup(results) {
   };
 
   moviesList.addEventListener('click', cardClickHandler);
+}
+
+export async function loadMoreSearchMovies() {
+  switchLoadingDots('on');
+
+  moviesApiService.incrementPage()
+
+  try {
+    await moviesApiService.getmoviesBySearch().then((movie) => {
+  
+      return renderResaultsMarkup(movie)
+    });
+  } catch (error) {
+    console.log(error);
+  }
+
+  switchLoadingDots('off');
 }
