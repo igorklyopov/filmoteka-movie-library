@@ -55,6 +55,7 @@ function onHomeBtnClick(e) {
   refs.libraryButtons.classList.add('visually-hidden');
   refs.mylibraryBtn.classList.remove('active-navigation');
   refs.homeBtn.classList.add('active-navigation');
+  refs.footer.classList.remove('show-footer-in-library');
 }
 
 function onMyLibraryBtnClick(e) {
@@ -67,6 +68,7 @@ function onMyLibraryBtnClick(e) {
   refs.libraryButtons.classList.remove('visually-hidden');
   refs.mylibraryBtn.classList.add('active-navigation');
   refs.homeBtn.classList.remove('active-navigation');
+  refs.footer.classList.add('show-footer-in-library');
   onLibraryWatсhedClick();
 }
 document.querySelector('.search-movie-form').addEventListener('submit', onSearch);
