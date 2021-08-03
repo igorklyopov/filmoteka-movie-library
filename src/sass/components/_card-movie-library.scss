@@ -1,5 +1,6 @@
 .card-library {
   position: relative;
+  cursor: pointer;
   width: 280px;
   height: 440px;
   @include adaptive-for-tablet {
@@ -9,6 +10,7 @@
     width: 274px;
   }
 }
+
 .img-card-library {
   background: url('../images/demo.png');
   text-indent: -10000px;
