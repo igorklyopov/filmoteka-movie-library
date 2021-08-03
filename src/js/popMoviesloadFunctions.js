@@ -8,7 +8,7 @@ import buttonSwitcher from './buttonSwitcher';
 import switchLoadingDots from './switchLoadingDots';
 
 function onHomePageLoad() {
-  
+  popMoviesApiService.resetPage()
   try {
       popMoviesApiService.getPopularDayMovies().then((movie) => {
       return renderPopularMoviesCards(movie);
