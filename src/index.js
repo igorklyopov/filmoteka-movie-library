@@ -14,13 +14,10 @@ import './js/addMovieToLibrary';
 import './js/theme-switcher';
 import './js/spa';
 import {
-  onHomePageLoad,
   onWeekBtnClick,
   onDayBtnClick,
   loadMorePopMovies,
 } from './js/popMoviesloadFunctions';
-
-onHomePageLoad();
 
 refs.weekBtn.addEventListener('click', onWeekBtnClick);
 refs.dayBtn.addEventListener('click', onDayBtnClick);
