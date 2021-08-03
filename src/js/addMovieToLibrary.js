@@ -85,7 +85,8 @@ refs.queue.addEventListener('click', onLibraryQueueClick);
 function onLibraryWatсhedClick() {
   buttonSwitcher(refs.watched, refs.queue);
   refs.library.innerHTML = '';
-  const watchedMovies = JSON.parse(localStorage.getItem('Watched'));
+  
+  let watchedMovies = JSON.parse(localStorage.getItem('Watched'));
   if (watchedMovies !== null) {
     refs.emptyMassage.classList.add('visually-hidden');
   }
@@ -99,15 +100,15 @@ function onLibraryWatсhedClick() {
       return;
     }
 
-    const nameClose = e.target.offsetParent.children[2].children[0].innerText;
+    const nameClose = e.target.offsetParent?.children[2].children[0].innerText;
     const localFromClose = JSON.parse(localStorage.getItem('Watched'));
-    console.log(localFromClose);
-    let objects = localFromClose.forEach(function (item) {
-      if (item.name === nameClose) {
-        //  А ТУТ НУЖНО КАК ТО УДАЛИТЬ ОПРЕДЕЛЕННЫЙ ЭЛЕМЕНТ ИЗ МАСИВА
-        //  И ЗАПИСАТЬ ОБРАТНО В LocalStorage
-      }
-    });
+    
+    let objects = localFromClose.filter((item) => item.name !== nameClose);
+    localStorage.setItem('Watched', JSON.stringify(objects));
+    let updateWatchedMovies = JSON.parse(localStorage.getItem('Watched'));
+    refs.library.innerHTML = libraryTpl(updateWatchedMovies);
+    // location.reload()//перезагружает страницу
+
   }
 }
 ///////////////////////// CLOSE //////////////////////////
