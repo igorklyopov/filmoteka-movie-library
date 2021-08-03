@@ -86,12 +86,39 @@ function onLibraryWatсhedClick() {
   buttonSwitcher(refs.watched, refs.queue);
   refs.library.innerHTML = '';
   const watchedMovies = JSON.parse(localStorage.getItem('Watched'));
+  if (watchedMovies !== null) {
+    refs.emptyMassage.classList.add('visually-hidden');
+  }
   refs.library.insertAdjacentHTML('beforeend', libraryTpl(watchedMovies));
-}
 
+  ///////////////////////// CLOSE ///////////////////////
+
+  refs.library.addEventListener('click', onCloseCard);
+  function onCloseCard(e) {
+    if (e.target.className !== 'closeCard') {
+      return;
+    }
+
+    const nameClose = e.target.offsetParent.children[2].children[0].innerText;
+    const localFromClose = JSON.parse(localStorage.getItem('Watched'));
+    console.log(localFromClose);
+    let objects = localFromClose.forEach(function (item) {
+      if (item.name === nameClose) {
+        //  А ТУТ НУЖНО КАК ТО УДАЛИТЬ ОПРЕДЕЛЕННЫЙ ЭЛЕМЕНТ ИЗ МАСИВА
+        //  И ЗАПИСАТЬ ОБРАТНО В LocalStorage
+      }
+    });
+  }
+}
+///////////////////////// CLOSE //////////////////////////
 function onLibraryQueueClick() {
   buttonSwitcher(refs.queue, refs.watched);
   refs.library.innerHTML = '';
   const queueMovies = JSON.parse(localStorage.getItem('Queue'));
+  if (queueMovies === null) {
+    refs.emptyMassage.classList.remove('visually-hidden');
+  }
   refs.library.insertAdjacentHTML('beforeend', libraryTpl(queueMovies));
 }
+
+export { onWatchedClick, onLibraryWatсhedClick };
