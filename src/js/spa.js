@@ -10,7 +10,7 @@ const navigationLinks = document.getElementsByClassName('navigation-link'); //п
   navigationLink.addEventListener('click', function (e) {
     e.preventDefault(); //остановить обработку ссылки
 
-    navigateTo(e.target.getAttribute('href')); //добавляет новое состояние в историю браузера
+    navigateTo(e.currentTarget.getAttribute('href')); //добавляет новое состояние в историю браузера
   });
 });
 
