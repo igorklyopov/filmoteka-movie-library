@@ -5,8 +5,19 @@ import buttonSwitcher from './buttonSwitcher';
 
 refs.modal.addEventListener('click', onWatchedClick);
 
-const watchedArray = [];
-const queueArray = [];
+let watchedArray = [];
+let queueArray = [];
+
+if (localStorage.getItem('Watched') !== null) {
+  let locWatched = JSON.parse(localStorage.getItem('Watched'));
+  watchedArray.push(...locWatched);
+}
+
+if (localStorage.getItem('Queue') !== null) {
+  let locQueue = JSON.parse(localStorage.getItem('Queue'));
+  queueArray.push(...locQueue);
+}
+
 function onWatchedClick(e) {
   if (e.target.className !== 'add-to-watched-btn basic-button') {
     return;
@@ -21,8 +32,11 @@ function onWatchedClick(e) {
   const rating =
     e.target.offsetParent.childNodes[0].children[1].children[1].children[1].children[0].children[0]
       .innerText;
+  const date =
+    e.target.offsetParent.childNodes[0].children[1].children[1].children[1].children[4].innerText;
 
   const getObject = {
+    date: date,
     name: name,
     img: imageURL,
     genre: genres,
@@ -42,7 +56,7 @@ function onQueueClick(e) {
     return;
   }
   e.target.setAttribute('disabled', 'disabled');
-  
+
   const name = e.target.offsetParent.childNodes[0].childNodes[3].childNodes[1].innerText;
   const imageURL = e.target.offsetParent.childNodes[0].childNodes[1].currentSrc;
   const genres =
@@ -50,32 +64,61 @@ function onQueueClick(e) {
   const rating =
     e.target.offsetParent.childNodes[0].children[1].children[1].children[1].children[0].children[0]
       .innerText;
+  const date =
+    e.target.offsetParent.childNodes[0].children[1].children[1].children[1].children[4].innerText;
 
   const getObject = {
+    date: date,
     name: name,
     img: imageURL,
     genre: genres,
     rating: rating,
   };
   queueArray.push(getObject);
-  
+
   localStorage.setItem('Queue', JSON.stringify(queueArray));
 }
 
 refs.watched.addEventListener('click', onLibraryWatсhedClick);
 refs.queue.addEventListener('click', onLibraryQueueClick);
 
-
 function onLibraryWatсhedClick() {
-  buttonSwitcher(refs.watched, refs.queue)
+  buttonSwitcher(refs.watched, refs.queue);
   refs.library.innerHTML = '';
   const watchedMovies = JSON.parse(localStorage.getItem('Watched'));
+  if (watchedMovies !== null) {
+    refs.emptyMassage.classList.add('visually-hidden');
+  }
   refs.library.insertAdjacentHTML('beforeend', libraryTpl(watchedMovies));
-}
 
-function onLibraryQueueClick () {
-  buttonSwitcher(refs.queue, refs.watched)
+  ///////////////////////// CLOSE ///////////////////////
+
+  refs.library.addEventListener('click', onCloseCard);
+  function onCloseCard(e) {
+    if (e.target.className !== 'closeCard') {
+      return;
+    }
+
+    const nameClose = e.target.offsetParent.children[2].children[0].innerText;
+    const localFromClose = JSON.parse(localStorage.getItem('Watched'));
+    console.log(localFromClose);
+    let objects = localFromClose.forEach(function (item) {
+      if (item.name === nameClose) {
+        //  А ТУТ НУЖНО КАК ТО УДАЛИТЬ ОПРЕДЕЛЕННЫЙ ЭЛЕМЕНТ ИЗ МАСИВА
+        //  И ЗАПИСАТЬ ОБРАТНО В LocalStorage
+      }
+    });
+  }
+}
+///////////////////////// CLOSE //////////////////////////
+function onLibraryQueueClick() {
+  buttonSwitcher(refs.queue, refs.watched);
   refs.library.innerHTML = '';
   const queueMovies = JSON.parse(localStorage.getItem('Queue'));
+  if (queueMovies === null) {
+    refs.emptyMassage.classList.remove('visually-hidden');
+  }
   refs.library.insertAdjacentHTML('beforeend', libraryTpl(queueMovies));
 }
+
+export { onWatchedClick, onLibraryWatсhedClick };
