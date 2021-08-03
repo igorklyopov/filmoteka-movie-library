@@ -231,7 +231,6 @@ function onLibraryQueueClick() {
     localStorage.setItem('Queue', JSON.stringify(objects));
     let updateQueueMovies = JSON.parse(localStorage.getItem('Queue'));
     refs.library.innerHTML = libraryTpl(updateQueueMovies);
-    queueArray = objects;
   }
 }
 
