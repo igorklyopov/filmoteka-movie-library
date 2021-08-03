@@ -11,11 +11,16 @@ export const refs = {
   modal: document.querySelector('.modal-movie-card'),
   loadingDots: document.querySelector('.loading-dot-stage'),
   infiniteScrollingAnchor: document.querySelector('.js-infinite-scrolling-anchor'),
-  myLibraryIsActive: document.querySelector('.my-library'),
   myHomeIsActive: document.querySelector('.home'),
   homeBtn: document.querySelector('.js-btn-home'),
   mylibraryBtn: document.querySelector('.js-btn-my-library'),
   library: document.querySelector('.js-gallery-library'),
   searchMovieButton: document.querySelector('.search-movie-button'),
-  // empty-library-massage
+  addWatched: document.querySelector('.add-to-watched-btn'),
+  addQueue: document.querySelector('.add-to-queue-btn'),
+  watched: document.querySelector('.watched'),
+  queue: document.querySelector('.queue'),
+  searchErrorMessage: document.querySelector('.search-error-message'),
+  emptyMassage: document.querySelector('.empty-library-massage'),
+  cardLibrary: document.querySelector('.card-library'),
 };

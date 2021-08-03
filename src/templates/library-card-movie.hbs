@@ -1,12 +1,15 @@
+{{#each this}}
 <li class="card-library">
-    <img class="img-card-library" src="./images/demo.jpg" alt="" data-src="" />
-    <div class="movie-information">
-        <h2 class="movie-name">Movie name</h2>
-        <div class="generes-rating">
-            <p class="genres">Genres | 2021</p>
-            <div class="rating-container">
-                <span class="rating">10</span>
+        <img class="img-card-library" src="{{img}}" alt="" data-src="" />
+        <button type="button" class="closeCard">x</button>
+        <div class="movie-information">
+            <h2 class="movie-name">{{name}}</h2>
+            <div class="generes-rating">
+                <p class="genres">{{genre}} | {{date}}</p>
+                <div class="rating-container">
+                    <span class="rating">{{rating}}</span>
+                </div>
             </div>
         </div>
-    </div>
 </li>
+{{/each}}

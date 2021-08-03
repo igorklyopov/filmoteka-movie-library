@@ -11,9 +11,6 @@ import switchLoadingDots from './switchLoadingDots';
 const popMoviesApiService = new MoviesApiService();
 
 function onHomePageLoad() {
-  // if (refs.sectionContainer.classList.contains('visually-hidden')) {
-  //   return
-  // }
   
   try {
       popMoviesApiService.getPopularDayMovies().then((movie) => {
@@ -54,7 +51,7 @@ function renderPopularMoviesCards(movies) {
           genresArray.push(other);
         }
         
-      let releaseDate = element.release_date;
+      const releaseDate = element.release_date;
 
       const date = new Date(releaseDate);
       let year = date.getFullYear();

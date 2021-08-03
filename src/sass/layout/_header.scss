@@ -202,6 +202,14 @@
   stroke: var(--secondary-text-color);
   transition: stroke var(--hover-focus-transition);
 }
+.search-error-message {
+  margin-top: 20px;
+  font-weight: var(--regular-font-weight);
+  font-size: 14px;
+  line-height: 1.14;
+  text-align: center;
+  color: var(--secondary-accent-color);
+}
 
 @include adaptive-for-tablet {
   .header {

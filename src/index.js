@@ -7,6 +7,8 @@ import { refs } from './js/refs';
 import './js/onSearch';
 import './js/modalCloseAction';
 import './js/toTopButton';
+import './js/addMovieToLibrary';
+
 
 // import genres from './js/genres_ids.json'
 import './js/theme-switcher';

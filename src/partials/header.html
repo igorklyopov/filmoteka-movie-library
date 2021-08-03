@@ -13,7 +13,7 @@
             <a class="link navigation-link home js-btn-home active-navigation" href="#">Home</a>
           </li>
           <li class="navigation-item">
-            <a class="link navigation-link my-library js-btn-my-library" href="#">My library</a>
+            <a class="link navigation-link js-btn-my-library" href="#">My library</a>
           </li>
         </ul>
       </nav>
@@ -22,7 +22,7 @@
       <div class="search-movie-input-wrap">
         <label class="search-movie-label">
           <span class="visually-hidden">Movie search</span>
-          <input type="text" name="query" class="search-movie-input" placeholder="Поиск фильмов" />
+          <input type="text" name="query" class="search-movie-input" placeholder="Поиск фильмов" autocomplete="off" />
         </label>
         <button type="submit" class="search-movie-button">
           <svg class="search-icon" width="12" height="12">
@@ -31,12 +31,13 @@
         </button>
       </div>
     </form>
+    <p class="search-error-message"></p>
     <ul class="list library-nav-list visually-hidden">
       <li class="library-nav-item">
-        <a class="link library-nav-button">Watched</a>
+        <a class="link library-nav-button watched">Watched</a>
       </li>
       <li class="library-nav-item">
-        <a class="link library-nav-button">Queue</a>
+        <a class="link library-nav-button queue">Queue</a>
       </li>
       
     </ul>

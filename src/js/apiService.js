@@ -1,6 +1,5 @@
 import { BASE_URL, API_KEY, SEARCH_MOVIE, TRANDING_DAY, TRANDING_WEEK } from './fetchConst';
-import { refs } from '../js/refs';
-
+import { refs } from './refs';
 
 export class MoviesApiService {
   constructor() {
