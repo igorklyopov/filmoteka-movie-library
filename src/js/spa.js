@@ -23,6 +23,7 @@ function onHomeBtnClick() {
   refs.libraryButtons.classList.add('visually-hidden');
   refs.mylibraryBtn.classList.remove('active-navigation');
   refs.homeBtn.classList.add('active-navigation');
+  refs.footer.classList.remove('show-footer-in-library');
   refs.myLibraryIsActive.classList.remove('active-navigation');
   refs.myHomeIsActive.classList.add('active-navigation');
 }
@@ -36,6 +37,7 @@ function onMyLibraryBtnClick() {
   refs.libraryButtons.classList.remove('visually-hidden');
   refs.mylibraryBtn.classList.add('active-navigation');
   refs.homeBtn.classList.remove('active-navigation');
+  refs.footer.classList.add('show-footer-in-library');
   refs.myLibraryIsActive.classList.add('active-navigation');
   refs.myHomeIsActive.classList.remove('active-navigation');
   onLibraryWatсhedClick();
