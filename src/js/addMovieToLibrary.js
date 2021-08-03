@@ -34,6 +34,7 @@ function onWatchedClick(e) {
       .innerText;
   const date =
     e.target.offsetParent.childNodes[0].children[1].children[1].children[1].children[4].innerText;
+  const modalWindowContent = e.target.offsetParent.innerHTML;
 
   const getObject = {
     date: date,
@@ -41,6 +42,7 @@ function onWatchedClick(e) {
     img: imageURL,
     genre: genres,
     rating: rating,
+    modalWindowContent: modalWindowContent,
   };
 
   watchedArray.push(getObject);
@@ -66,6 +68,8 @@ function onQueueClick(e) {
       .innerText;
   const date =
     e.target.offsetParent.childNodes[0].children[1].children[1].children[1].children[4].innerText;
+  const modalWindowContent = e.target.offsetParent.innerHTML;
+  
 
   const getObject = {
     date: date,
@@ -73,6 +77,7 @@ function onQueueClick(e) {
     img: imageURL,
     genre: genres,
     rating: rating,
+    modalWindowContent: modalWindowContent,
   };
   queueArray.push(getObject);
 
@@ -91,6 +96,41 @@ function onLibraryWatсhedClick() {
     refs.emptyMassage.classList.add('visually-hidden');
   }
   refs.library.insertAdjacentHTML('beforeend', libraryTpl(watchedMovies));
+
+  function onCardClick(evt) {
+    if (evt.target.className === 'closeCard') {
+      return;
+    }
+    if (evt.path.length < 10) {
+      return;
+    }
+    if (refs.modalInfo.innerHTML !== '') {
+      return;
+    }
+
+    let pathNumber;
+
+    if (evt.path.length === 10) {
+      pathNumber = 1;
+    }
+    if (evt.path.length === 11) {
+      pathNumber = 2;
+    }
+    if (evt.path.length === 12) {
+      pathNumber = 3;
+    }
+    if (evt.path.length === 13) {
+      pathNumber = 4;
+    }
+
+    const data = Object.assign({}, evt.path[pathNumber].dataset);
+
+    refs.modalInfo.insertAdjacentHTML('beforeend', data.modalContent);
+
+    refs.modal.classList.add('modal-movie-card-visible');
+  }
+
+  refs.library.addEventListener('click', onCardClick);
 
   ///////////////////////// CLOSE ///////////////////////
 
@@ -120,6 +160,60 @@ function onLibraryQueueClick() {
     refs.emptyMassage.classList.remove('visually-hidden');
   }
   refs.library.insertAdjacentHTML('beforeend', libraryTpl(queueMovies));
+
+  function onCardClick(evt) {
+    if (evt.target.className === 'closeCard') {
+      return;
+    }
+    if (evt.path.length < 10) {
+      return;
+    }
+    if (refs.modalInfo.innerHTML !== '') {
+      return;
+    }
+
+    let pathNumber;
+
+    if (evt.path.length === 10) {
+      pathNumber = 1;
+    }
+    if (evt.path.length === 11) {
+      pathNumber = 2;
+    }
+    if (evt.path.length === 12) {
+      pathNumber = 3;
+    }
+    if (evt.path.length === 13) {
+      pathNumber = 4;
+    }
+
+    const data = Object.assign({}, evt.path[pathNumber].dataset);
+
+    refs.modalInfo.insertAdjacentHTML('beforeend', data.modalContent);
+
+    refs.modal.classList.add('modal-movie-card-visible');
+  }
+
+  refs.library.addEventListener('click', onCardClick);
+
+  refs.library.addEventListener('click', onCloseCard);
+  function onCloseCard(e) {
+    if (e.target.className !== 'closeCard') {
+      return;
+    }
+
+    const nameClose = e.target.parentNode.children[2].children[0].innerText;
+    console.log(nameClose);
+
+    const localFromClose = JSON.parse(localStorage.getItem('Queue'));
+    
+    let objects = localFromClose.filter((item) => item.name !== nameClose);
+    localStorage.setItem('Queue', JSON.stringify(objects));
+    let updateQueueMovies = JSON.parse(localStorage.getItem('Queue'));
+    refs.library.innerHTML = libraryTpl(updateQueueMovies);
+    queueArray = objects;
+    console.log(queueArray);
+  }
 }
 
 export { onWatchedClick, onLibraryWatсhedClick };
