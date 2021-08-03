@@ -1,4 +1,5 @@
 .modal-movie-card {
+  z-index: 20;
   display: none;
 }
 
@@ -25,6 +26,7 @@
 }
 
 .movie-modal {
+  position: absolute;
   padding: 48px 20px 41px 20px;
   @media screen and (min-width: 768px) {
     padding: 42px 30px 40px 28px;
