@@ -204,6 +204,7 @@
   transition: stroke var(--hover-focus-transition);
 }
 .search-error-message {
+  height: 16px;
   margin-top: 20px;
   font-weight: var(--regular-font-weight);
   font-size: 14px;
