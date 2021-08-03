@@ -4,9 +4,11 @@ function trackScroll() {
 
     if (scrolled > coords) {
       goTopBtn.classList.add('back_to_top-show');
+      footer.classList.add('show-footer');
     }
     if (scrolled < coords) {
       goTopBtn.classList.remove('back_to_top-show');
+      footer.classList.remove('show-footer');
     }
   }
 
@@ -17,7 +19,8 @@ function trackScroll() {
     }
   }
 
-  var goTopBtn = document.querySelector('.back_to_top');
+var goTopBtn = document.querySelector('.back_to_top');
+const footer = document.querySelector('.footer')
 
   window.addEventListener('scroll', trackScroll);
   goTopBtn.addEventListener('click', backToTop);
