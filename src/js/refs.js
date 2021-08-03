@@ -24,6 +24,6 @@ export const refs = {
   emptyMassage: document.querySelector('.empty-library-massage'),
   cardLibrary: document.querySelector('.card-library'),
   input: document.querySelector('.search-movie-input'),
-  footer: document.querySelector('.footer')
+  footer: document.querySelector('.footer'),
   myLibraryIsActive: document.querySelector('.my-library'),
 };
