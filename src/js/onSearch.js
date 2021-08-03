@@ -1,9 +1,10 @@
 import { refs } from './refs';
-import { fetchPopularDayMovies, fetchPopularWeekMovies, MoviesApiService } from './apiService';
+import { MoviesApiService } from './apiService';
 import { showErrorMessage } from './incorrectInput';
 import searchFilmsTpl from '../templates/home-card-movie';
 import modalMovieInfo from '../templates/modal-movie-content';
 import genres from './genres_ids.json';
+import { initModalButtons } from './addMovieToLibrary';
 
 const moviesApiService = new MoviesApiService();
 let moviesList;
@@ -70,6 +71,7 @@ function renderResaultsMarkup(results) {
     refs.modalInfo.insertAdjacentHTML('beforeend', markUp);
 
     refs.modal.classList.add('modal-movie-card-visible');
+    initModalButtons();
   };
 
   moviesList.addEventListener('click', cardClickHandler);

@@ -1,42 +1,24 @@
 import { refs } from '../js/refs';
 import libraryTpl from '../templates/library-card-movie.hbs';
 import buttonSwitcher from './buttonSwitcher';
-//////////////////////////// WATCHED /////////////////////////////////
 
-refs.modal.addEventListener('click', onWatchedClick);
+const getQueue = () => JSON.parse(localStorage.getItem('Queue')) || [];
+const getWatchedList = () => JSON.parse(localStorage.getItem('Watched')) || [];
 
-let watchedArray = [];
-let queueArray = [];
-
-if (localStorage.getItem('Watched') !== null) {
-  let locWatched = JSON.parse(localStorage.getItem('Watched'));
-  watchedArray.push(...locWatched);
-}
-
-if (localStorage.getItem('Queue') !== null) {
-  let locQueue = JSON.parse(localStorage.getItem('Queue'));
-  queueArray.push(...locQueue);
-}
-
-function onWatchedClick(e) {
-  if (e.target.className !== 'add-to-watched-btn basic-button') {
-    return;
-  }
-
-  e.target.setAttribute('disabled', 'disabled');
-
-  const name = e.target.offsetParent.childNodes[0].childNodes[3].childNodes[1].innerText;
-  const imageURL = e.target.offsetParent.childNodes[0].childNodes[1].currentSrc;
+const getMovieDataFromOpenModal = () => {
+  const movieModalElement = refs.modal.querySelector('.movie-modal');
+  const name = movieModalElement.childNodes[0].childNodes[3].childNodes[1].innerText;
+  const imageURL = movieModalElement.childNodes[0].childNodes[1].currentSrc;
   const genres =
-    e.target.offsetParent.childNodes[0].children[1].children[1].children[1].children[3].innerText;
+    movieModalElement.childNodes[0].children[1].children[1].children[1].children[3].innerText;
   const rating =
-    e.target.offsetParent.childNodes[0].children[1].children[1].children[1].children[0].children[0]
+    movieModalElement.childNodes[0].children[1].children[1].children[1].children[0].children[0]
       .innerText;
   const date =
-    e.target.offsetParent.childNodes[0].children[1].children[1].children[1].children[4].innerText;
-  const modalWindowContent = e.target.offsetParent.innerHTML;
+  movieModalElement.childNodes[0].children[1].children[1].children[1].children[4].innerText;
+  const modalWindowContent = movieModalElement.innerHTML;
 
-  const getObject = {
+  const movieData = {
     date: date,
     name: name,
     img: imageURL,
@@ -45,44 +27,85 @@ function onWatchedClick(e) {
     modalWindowContent: modalWindowContent,
   };
 
-  watchedArray.push(getObject);
-  localStorage.setItem('Watched', JSON.stringify(watchedArray));
+  return movieData;
+};
+
+const initModalButtons = () => {
+  const movieData = getMovieDataFromOpenModal();
+  const queue = getQueue();
+  const watchedList = JSON.parse(localStorage.getItem('Watched')) || [];
+  const hasMovieInQueue = queue.some(({ name }) => name === movieData.name);
+  const hasMovieInWatched = watchedList.some(({ name }) => name === movieData.name);
+
+  if (hasMovieInWatched) {
+    refs.modal.querySelector('.remove-from-watched-btn').classList.remove('visually-hidden');
+    refs.modal.querySelector('.add-to-watched-btn').classList.add('visually-hidden');
+  } else {
+    refs.modal.querySelector('.add-to-watched-btn').classList.remove('visually-hidden');
+    refs.modal.querySelector('.remove-from-watched-btn').classList.add('visually-hidden');
+  }
+
+  if (hasMovieInQueue) {
+    refs.modal.querySelector('.remove-from-queue-btn').classList.remove('visually-hidden');
+    refs.modal.querySelector('.add-to-queue-btn').classList.add('visually-hidden');
+  } else {
+    refs.modal.querySelector('.remove-from-queue-btn').classList.add('visually-hidden');
+    refs.modal.querySelector('.add-to-queue-btn').classList.remove('visually-hidden');
+  }
+};
+
+//////////////////////////// WATCHED /////////////////////////////////
+
+const onRemoveFromWatchedClick = () => {
+  const movieData = getMovieDataFromOpenModal();
+  const watchedList = getWatchedList();
+  localStorage.setItem(
+    'Watched',
+    JSON.stringify(watchedList.filter(({ name }) => name !== movieData.name)),
+  );
+};
+
+function onAddToWatchedClick() {
+  const movieData = getMovieDataFromOpenModal();
+  const watchedList = getWatchedList();
+  localStorage.setItem('Watched', JSON.stringify([...watchedList, movieData]));
 }
 
 //////////////////////////// QUEUE //////////////////////////////////
 
-refs.modal.addEventListener('click', onQueueClick);
+const onRemoveFromQueueClick = () => {
+  const movieData = getMovieDataFromOpenModal();
+  const queue = getQueue();
+  localStorage.setItem(
+    'Queue',
+    JSON.stringify(queue.filter(({ name }) => name !== movieData.name)),
+  );
+};
 
-function onQueueClick(e) {
-  if (e.target.className !== 'add-to-queue-btn basic-button') {
-    return;
-  }
-  e.target.setAttribute('disabled', 'disabled');
+function onAddToQueueClick() {
+  const movieData = getMovieDataFromOpenModal();
 
-  const name = e.target.offsetParent.childNodes[0].childNodes[3].childNodes[1].innerText;
-  const imageURL = e.target.offsetParent.childNodes[0].childNodes[1].currentSrc;
-  const genres =
-    e.target.offsetParent.childNodes[0].children[1].children[1].children[1].children[3].innerText;
-  const rating =
-    e.target.offsetParent.childNodes[0].children[1].children[1].children[1].children[0].children[0]
-      .innerText;
-  const date =
-    e.target.offsetParent.childNodes[0].children[1].children[1].children[1].children[4].innerText;
-  const modalWindowContent = e.target.offsetParent.innerHTML;
-  
-
-  const getObject = {
-    date: date,
-    name: name,
-    img: imageURL,
-    genre: genres,
-    rating: rating,
-    modalWindowContent: modalWindowContent,
-  };
-  queueArray.push(getObject);
-
-  localStorage.setItem('Queue', JSON.stringify(queueArray));
+  const queue = getQueue();
+  localStorage.setItem('Queue', JSON.stringify([...queue, movieData]));
 }
+
+const onModalClick = e => {
+  if (e.target.classList.contains('add-to-queue-btn')) {
+    onAddToQueueClick(e);
+    initModalButtons();
+  } else if (e.target.classList.contains('remove-from-queue-btn')) {
+    onRemoveFromQueueClick(e);
+    initModalButtons();
+  } else if (e.target.classList.contains('add-to-watched-btn')) {
+    onAddToWatchedClick(e);
+    initModalButtons();
+  } else if (e.target.classList.contains('remove-from-watched-btn')) {
+    onRemoveFromWatchedClick(e);
+    initModalButtons();
+  }
+};
+
+refs.modal.addEventListener('click', onModalClick);
 
 refs.watched.addEventListener('click', onLibraryWatсhedClick);
 refs.queue.addEventListener('click', onLibraryQueueClick);
@@ -90,7 +113,7 @@ refs.queue.addEventListener('click', onLibraryQueueClick);
 function onLibraryWatсhedClick() {
   buttonSwitcher(refs.watched, refs.queue);
   refs.library.innerHTML = '';
-  
+
   let watchedMovies = JSON.parse(localStorage.getItem('Watched'));
   if (watchedMovies !== null) {
     refs.emptyMassage.classList.add('visually-hidden');
@@ -142,13 +165,11 @@ function onLibraryWatсhedClick() {
 
     const nameClose = e.target.offsetParent?.children[2].children[0].innerText;
     const localFromClose = JSON.parse(localStorage.getItem('Watched'));
-    
-    let objects = localFromClose.filter((item) => item.name !== nameClose);
+
+    let objects = localFromClose.filter(item => item.name !== nameClose);
     localStorage.setItem('Watched', JSON.stringify(objects));
     let updateWatchedMovies = JSON.parse(localStorage.getItem('Watched'));
     refs.library.innerHTML = libraryTpl(updateWatchedMovies);
-    watchedArray = objects;
-
   }
 }
 ///////////////////////// CLOSE //////////////////////////
@@ -210,8 +231,7 @@ function onLibraryQueueClick() {
     localStorage.setItem('Queue', JSON.stringify(objects));
     let updateQueueMovies = JSON.parse(localStorage.getItem('Queue'));
     refs.library.innerHTML = libraryTpl(updateQueueMovies);
-    queueArray = objects;
   }
 }
 
-export { onWatchedClick, onLibraryWatсhedClick };
+export { onLibraryWatсhedClick, initModalButtons };

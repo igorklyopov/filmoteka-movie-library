@@ -1,9 +1,8 @@
 import { MoviesApiService } from './apiService';
 import { refs } from './refs';
 import genres from './genres_ids.json';
-import popularFilmsTpl from '../templates/popular-films.hbs';
 import modalMovieInfo from '../templates/modal-movie-content';
-
+import { initModalButtons } from './addMovieToLibrary'
 import homeCardMovie from '../templates/home-card-movie';
 import buttonSwitcher from './buttonSwitcher';
 import switchLoadingDots from './switchLoadingDots';
@@ -88,6 +87,7 @@ function renderPopularMoviesCards(movies) {
       refs.modalInfo.insertAdjacentHTML('beforeend', markUp)
   
       refs.modal.classList.add('modal-movie-card-visible')
+      initModalButtons()
     }
   
     refs.moviesList.addEventListener('click', cardClickHandler);

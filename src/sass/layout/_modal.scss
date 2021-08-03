@@ -175,13 +175,11 @@
 .basic-button {
   color: var(--secondary-text-color);
   background-color: var(--primary-accent-color);
-  border-radius: 2px;
-  padding: 15px 5px;
-  // width: 100%;
-  margin-bottom: 20px;
   text-transform: uppercase;
 }
 
+.remove-from-queue-btn,
+.remove-from-watched-btn,
 .add-to-watched-btn,
 .add-to-queue-btn {
   height: 44px;
@@ -198,6 +196,7 @@
     width: 136px;
   }
 }
+.remove-from-queue-btn,
 .add-to-queue-btn {
   color: var(--primary-text-color);
   background-color: var(--primary-bg-colors);
