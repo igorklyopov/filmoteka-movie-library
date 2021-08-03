@@ -15,7 +15,7 @@ const getMovieDataFromOpenModal = () => {
     movieModalElement.childNodes[0].children[1].children[1].children[1].children[0].children[0]
       .innerText;
   const date =
-  movieModalElement.childNodes[0].children[1].children[1].children[1].children[4].innerText;
+    movieModalElement.childNodes[0].children[1].children[1].children[1].children[4].innerText;
   const modalWindowContent = movieModalElement.innerHTML;
 
   const movieData = {
@@ -110,9 +110,12 @@ refs.modal.addEventListener('click', onModalClick);
 refs.watched.addEventListener('click', onLibraryWatсhedClick);
 refs.queue.addEventListener('click', onLibraryQueueClick);
 
+let activeFilter;
+
 function onLibraryWatсhedClick() {
   buttonSwitcher(refs.watched, refs.queue);
   refs.library.innerHTML = '';
+  activeFilter = 'Watched';
 
   let watchedMovies = JSON.parse(localStorage.getItem('Watched'));
   if (watchedMovies !== null) {
@@ -154,26 +157,10 @@ function onLibraryWatсhedClick() {
   }
 
   refs.library.addEventListener('click', onCardClick);
-
-  ///////////////////////// CLOSE ///////////////////////
-
-  refs.library.addEventListener('click', onCloseCard);
-  function onCloseCard(e) {
-    if (e.target.className !== 'closeCard') {
-      return;
-    }
-
-    const nameClose = e.target.offsetParent?.children[2].children[0].innerText;
-    const localFromClose = JSON.parse(localStorage.getItem('Watched'));
-
-    let objects = localFromClose.filter(item => item.name !== nameClose);
-    localStorage.setItem('Watched', JSON.stringify(objects));
-    let updateWatchedMovies = JSON.parse(localStorage.getItem('Watched'));
-    refs.library.innerHTML = libraryTpl(updateWatchedMovies);
-  }
 }
-///////////////////////// CLOSE //////////////////////////
+
 function onLibraryQueueClick() {
+  activeFilter = 'Queue';
   buttonSwitcher(refs.queue, refs.watched);
   refs.library.innerHTML = '';
   const queueMovies = JSON.parse(localStorage.getItem('Queue'));
@@ -216,22 +203,36 @@ function onLibraryQueueClick() {
   }
 
   refs.library.addEventListener('click', onCardClick);
-
-  refs.library.addEventListener('click', onCloseCard);
-  function onCloseCard(e) {
-    if (e.target.className !== 'closeCard') {
-      return;
-    }
-
-    const nameClose = e.target.parentNode.children[2].children[0].innerText;
-
-    const localFromClose = JSON.parse(localStorage.getItem('Queue'));
-    
-    let objects = localFromClose.filter((item) => item.name !== nameClose);
-    localStorage.setItem('Queue', JSON.stringify(objects));
-    let updateQueueMovies = JSON.parse(localStorage.getItem('Queue'));
-    refs.library.innerHTML = libraryTpl(updateQueueMovies);
-  }
 }
+function onCloseQueueCard(e) {
+  const nameClose = e.target.parentNode.children[2].children[0].innerText;
+
+  const localFromClose = getQueue();
+
+  let objects = localFromClose.filter(item => item.name !== nameClose);
+  localStorage.setItem('Queue', JSON.stringify(objects));
+
+  refs.library.innerHTML = libraryTpl(getQueue());
+}
+
+function onCloseWatchedCard(e) {
+  const nameClose = e.target.offsetParent?.children[2].children[0].innerText;
+  const localFromClose = getWatchedList();
+
+  let objects = localFromClose.filter(item => item.name !== nameClose);
+  localStorage.setItem('Watched', JSON.stringify(objects));
+
+  refs.library.innerHTML = libraryTpl(getWatchedList());
+}
+
+refs.library.addEventListener('click', e => {
+  if (e.target.classList.contains('closeCard')) {
+    if (activeFilter === 'Watched') {
+      onCloseWatchedCard(e);
+    } else if (activeFilter === 'Queue') {
+      onCloseQueueCard(e);
+    }
+  }
+});
 
 export { onLibraryWatсhedClick, initModalButtons };
