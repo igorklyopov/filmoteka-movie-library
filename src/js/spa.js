@@ -1,7 +1,7 @@
 import { refs } from './refs';
 import { onSearch } from './onSearch';
 import { onHomePageLoad } from './popMoviesloadFunctions';
-import { onWatchedClick, onLibraryWatсhedClick } from './addMovieToLibrary';
+import { onLibraryWatсhedClick } from './addMovieToLibrary';
 import libraryTpl from '../templates/library-card-movie.hbs';
 import buttonSwitcher from './buttonSwitcher';
 
