@@ -222,7 +222,7 @@ function onLibraryQueueClick() {
     if (e.target.className !== 'closeCard') {
       return;
     }
-    console.log('onCloseCard');
+
     const nameClose = e.target.parentNode.children[2].children[0].innerText;
 
     const localFromClose = JSON.parse(localStorage.getItem('Queue'));
