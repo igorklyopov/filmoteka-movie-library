@@ -107,7 +107,7 @@ function onLibraryWatсhedClick() {
     localStorage.setItem('Watched', JSON.stringify(objects));
     let updateWatchedMovies = JSON.parse(localStorage.getItem('Watched'));
     refs.library.innerHTML = libraryTpl(updateWatchedMovies);
-    // location.reload()//перезагружает страницу
+    watchedArray = objects;
 
   }
 }
