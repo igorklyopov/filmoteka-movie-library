@@ -99,18 +99,16 @@ body.dark-theme {
 @media screen and (min-width: $phone) and (max-width: 479px) {
   .theme-switch-container {
     position: absolute;
-    top: 5%;
-    left: 71%;
-    transform: translateY(26px);
+    right: 25px;
+    top: 58px;
   }
 }
 
 @media screen and (min-width: 480px) and(max-width:767px) {
   .theme-switch-container {
     position: absolute;
-    top: 8%;
-    left: 79%;
-    transform: translateY(26px);
+    right: 28px;
+    top: 55px;
   }
 }
 
@@ -118,7 +116,7 @@ body.dark-theme {
   .theme-switch-container {
     position: absolute;
     right: 25px;
-    top: 28%;
+    bottom: 25px;
   }
   .theme-switch-icon {
     height: 24px;
