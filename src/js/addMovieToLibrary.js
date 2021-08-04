@@ -90,6 +90,7 @@ function onAddToQueueClick() {
 }
 
 const onModalClick = e => {
+  console.log(e);
   if (e.target.classList.contains('add-to-queue-btn')) {
     onAddToQueueClick(e);
     initModalButtons();
@@ -112,7 +113,46 @@ refs.queue.addEventListener('click', onLibraryQueueClick);
 
 let activeFilter;
 
+function onWatchedCardClick(evt) {
+    if (evt.target.className === 'closeCard') {
+      return;
+    }
+    if (evt.path.length < 10) {
+      return;
+    }
+    if (refs.modalInfo.innerHTML !== '') {
+      return;
+    }
+
+    let pathNumber;
+
+    if (evt.path.length === 10) {
+      pathNumber = 1;
+    }
+    if (evt.path.length === 11) {
+      pathNumber = 2;
+    }
+    if (evt.path.length === 12) {
+      pathNumber = 3;
+    }
+    if (evt.path.length === 13) {
+      pathNumber = 4;
+    }
+
+    const data = Object.assign({}, evt.path[pathNumber].dataset);
+
+    refs.modalInfo.insertAdjacentHTML('beforeend', data.modalContent);
+
+    refs.modal.querySelector('.remove-from-watched-btn').classList.remove('visually-hidden');
+    refs.modal.querySelector('.add-to-watched-btn').classList.add('visually-hidden');
+
+    refs.modal.querySelector('.remove-from-watched-btn').addEventListener('click', onCloseWatchedCard(evt));
+
+    refs.modal.classList.add('modal-movie-card-visible');
+  }
+
 function onLibraryWatсhedClick() {
+  refs.library.removeEventListener('click', onQueueCardClick)
   buttonSwitcher(refs.watched, refs.queue);
   refs.library.innerHTML = '';
   activeFilter = 'Watched';
@@ -123,7 +163,10 @@ function onLibraryWatсhedClick() {
   }
   refs.library.insertAdjacentHTML('beforeend', libraryTpl(watchedMovies));
 
-  function onCardClick(evt) {
+  refs.library.addEventListener('click', onWatchedCardClick);
+}
+
+function onQueueCardClick(evt) {
     if (evt.target.className === 'closeCard') {
       return;
     }
@@ -153,13 +196,16 @@ function onLibraryWatсhedClick() {
 
     refs.modalInfo.insertAdjacentHTML('beforeend', data.modalContent);
 
+    refs.modal.querySelector('.remove-from-queue-btn').classList.remove('visually-hidden');
+    refs.modal.querySelector('.add-to-queue-btn').classList.add('visually-hidden');
+
+    refs.modal.querySelector('.remove-from-queue-btn').addEventListener('click', onCloseQueueCard(evt));
+
     refs.modal.classList.add('modal-movie-card-visible');
   }
 
-  refs.library.addEventListener('click', onCardClick);
-}
-
 function onLibraryQueueClick() {
+  refs.library.removeEventListener('click', onWatchedCardClick)
   activeFilter = 'Queue';
   buttonSwitcher(refs.queue, refs.watched);
   refs.library.innerHTML = '';
@@ -169,41 +215,9 @@ function onLibraryQueueClick() {
   }
   refs.library.insertAdjacentHTML('beforeend', libraryTpl(queueMovies));
 
-  function onCardClick(evt) {
-    if (evt.target.className === 'closeCard') {
-      return;
-    }
-    if (evt.path.length < 10) {
-      return;
-    }
-    if (refs.modalInfo.innerHTML !== '') {
-      return;
-    }
-
-    let pathNumber;
-
-    if (evt.path.length === 10) {
-      pathNumber = 1;
-    }
-    if (evt.path.length === 11) {
-      pathNumber = 2;
-    }
-    if (evt.path.length === 12) {
-      pathNumber = 3;
-    }
-    if (evt.path.length === 13) {
-      pathNumber = 4;
-    }
-
-    const data = Object.assign({}, evt.path[pathNumber].dataset);
-
-    refs.modalInfo.insertAdjacentHTML('beforeend', data.modalContent);
-
-    refs.modal.classList.add('modal-movie-card-visible');
-  }
-
-  refs.library.addEventListener('click', onCardClick);
+  refs.library.addEventListener('click', onQueueCardClick);
 }
+
 function onCloseQueueCard(e) {
   const nameClose = e.target.parentNode.children[2].children[0].innerText;
 
@@ -235,4 +249,4 @@ refs.library.addEventListener('click', e => {
   }
 });
 
-export { onLibraryWatсhedClick, initModalButtons };
+export { onLibraryWatсhedClick, initModalButtons, onModalClick};
