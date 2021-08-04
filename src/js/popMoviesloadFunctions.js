@@ -127,7 +127,7 @@ function onDayBtnClick() {
 }
 
 async function loadMorePopMovies() {
-  switchLoadingDots('on');
+  // switchLoadingDots('on');
 
   popMoviesApiService.incrementPage()
 
@@ -144,7 +144,7 @@ async function loadMorePopMovies() {
     console.log(error);
   }
 
-  switchLoadingDots('off');
+  // switchLoadingDots('off');
 }
 
 export { onHomePageLoad, renderPopularMoviesCards, onWeekBtnClick, onDayBtnClick, loadMorePopMovies};
