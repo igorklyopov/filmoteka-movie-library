@@ -17,6 +17,9 @@ body.dark-theme {
   display: flex;
   justify-content: flex-end;
   margin-top: 20px;
+  @include adaptive-for-tablet {
+    margin-top: 0px;
+  }
 }
 
 .theme-switch {
