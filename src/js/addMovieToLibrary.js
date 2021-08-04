@@ -112,6 +112,7 @@ refs.queue.addEventListener('click', onLibraryQueueClick);
 
 let activeFilter;
 
+///////////////////////////////////////////////////////////////////////////
 function onLibraryWatсhedClick() {
   buttonSwitcher(refs.watched, refs.queue);
   refs.library.innerHTML = '';
@@ -123,6 +124,7 @@ function onLibraryWatсhedClick() {
   }
   refs.library.insertAdjacentHTML('beforeend', libraryTpl(watchedMovies));
 
+  ////////////////
   function onCardClick(evt) {
     if (evt.target.className === 'closeCard') {
       return;
@@ -154,11 +156,32 @@ function onLibraryWatсhedClick() {
     refs.modalInfo.insertAdjacentHTML('beforeend', data.modalContent);
 
     refs.modal.classList.add('modal-movie-card-visible');
-  }
 
+    ////////////////////
+
+    refs.modal.querySelector('.add-to-watched-btn').classList.add('visually-hidden');
+    refs.modal.querySelector('.remove-from-watched-btn').classList.remove('visually-hidden');
+
+    refs.addWatched.addEventListener('click', onCardFromWatched);
+    // refs.addQueue.addEventListener('click', onCardFromQueue);
+
+    function onCardFromWatched() {
+      if (e.target.classList.contains('remove-from-watched-btn')) {
+        onRemoveFromWatchedClick(e);
+        initModalButtons();
+      }
+    }
+
+    // доделать..
+    function onCardFromQueue() {
+      if (e.target.classList.contains('remove-from-queue-btn')) {
+      }
+    }
+    //
+  }
   refs.library.addEventListener('click', onCardClick);
 }
-
+/////////////////////////////////////////////////////////////////////////////
 function onLibraryQueueClick() {
   activeFilter = 'Queue';
   buttonSwitcher(refs.queue, refs.watched);
@@ -169,6 +192,7 @@ function onLibraryQueueClick() {
   }
   refs.library.insertAdjacentHTML('beforeend', libraryTpl(queueMovies));
 
+  //////////////
   function onCardClick(evt) {
     if (evt.target.className === 'closeCard') {
       return;
