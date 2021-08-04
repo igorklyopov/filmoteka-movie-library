@@ -90,7 +90,6 @@ function onAddToQueueClick() {
 }
 
 const onModalClick = e => {
-  console.log(e);
   if (e.target.classList.contains('add-to-queue-btn')) {
     onAddToQueueClick(e);
     initModalButtons();
@@ -157,11 +156,6 @@ function onLibraryWatсhedClick(ev) {
 
     refs.modalInfo.insertAdjacentHTML('beforeend', data.modalContent);
 
-    refs.modal.querySelector('.remove-from-watched-btn').classList.remove('visually-hidden');
-    refs.modal.querySelector('.add-to-watched-btn').classList.add('visually-hidden');
-
-    refs.modal.querySelector('.remove-from-watched-btn').addEventListener('click', onCloseWatchedCard(evt));
-
     refs.modal.classList.add('modal-movie-card-visible');
 
     ////////////////////
@@ -209,13 +203,10 @@ function onLibraryQueueClick() {
   activeFilter = 'Queue';
   buttonSwitcher(refs.queue, refs.watched);
   refs.library.innerHTML = '';
-  activeFilter = 'Watched';
-
-  let watchedMovies = JSON.parse(localStorage.getItem('Watched'));
-  if (watchedMovies !== null) {
-    refs.emptyMassage.classList.add('visually-hidden');
+  const queueMovies = JSON.parse(localStorage.getItem('Queue'));
+  if (queueMovies === null) {
+    refs.emptyMassage.classList.remove('visually-hidden');
   }
-
   refs.library.insertAdjacentHTML('beforeend', libraryTpl(queueMovies));
   refs.library.addEventListener('click', onCardClickQ);
 
@@ -249,7 +240,6 @@ function onLibraryQueueClick() {
       refs.library.innerHTML = libraryTpl(getQueue());
     }
 
-
     if (evt.target.className === 'closeCard') {
       return;
     }
@@ -279,18 +269,11 @@ function onLibraryQueueClick() {
 
     refs.modalInfo.insertAdjacentHTML('beforeend', data.modalContent);
 
-    refs.modal.querySelector('.remove-from-queue-btn').classList.remove('visually-hidden');
-    refs.modal.querySelector('.add-to-queue-btn').classList.add('visually-hidden');
-
-    refs.modal.querySelector('.remove-from-queue-btn').addEventListener('click', onCloseQueueCard(evt));
-
     refs.modal.classList.add('modal-movie-card-visible');
     ////////////////////////
     // const watchedList = getWatchedList();
   }
-
 }
-
 function onCloseQueueCard(e) {
   const nameClose = e.target.parentNode.children[2].children[0].innerText;
 
@@ -321,4 +304,4 @@ refs.library.addEventListener('click', e => {
   }
 });
 
-export { onLibraryWatсhedClick, initModalButtons, onModalClick};
+export { onLibraryWatсhedClick, initModalButtons };
