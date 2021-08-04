@@ -2,6 +2,7 @@ import { refs } from './refs';
 import { onSearch } from './onSearch';
 import { onHomePageLoad } from './popMoviesloadFunctions';
 import { onLibraryWatсhedClick } from './addMovieToLibrary';
+import switchLoadingDots from './switchLoadingDots';
 
 const navigationLinks = document.getElementsByClassName('navigation-link'); //получение классов (массив)
 
@@ -40,6 +41,7 @@ function onMyLibraryBtnClick() {
   refs.footer.classList.add('show-footer-in-library');
   refs.myLibraryIsActive.classList.add('active-navigation');
   refs.myHomeIsActive.classList.remove('active-navigation');
+  
   onLibraryWatсhedClick();
 }
 
