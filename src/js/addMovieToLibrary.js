@@ -34,6 +34,7 @@ const initModalButtons = () => {
   const movieData = getMovieDataFromOpenModal();
   const queue = getQueue();
   const watchedList = JSON.parse(localStorage.getItem('Watched')) || [];
+  console.log(watchedList);
   const hasMovieInQueue = queue.some(({ name }) => name === movieData.name);
   const hasMovieInWatched = watchedList.some(({ name }) => name === movieData.name);
 
@@ -59,6 +60,7 @@ const initModalButtons = () => {
 const onRemoveFromWatchedClick = () => {
   const movieData = getMovieDataFromOpenModal();
   const watchedList = getWatchedList();
+  console.log(watchedList);
   localStorage.setItem(
     'Watched',
     JSON.stringify(watchedList.filter(({ name }) => name !== movieData.name)),
@@ -109,9 +111,13 @@ refs.modal.addEventListener('click', onModalClick);
 
 refs.watched.addEventListener('click', onLibraryWatсhedClick);
 refs.queue.addEventListener('click', onLibraryQueueClick);
+// refs.watched.addEventListener('click', asds);
 
+// function asds() {
+//   console.log('sd');
+//   window.location.reload(true);
+// }
 let activeFilter;
-
 ///////////////////////////////////////////////////////////////////////////
 function onLibraryWatсhedClick(ev) {
   buttonSwitcher(refs.watched, refs.queue);
@@ -124,7 +130,6 @@ function onLibraryWatсhedClick(ev) {
   }
   refs.library.insertAdjacentHTML('beforeend', libraryTpl(watchedMovies));
   refs.library.addEventListener('click', onCardClick);
-
   ////////////////
   function onCardClick(evt) {
     if (evt.target.className === 'closeCard') {
@@ -222,12 +227,6 @@ function onLibraryQueueClick() {
       refs.modal.querySelector('.add-to-watched-btn').classList.remove('visually-hidden');
       refs.modal.querySelector('.remove-from-watched-btn').classList.add('visually-hidden');
     }
-    refs.modal
-      .querySelector('.remove-from-watched-btn')
-      .addEventListener('click', btnRemoveWatchedQ);
-    function btnRemoveWatchedQ() {
-      refs.library.insertAdjacentHTML('beforeend', libraryTpl(queueMovies));
-    }
 
     refs.modal.querySelector('.remove-from-queue-btn').addEventListener('click', btnRemoveQ);
 
@@ -270,8 +269,6 @@ function onLibraryQueueClick() {
     refs.modalInfo.insertAdjacentHTML('beforeend', data.modalContent);
 
     refs.modal.classList.add('modal-movie-card-visible');
-    ////////////////////////
-    // const watchedList = getWatchedList();
   }
 }
 function onCloseQueueCard(e) {
