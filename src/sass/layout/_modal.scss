@@ -99,6 +99,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
+  margin-bottom: 20px;
 }
 
 .movie-info {
@@ -119,19 +120,6 @@
   padding: 0;
   margin-bottom: 10px;
   list-style: none;
-  @media screen and (max-width: 767px) {
-    font-size: 12px;
-  }
-  font-size: 10px;
-
-  @media screen and (min-width: 1024px) {
-    font-size: 12px;
-  }
-
-  // font-size: 10px;
-  // @media screen and (min-width: 1024px) {
-  //   font-size: 12px;
-  // }
 }
 
 .movie-info-titles li {
@@ -139,11 +127,11 @@
 }
 
 .movie-original-title-value {
-  max-width: 107px;
+  max-width: 147px;
   max-height: 15px;
   // overflow: scroll;
   @media screen and (min-width: 768px) {
-    max-width: 190px;
+    max-width: 180px;
   }
 }
 
@@ -163,7 +151,6 @@
 
 .movie-info-values {
   list-style: none;
-  margin-left: 20px;
 
   @media screen and (min-width: 320px) {
     margin-left: 32px;

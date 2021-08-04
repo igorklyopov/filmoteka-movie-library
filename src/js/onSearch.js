@@ -13,20 +13,21 @@ export function onSearch(e) {
   refs.sectionContainer.innerHTML = '';
   refs.popularMoveisNav.classList.add('visually-hidden');
   moviesApiService.query = e.currentTarget.elements.query.value.trim();
+  e.currentTarget.reset();
 
   if (moviesApiService.query === '') {
     showErrorMessage('Enter your search query, please!');
-    return
+    return;
   }
   moviesApiService.resetPage();
   moviesApiService.getmoviesBySearch().then(renderResaultsMarkup);
 }
 
 function renderResaultsMarkup(data) {
-  const { results } = data
-  if(results.length === 0) {
+  const { results } = data;
+  if (results.length === 0) {
     showErrorMessage('Search result not successful. Enter the correct movie name and try again!');
-    setTimeout(function(){
+    setTimeout(function () {
       window.location.href = './index.html';
     }, 5000);
   }
@@ -80,12 +81,11 @@ function renderResaultsMarkup(data) {
 export async function loadMoreSearchMovies() {
   switchLoadingDots('on');
 
-  moviesApiService.incrementPage()
+  moviesApiService.incrementPage();
 
   try {
-    await moviesApiService.getmoviesBySearch().then((movie) => {
-  
-      return renderResaultsMarkup(movie)
+    await moviesApiService.getmoviesBySearch().then(movie => {
+      return renderResaultsMarkup(movie);
     });
   } catch (error) {
     console.log(error);
