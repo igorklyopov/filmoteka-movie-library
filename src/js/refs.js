@@ -26,4 +26,5 @@ export const refs = {
   input: document.querySelector('.search-movie-input'),
   footer: document.querySelector('.footer'),
   myLibraryIsActive: document.querySelector('.my-library'),
+  nameSurname: document.querySelector('.team-member-card'),
 };

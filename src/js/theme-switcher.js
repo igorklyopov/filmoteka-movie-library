@@ -10,11 +10,13 @@ const button = document.querySelector('#theme-switch-toggle');
 button.onchange = function () {
   if (button.checked === true) {
     body.style.color = 'var(--secondary-text-color)';
+    refs.nameSurname.style.color = 'var(--secondary-text-color)';
     body.classList.add('dark-theme');
     body.classList.remove('light-theme');
     localStorage.setItem('theme-color', Theme.DARK);
   } else {
     body.style.color = '';
+    refs.nameSurname.style.color = '';
     body.classList.remove('dark-theme');
     body.classList.add('light-theme');
     localStorage.setItem('theme-color', Theme.LIGHT);
