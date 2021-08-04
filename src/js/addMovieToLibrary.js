@@ -113,7 +113,21 @@ refs.queue.addEventListener('click', onLibraryQueueClick);
 
 let activeFilter;
 
-function onWatchedCardClick(evt) {
+///////////////////////////////////////////////////////////////////////////
+function onLibraryWatсhedClick(ev) {
+  buttonSwitcher(refs.watched, refs.queue);
+  refs.library.innerHTML = '';
+  activeFilter = 'Watched';
+
+  let watchedMovies = JSON.parse(localStorage.getItem('Watched'));
+  if (watchedMovies !== null) {
+    refs.emptyMassage.classList.add('visually-hidden');
+  }
+  refs.library.insertAdjacentHTML('beforeend', libraryTpl(watchedMovies));
+  refs.library.addEventListener('click', onCardClick);
+
+  ////////////////
+  function onCardClick(evt) {
     if (evt.target.className === 'closeCard') {
       return;
     }
@@ -149,11 +163,51 @@ function onWatchedCardClick(evt) {
     refs.modal.querySelector('.remove-from-watched-btn').addEventListener('click', onCloseWatchedCard(evt));
 
     refs.modal.classList.add('modal-movie-card-visible');
-  }
 
-function onLibraryWatсhedClick() {
-  refs.library.removeEventListener('click', onQueueCardClick)
-  buttonSwitcher(refs.watched, refs.queue);
+    ////////////////////
+
+    refs.modal.querySelector('.add-to-watched-btn').classList.add('visually-hidden');
+    refs.modal.querySelector('.remove-from-watched-btn').classList.remove('visually-hidden');
+
+    const queue = getQueue();
+    const nameClosebtnQ = evt.target.parentNode.children[2].children[0].innerText;
+    const hasMovieInQueue = queue.some(({ name }) => name === nameClosebtnQ);
+    if (hasMovieInQueue) {
+      refs.modal.querySelector('.remove-from-queue-btn').classList.remove('visually-hidden');
+      refs.modal.querySelector('.add-to-queue-btn').classList.add('visually-hidden');
+    } else {
+      refs.modal.querySelector('.remove-from-queue-btn').classList.add('visually-hidden');
+      refs.modal.querySelector('.add-to-queue-btn').classList.remove('visually-hidden');
+    }
+
+    refs.modal
+      .querySelector('.remove-from-watched-btn')
+      .addEventListener('click', btnRemoveWatched);
+
+    // // refs.addQueue.addEventListener('click', onCardFromQueue);
+
+    function btnRemoveWatched(e) {
+      const nameClosebtn = e.target.offsetParent.children[0].children[1].children[0].innerText;
+      const localFromClose = getWatchedList();
+      let objects = localFromClose.filter(item => item.name !== nameClosebtn);
+      localStorage.setItem('Watched', JSON.stringify(objects));
+
+      refs.library.innerHTML = libraryTpl(getWatchedList());
+    }
+    // доделать..
+    // function onCardFromQueue() {
+    //   if (e.target.classList.contains('remove-from-queue-btn')) {
+    //     onRemoveFromQueueClick();
+    //     initModalButtons();
+    //   }
+    // }
+    //
+  }
+}
+/////////////////////////////////////////////////////////////////////////////
+function onLibraryQueueClick() {
+  activeFilter = 'Queue';
+  buttonSwitcher(refs.queue, refs.watched);
   refs.library.innerHTML = '';
   activeFilter = 'Watched';
 
@@ -161,12 +215,41 @@ function onLibraryWatсhedClick() {
   if (watchedMovies !== null) {
     refs.emptyMassage.classList.add('visually-hidden');
   }
-  refs.library.insertAdjacentHTML('beforeend', libraryTpl(watchedMovies));
 
-  refs.library.addEventListener('click', onWatchedCardClick);
-}
+  refs.library.insertAdjacentHTML('beforeend', libraryTpl(queueMovies));
+  refs.library.addEventListener('click', onCardClickQ);
 
-function onQueueCardClick(evt) {
+  //////////////
+  function onCardClickQ(evt) {
+    const nameClosebtnW = evt.target.parentNode.children[2].children[0].innerText;
+    const hasMovieInWatched = getWatchedList().some(({ name }) => name === nameClosebtnW);
+
+    if (hasMovieInWatched) {
+      refs.modal.querySelector('.remove-from-watched-btn').classList.remove('visually-hidden');
+      refs.modal.querySelector('.add-to-watched-btn').classList.add('visually-hidden');
+    } else {
+      refs.modal.querySelector('.add-to-watched-btn').classList.remove('visually-hidden');
+      refs.modal.querySelector('.remove-from-watched-btn').classList.add('visually-hidden');
+    }
+    refs.modal
+      .querySelector('.remove-from-watched-btn')
+      .addEventListener('click', btnRemoveWatchedQ);
+    function btnRemoveWatchedQ() {
+      refs.library.insertAdjacentHTML('beforeend', libraryTpl(queueMovies));
+    }
+
+    refs.modal.querySelector('.remove-from-queue-btn').addEventListener('click', btnRemoveQ);
+
+    function btnRemoveQ(e) {
+      const nameClosebtn = e.target.offsetParent.children[0].children[1].children[0].innerText;
+      const localFromClose = getQueue();
+      let objects = localFromClose.filter(item => item.name !== nameClosebtn);
+      localStorage.setItem('Queue', JSON.stringify(objects));
+
+      refs.library.innerHTML = libraryTpl(getQueue());
+    }
+
+
     if (evt.target.className === 'closeCard') {
       return;
     }
@@ -202,20 +285,10 @@ function onQueueCardClick(evt) {
     refs.modal.querySelector('.remove-from-queue-btn').addEventListener('click', onCloseQueueCard(evt));
 
     refs.modal.classList.add('modal-movie-card-visible');
+    ////////////////////////
+    // const watchedList = getWatchedList();
   }
 
-function onLibraryQueueClick() {
-  refs.library.removeEventListener('click', onWatchedCardClick)
-  activeFilter = 'Queue';
-  buttonSwitcher(refs.queue, refs.watched);
-  refs.library.innerHTML = '';
-  const queueMovies = JSON.parse(localStorage.getItem('Queue'));
-  if (queueMovies === null) {
-    refs.emptyMassage.classList.remove('visually-hidden');
-  }
-  refs.library.insertAdjacentHTML('beforeend', libraryTpl(queueMovies));
-
-  refs.library.addEventListener('click', onQueueCardClick);
 }
 
 function onCloseQueueCard(e) {
@@ -232,7 +305,6 @@ function onCloseQueueCard(e) {
 function onCloseWatchedCard(e) {
   const nameClose = e.target.offsetParent?.children[2].children[0].innerText;
   const localFromClose = getWatchedList();
-
   let objects = localFromClose.filter(item => item.name !== nameClose);
   localStorage.setItem('Watched', JSON.stringify(objects));
 
