@@ -193,8 +193,8 @@
 }
 
 .basic-button {
-  color: var(--secondary-text-color);
-  background-color: var(--primary-accent-color);
+  // color: var(--secondary-text-color);
+  // background-color: var(--primary-accent-color);
   text-transform: uppercase;
 }
 
@@ -202,11 +202,18 @@
 .remove-from-watched-btn,
 .add-to-watched-btn,
 .add-to-queue-btn {
+  &:hover {
+    color: var(--secondary-text-color);
+    background-color: var(--primary-accent-color);
+    border: transparent;
+  }
+
   width: 112px;
   height: 44px;
-  border: none;
+  border: solid 1px var(--primary-text-color);
   border-radius: 5px;
   text-transform: uppercase;
+  background-color: var(--primary-bg-color);
 
   @media screen and (max-width: 319px) {
     font-size: 10px;
@@ -220,8 +227,8 @@
 }
 
 .add-to-watched-btn {
-  color: var(--secondary-text-color);
-  background-color: var(--primary-accent-color);
+  // color: var(--secondary-text-color);
+  // background-color: var(--primary-accent-color);
 
   padding-left: 10px;
   padding-right: 10px;
@@ -230,9 +237,9 @@
 .remove-from-queue-btn,
 .add-to-queue-btn {
   color: var(--primary-text-color);
-  background-color: var(--primary-bg-colors);
+  // background-color: var(--primary-bg-colors);
   border: solid 1px var(--primary-text-color);
-  border-color: var(--primary-text-color);
+  // border-color: var(--primary-text-color);
   margin-left: 15px;
 }
 

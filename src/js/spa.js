@@ -2,7 +2,7 @@ import { refs } from './refs';
 import { onSearch } from './onSearch';
 import { onHomePageLoad } from './popMoviesloadFunctions';
 import { onLibraryWatсhedClick } from './addMovieToLibrary';
-import switchLoadingDots from './switchLoadingDots';
+// import switchLoadingDots from './switchLoadingDots';
 
 const navigationLinks = document.getElementsByClassName('navigation-link'); //получение классов (массив)
 
