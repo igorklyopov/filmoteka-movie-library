@@ -21,8 +21,23 @@
 }
 
 .modal-overlay {
-  width: 100vw;
-  height: 100vw;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 90%;
+  width: 90%;
+  z-index: 30;
+  @media screen and (min-width: 768px) {
+    max-width: 618px;
+    max-height: 562px;
+    overflow-x: hidden;
+  }
+  @media screen and (min-width: 1024px) {
+    max-height: 568px;
+    max-width: 882px;
+  }
+  pointer-events: none;
 }
 
 .movie-modal {
@@ -248,26 +263,18 @@
   align-items: center;
   justify-content: center;
   position: absolute;
-  top: 25px;
-  right: 12px;
+  top: 10px;
+  right: 18px;
   z-index: 20;
   outline: none;
   background: transparent;
   border: none;
   padding: 0;
   cursor: pointer;
+  pointer-events: all;
 
   width: 30px;
   height: 30px;
-
-  @include adaptive-for-tablet {
-    top: 55px;
-    right: 80px;
-  }
-
-  @include adaptive-for-desktop {
-    top: 225px;
-  }
 }
 
 .close-icon {
