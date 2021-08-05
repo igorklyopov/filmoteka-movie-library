@@ -34,7 +34,6 @@ const initModalButtons = () => {
   const movieData = getMovieDataFromOpenModal();
   const queue = getQueue();
   const watchedList = JSON.parse(localStorage.getItem('Watched')) || [];
-  console.log(watchedList);
   const hasMovieInQueue = queue.some(({ name }) => name === movieData.name);
   const hasMovieInWatched = watchedList.some(({ name }) => name === movieData.name);
 
@@ -60,17 +59,26 @@ const initModalButtons = () => {
 const onRemoveFromWatchedClick = () => {
   const movieData = getMovieDataFromOpenModal();
   const watchedList = getWatchedList();
-  console.log(watchedList);
   localStorage.setItem(
     'Watched',
     JSON.stringify(watchedList.filter(({ name }) => name !== movieData.name)),
   );
+  let watchedMovies = JSON.parse(localStorage.getItem('Watched'));
+  if (activeFilter !== 'Queue') {
+    refs.library.innerHTML = '';
+    refs.library.insertAdjacentHTML('beforeend', libraryTpl(watchedMovies));
+  }
 };
 
 function onAddToWatchedClick() {
   const movieData = getMovieDataFromOpenModal();
   const watchedList = getWatchedList();
   localStorage.setItem('Watched', JSON.stringify([...watchedList, movieData]));
+  let watchedMovies = JSON.parse(localStorage.getItem('Watched'));
+  if (activeFilter !== 'Queue') {
+    refs.library.innerHTML = '';
+    refs.library.insertAdjacentHTML('beforeend', libraryTpl(watchedMovies));
+  }
 }
 
 //////////////////////////// QUEUE //////////////////////////////////
@@ -82,13 +90,22 @@ const onRemoveFromQueueClick = () => {
     'Queue',
     JSON.stringify(queue.filter(({ name }) => name !== movieData.name)),
   );
+  const queueMovies = JSON.parse(localStorage.getItem('Queue'));
+  if (activeFilter !== 'Watched') {
+    refs.library.innerHTML = '';
+    refs.library.insertAdjacentHTML('beforeend', libraryTpl(queueMovies));
+  }
 };
 
 function onAddToQueueClick() {
   const movieData = getMovieDataFromOpenModal();
-
   const queue = getQueue();
   localStorage.setItem('Queue', JSON.stringify([...queue, movieData]));
+  const queueMovies = JSON.parse(localStorage.getItem('Queue'));
+  if (activeFilter !== 'Watched') {
+    refs.library.innerHTML = '';
+    refs.library.insertAdjacentHTML('beforeend', libraryTpl(queueMovies));
+  }
 }
 
 const onModalClick = e => {
@@ -165,23 +182,22 @@ function onLibraryWatсhedClick(ev) {
 
     ////////////////////
 
-    refs.modal.querySelector('.add-to-watched-btn').classList.add('visually-hidden');
-    refs.modal.querySelector('.remove-from-watched-btn').classList.remove('visually-hidden');
+    initModalButtons();
 
-    const queue = getQueue();
-    const nameClosebtnQ = evt.target.parentNode.children[2].children[0].innerText;
-    const hasMovieInQueue = queue.some(({ name }) => name === nameClosebtnQ);
-    if (hasMovieInQueue) {
-      refs.modal.querySelector('.remove-from-queue-btn').classList.remove('visually-hidden');
-      refs.modal.querySelector('.add-to-queue-btn').classList.add('visually-hidden');
-    } else {
-      refs.modal.querySelector('.remove-from-queue-btn').classList.add('visually-hidden');
-      refs.modal.querySelector('.add-to-queue-btn').classList.remove('visually-hidden');
-    }
+    // const queue = getQueue();
+    // const nameClosebtnQ = evt.target.parentNode.children[2].children[0].innerText;
+    // const hasMovieInQueue = queue.some(({ name }) => name === nameClosebtnQ);
+    // if (hasMovieInQueue) {
+    //   refs.modal.querySelector('.remove-from-queue-btn').classList.remove('visually-hidden');
+    //   refs.modal.querySelector('.add-to-queue-btn').classList.add('visually-hidden');
+    // } else {
+    //   refs.modal.querySelector('.remove-from-queue-btn').classList.add('visually-hidden');
+    //   refs.modal.querySelector('.add-to-queue-btn').classList.remove('visually-hidden');
+    // }
 
-    refs.modal
-      .querySelector('.remove-from-watched-btn')
-      .addEventListener('click', btnRemoveWatched);
+    // refs.modal
+    //   .querySelector('.remove-from-watched-btn')
+    //   .addEventListener('click', btnRemoveWatched);
 
     // // refs.addQueue.addEventListener('click', onCardFromQueue);
 
@@ -190,7 +206,7 @@ function onLibraryWatсhedClick(ev) {
       const localFromClose = getWatchedList();
       let objects = localFromClose.filter(item => item.name !== nameClosebtn);
       localStorage.setItem('Watched', JSON.stringify(objects));
-
+      objects = null;
       refs.library.innerHTML = libraryTpl(getWatchedList());
     }
     // доделать..
@@ -228,14 +244,14 @@ function onLibraryQueueClick() {
       refs.modal.querySelector('.remove-from-watched-btn').classList.add('visually-hidden');
     }
 
-    refs.modal.querySelector('.remove-from-queue-btn').addEventListener('click', btnRemoveQ);
+    // refs.modal.querySelector('.remove-from-queue-btn').addEventListener('click', btnRemoveQ);
 
     function btnRemoveQ(e) {
       const nameClosebtn = e.target.offsetParent.children[0].children[1].children[0].innerText;
       const localFromClose = getQueue();
       let objects = localFromClose.filter(item => item.name !== nameClosebtn);
       localStorage.setItem('Queue', JSON.stringify(objects));
-
+      objects = null;
       refs.library.innerHTML = libraryTpl(getQueue());
     }
 
@@ -278,7 +294,7 @@ function onCloseQueueCard(e) {
 
   let objects = localFromClose.filter(item => item.name !== nameClose);
   localStorage.setItem('Queue', JSON.stringify(objects));
-
+  objects = null;
   refs.library.innerHTML = libraryTpl(getQueue());
 }
 
@@ -287,7 +303,7 @@ function onCloseWatchedCard(e) {
   const localFromClose = getWatchedList();
   let objects = localFromClose.filter(item => item.name !== nameClose);
   localStorage.setItem('Watched', JSON.stringify(objects));
-
+  objects = null;
   refs.library.innerHTML = libraryTpl(getWatchedList());
 }
 
