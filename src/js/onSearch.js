@@ -5,6 +5,7 @@ import searchFilmsTpl from '../templates/home-card-movie';
 import modalMovieInfo from '../templates/modal-movie-content';
 import genres from './genres_ids.json';
 import { initModalButtons } from './addMovieToLibrary';
+import historyTpl from '/templates/element-press';
 
 let moviesList;
 
@@ -16,17 +17,48 @@ export function onSearch(e) {
 
   if (moviesApiService.query === '') {
     showErrorMessage('Enter your search query, please!');
-    return
+    return;
   }
   moviesApiService.resetPage();
   moviesApiService.getmoviesBySearch().then(renderResaultsMarkup);
+
+  ///////////////// History ///////////////////
+
+  let LocalHistory = [];
+  if (!localStorage.getItem('history')) {
+    localStorage.setItem('history', JSON.stringify(LocalHistory));
+  }
+  const historyGet = JSON.parse(localStorage.getItem('history'));
+  LocalHistory.push(...historyGet);
+  const obj = {
+    title: moviesApiService.query,
+  };
+  LocalHistory.unshift(obj);
+  localStorage.setItem('history', JSON.stringify(LocalHistory));
+  const historyEnd = JSON.parse(localStorage.getItem('history'));
+  refs.historyUl.innerHTML = '';
+  return LocalHistory;
 }
 
+refs.statisticsBnt.addEventListener('click', onStatClick);
+
+function onStatClick(LocalHistory) {
+  let history = JSON.parse(localStorage.getItem('history'));
+  refs.historyUl.insertAdjacentHTML('afterbegin', historyTpl(history));
+}
+window.addEventListener('click', onStatClickremove);
+
+function onStatClickremove(e) {
+  if (!e.path[1].children[0].children[0].children[1].children[0]);
+  refs.historyUl.innerHTML = '';
+}
+///////////////// History ///////////////////
+
 function renderResaultsMarkup(data) {
-  const { results } = data
-  if(results.length === 0) {
+  const { results } = data;
+  if (results.length === 0) {
     showErrorMessage('Search result not successful. Enter the correct movie name and try again!');
-    setTimeout(function(){
+    setTimeout(function () {
       window.location.href = './index.html';
     }, 5000);
   }
@@ -80,12 +112,11 @@ function renderResaultsMarkup(data) {
 export async function loadMoreSearchMovies() {
   switchLoadingDots('on');
 
-  moviesApiService.incrementPage()
+  moviesApiService.incrementPage();
 
   try {
-    await moviesApiService.getmoviesBySearch().then((movie) => {
-  
-      return renderResaultsMarkup(movie)
+    await moviesApiService.getmoviesBySearch().then(movie => {
+      return renderResaultsMarkup(movie);
     });
   } catch (error) {
     console.log(error);
