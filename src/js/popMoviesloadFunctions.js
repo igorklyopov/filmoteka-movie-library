@@ -83,7 +83,7 @@ function renderPopularMoviesCards(movies) {
       const data = Object.assign({}, evt.path[pathNumber].dataset);
       const markUp = modalMovieInfo(data);
       refs.modalInfo.insertAdjacentHTML('beforeend', markUp)
-  
+      refs.body.classList.add('body-scroll-none');
       refs.modal.classList.add('modal-movie-card-visible')
       initModalButtons()
     }

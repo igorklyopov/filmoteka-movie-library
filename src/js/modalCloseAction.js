@@ -8,6 +8,7 @@ import { refs } from '../js/refs';
 
 const clickHandlerClose = function () {
     refs.modal.removeEventListener('click', onModalClick);
+    refs.body.classList.remove('body-scroll-none');
     modal.classList.remove('modal-movie-card-visible');
     modalInfo.innerHTML = '';
 };
