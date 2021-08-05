@@ -27,7 +27,7 @@ function renderResaultsMarkup(data) {
   if(results.length === 0) {
     showErrorMessage('Search result not successful. Enter the correct movie name and try again!');
     setTimeout(function(){
-      window.location.href = './index.html';
+      window.location.href = '/';
     }, 5000);
   }
   const moviesArray = [...results];
