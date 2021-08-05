@@ -27,4 +27,5 @@ export const refs = {
   footer: document.querySelector('.footer'),
   myLibraryIsActive: document.querySelector('.my-library'),
   nameSurname: document.querySelector('.team-member-card'),
+  body: document.querySelector('body'),
 };

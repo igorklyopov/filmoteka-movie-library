@@ -5,6 +5,7 @@ import searchFilmsTpl from '../templates/home-card-movie';
 import modalMovieInfo from '../templates/modal-movie-content';
 import genres from './genres_ids.json';
 import { initModalButtons } from './addMovieToLibrary';
+import { onHomePageLoad } from './popMoviesloadFunctions'
 
 let moviesList;
 
@@ -27,8 +28,9 @@ function renderResaultsMarkup(data) {
   if(results.length === 0) {
     showErrorMessage('Search result not successful. Enter the correct movie name and try again!');
     setTimeout(function(){
-      window.location.href = '/';
-    }, 5000);
+      onHomePageLoad();
+      refs.input.value = '';
+    }, 3000);
   }
   const moviesArray = [...results];
   moviesArray.forEach(element => {
@@ -69,7 +71,7 @@ function renderResaultsMarkup(data) {
     const markUp = modalMovieInfo(data);
 
     refs.modalInfo.insertAdjacentHTML('beforeend', markUp);
-
+    refs.body.classList.add('body-scroll-none');
     refs.modal.classList.add('modal-movie-card-visible');
     initModalButtons();
   };

@@ -177,6 +177,7 @@ function onLibraryWatсhedClick(ev) {
     const data = Object.assign({}, evt.path[pathNumber].dataset);
 
     refs.modalInfo.insertAdjacentHTML('beforeend', data.modalContent);
+    refs.body.classList.add('body-scroll-none');
 
     refs.modal.classList.add('modal-movie-card-visible');
 
@@ -283,6 +284,7 @@ function onLibraryQueueClick() {
     const data = Object.assign({}, evt.path[pathNumber].dataset);
 
     refs.modalInfo.insertAdjacentHTML('beforeend', data.modalContent);
+    refs.body.classList.add('body-scroll-none');
 
     refs.modal.classList.add('modal-movie-card-visible');
   }
