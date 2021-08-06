@@ -1,10 +1,6 @@
-//console.log('modal.js start');
-
 const ref5 = {
   openModalBtn: document.querySelector('[data-action="open-modal"]'),
   closeModalBtn: document.querySelector('[data-action="close-modal"]'),
-  //backdrop: document.querySelector('.js-backdrop'),
-  //teamTable: document.querySelector(".team-members-table"),
   teamList: document.querySelector('.team-members-list'),
   teamDataSrc: document.querySelectorAll('.team-members-data img'),
   teamMemberEmailSvg: document.querySelector('.team-member-email-svg'),
@@ -48,5 +44,3 @@ for (let i = 0; i < ref5.teamDataSrc.length; ++i) {
   htmlText += li;
 }
 ref5.teamList.insertAdjacentHTML('afterbegin', htmlText);
-
-//console.log("modal.js end");
