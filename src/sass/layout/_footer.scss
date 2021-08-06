@@ -21,7 +21,6 @@
 .footer-container {
   display: block; /*for phone, 2 lines*/
   font-family: var(--font-family);
-  //font-style: normal;
   font-weight: var(--regular-font-weight);
   font-size: 14px;
   line-height: 16px;
@@ -97,9 +96,6 @@ body.footer-show-modal .footer-modal {
 .footer-modal {
   position: relative;
   padding: 20px;
-  //min-height: 320px;
-  //width: 720px;
-  //height: 320px;
   background-color: #fff;
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14);
   transform: scale(1.1);
@@ -145,7 +141,6 @@ body.footer-show-modal .footer-modal {
   list-style: none;
   background-color: var(--footer-bg-color);
   border-radius: 15px;
-  //justify-content: center;
 
   overflow: auto; /*adds scrollers if needed*/
   height: 380px;
@@ -172,7 +167,7 @@ body.footer-show-modal .footer-modal {
   border-radius: 15px;
   width: 200px;
   height: 200px;
-  //margin-bottom: 10px;
+
   @include adaptive-for-tablet {
     width: 100px;
     height: 100px;
@@ -204,16 +199,12 @@ body.footer-show-modal .footer-modal {
 }
 
 .team-member-links {
-  //background-color: yellow;
-  //width: 100px;
   display: flex;
   justify-content: center;
   margin-top: 15px;
 }
 
 .team-member-link {
-  //width: 44px;
-  //height: 44px;
 }
 
 .team-member-icon {

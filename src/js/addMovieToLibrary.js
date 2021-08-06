@@ -128,12 +128,7 @@ refs.modal.addEventListener('click', onModalClick);
 
 refs.watched.addEventListener('click', onLibraryWatсhedClick);
 refs.queue.addEventListener('click', onLibraryQueueClick);
-// refs.watched.addEventListener('click', asds);
 
-// function asds() {
-//   console.log('sd');
-//   window.location.reload(true);
-// }
 let activeFilter;
 ///////////////////////////////////////////////////////////////////////////
 function onLibraryWatсhedClick(ev) {
@@ -185,23 +180,6 @@ function onLibraryWatсhedClick(ev) {
 
     initModalButtons();
 
-    // const queue = getQueue();
-    // const nameClosebtnQ = evt.target.parentNode.children[2].children[0].innerText;
-    // const hasMovieInQueue = queue.some(({ name }) => name === nameClosebtnQ);
-    // if (hasMovieInQueue) {
-    //   refs.modal.querySelector('.remove-from-queue-btn').classList.remove('visually-hidden');
-    //   refs.modal.querySelector('.add-to-queue-btn').classList.add('visually-hidden');
-    // } else {
-    //   refs.modal.querySelector('.remove-from-queue-btn').classList.add('visually-hidden');
-    //   refs.modal.querySelector('.add-to-queue-btn').classList.remove('visually-hidden');
-    // }
-
-    // refs.modal
-    //   .querySelector('.remove-from-watched-btn')
-    //   .addEventListener('click', btnRemoveWatched);
-
-    // // refs.addQueue.addEventListener('click', onCardFromQueue);
-
     function btnRemoveWatched(e) {
       const nameClosebtn = e.target.offsetParent.children[0].children[1].children[0].innerText;
       const localFromClose = getWatchedList();
@@ -210,14 +188,7 @@ function onLibraryWatсhedClick(ev) {
       objects = null;
       refs.library.innerHTML = libraryTpl(getWatchedList());
     }
-    // доделать..
-    // function onCardFromQueue() {
-    //   if (e.target.classList.contains('remove-from-queue-btn')) {
-    //     onRemoveFromQueueClick();
-    //     initModalButtons();
-    //   }
-    // }
-    //
+    
   }
 }
 /////////////////////////////////////////////////////////////////////////////
@@ -244,8 +215,6 @@ function onLibraryQueueClick() {
       refs.modal.querySelector('.add-to-watched-btn').classList.remove('visually-hidden');
       refs.modal.querySelector('.remove-from-watched-btn').classList.add('visually-hidden');
     }
-
-    // refs.modal.querySelector('.remove-from-queue-btn').addEventListener('click', btnRemoveQ);
 
     function btnRemoveQ(e) {
       const nameClosebtn = e.target.offsetParent.children[0].children[1].children[0].innerText;

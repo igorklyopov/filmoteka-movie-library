@@ -148,11 +148,6 @@
   @media screen and (min-width: 1024px) {
     font-size: 12px;
   }
-
-  // font-size: 10px;
-  // @media screen and (min-width: 1024px) {
-  //   font-size: 12px;
-  // }
 }
 
 .movie-info-titles li {
@@ -162,7 +157,7 @@
 .movie-original-title-value {
   max-width: 107px;
   max-height: 15px;
-  // overflow: scroll;
+
   @media screen and (min-width: 768px) {
     max-width: 190px;
   }
@@ -214,8 +209,6 @@
 }
 
 .basic-button {
-  // color: var(--secondary-text-color);
-  // background-color: var(--primary-accent-color);
   text-transform: uppercase;
 }
 
@@ -248,9 +241,6 @@
 }
 
 .add-to-watched-btn {
-  // color: var(--secondary-text-color);
-  // background-color: var(--primary-accent-color);
-
   padding-left: 10px;
   padding-right: 10px;
 }
@@ -258,9 +248,7 @@
 .remove-from-queue-btn,
 .add-to-queue-btn {
   color: var(--primary-text-color);
-  // background-color: var(--primary-bg-colors);
   border: solid 1px var(--primary-text-color);
-  // border-color: var(--primary-text-color);
   margin-left: 15px;
 }
 

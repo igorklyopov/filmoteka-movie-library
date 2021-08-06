@@ -28,21 +28,18 @@ class MoviesApiService {
           return;
         });
 
-        // this.page += 1;
         return data;
       });
     });
   }
   getPopularDayMovies() {
     return fetch(`${this.basicQuery(TRANDING_DAY)}`).then(response => {
-      // this.page += 1;
       return response.json();
     });
   }
 
   getPopularWeekMovies() {
     return fetch(`${this.basicQuery(TRANDING_WEEK)}`).then(response => {
-      // this.page += 1;
       return response.json();
     });
   }
